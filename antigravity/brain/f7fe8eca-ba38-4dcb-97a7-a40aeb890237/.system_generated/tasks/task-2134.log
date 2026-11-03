@@ -93,3 +93,6 @@ INFO:     127.0.0.1:63130 - "GET /components/TaxAndITRTab.js HTTP/1.1" 304 Not M
 INFO:     127.0.0.1:63130 - "GET /components/AuditScorecard.js HTTP/1.1" 304 Not Modified
 INFO:     127.0.0.1:63130 - "GET /favicon.ico HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:63130 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:63188 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:63188 - "POST /api/process-invoice HTTP/1.1" 200 OK

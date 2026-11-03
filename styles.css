@@ -1,0 +1,80 @@
+/* Custom styles and print stylesheet for AUDIT IT */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --primary-slate: #0f172a;
+  --accent-emerald: #059669;
+  --error-rose: #e11d48;
+  --warn-amber: #f59e0b;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+/* Pulsing highlight animation for error bounding boxes */
+@keyframes soft-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.008);
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 2s infinite ease-in-out;
+}
+
+/* Print Styles for CA Audit Slip */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  header, 
+  footer, 
+  #app-header, 
+  .print\\:hidden, 
+  .no-print,
+  #tab-btn-audit,
+  #tab-btn-tax,
+  button {
+    display: none !important;
+  }
+
+  #modal-container {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  #printable-ca-slip {
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+  }
+}
