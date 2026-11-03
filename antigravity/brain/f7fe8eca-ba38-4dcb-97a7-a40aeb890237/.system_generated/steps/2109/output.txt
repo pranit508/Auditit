@@ -1,0 +1,7 @@
+Command exited with code 1.
+
+Command output:
+  File "<string>", line 47
+    print(f"✓ Tax Advisory calculation endpoint works (200): net_profit={data.get(\"net_profit\")}, tax_payable={data.get(\"tax_payable\")}")
+                                                                                                                                              ^
+SyntaxError: f-string expression part cannot include a backslash

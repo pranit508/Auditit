@@ -1,0 +1,46 @@
+Command exited with code 0.
+
+Command output:
+90-        onRefreshTaxAi: () => this.handleRefreshTaxAi(),
+91-        onUpdateItem: (idx, action, val) => this.handleUpdateItem(idx, action, val),
+92-        onAddItem: () => this.handleAddItem(),
+93-        onDeleteItem: (idx) => this.handleDeleteItem(idx),
+94-        onUpdateHeader: (field, val) => this.handleUpdateHeader(field, val),
+95-        onAutoFixMath: () => this.handleAutoFixMath(),
+96-        onUpdateTaxSettings: (settings) => this.handleUpdateTaxSettings(settings),
+97-        onSubmitValidInputs: (fields) => this.handleSubmitValidInputs(fields),
+98-        onCopyNote: (openWhatsApp) => this.handleCopyDiscrepancyNote(openWhatsApp),
+99-        onOpenCaSlip: () => this.openCaSlipModal(),
+100:        onBack: () => this.goToDashboard()
+101-      });
+102-    }
+103-
+104-    // Restore focus seamlessly if user was actively typing
+105-    if (focusInfo) {
+106-      let targetInput = null;
+107-      if (focusInfo.id) {
+108-        targetInput = document.getElementById(focusInfo.id);
+109-      } else if (focusInfo.action && focusInfo.index !== null) {
+110-        targetInput = document.querySelector(`input[data-action="${focusInfo.action}"][data-index="${focusInfo.index}"]`);
+--
+469-        localStorage.removeItem("audit_it_gemini_api_key");
+470-        this.showToast("Gemini key cleared; local mode active", "info");
+471-      }
+472-      this.modalMount.innerHTML = "";
+473-      this.render();
+474-    }, () => {
+475-      this.modalMount.innerHTML = "";
+476-    });
+477-  }
+478-
+479:  goToDashboard() {
+480-    this.currentView = "dashboard";
+481-    this.render();
+482-    window.scrollTo({ top: 0, behavior: "smooth" });
+483-  }
+484-
+485-  showProcessingOverlay(fileName) {
+486-    this.modalMount.innerHTML = `
+487-      <div class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+488-        <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl">
+489-          <div class="w-16 h-16 mx-auto mb-4 relative flex items-center justify-center">

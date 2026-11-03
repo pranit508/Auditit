@@ -1,0 +1,2 @@
+You have 1 background task(s) currently running:
+[{"taskId":"f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-566","toolName":"run_command","toolSummary":"Start FastAPI AUDIT IT server","description":"/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/bin/python3 /Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py 3000","startTime":"2026-11-02T17:08:49Z","logUri":"file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-566.log","isDaemon":true}]

@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+Word total extracted: 4490.0
+Word extraction verified!

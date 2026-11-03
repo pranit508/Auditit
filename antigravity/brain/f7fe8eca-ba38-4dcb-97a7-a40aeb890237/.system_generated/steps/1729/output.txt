@@ -1,0 +1,17 @@
+Command exited with code 0.
+
+Command output:
+'CGST @ 9%: 990.00'                 -> 990.0 (Expected: 990.0)
+'SGST @ 9%: 990.00'                 -> 990.0 (Expected: 990.0)
+'CGST @ 9% 990.00'                  -> 990.0 (Expected: 990.0)
+'1. CGST @ 9%: 990.00'              -> 990.0 (Expected: 990.0)
+'2. SGST @ 9%: 990.00'              -> 990.0 (Expected: 990.0)
+'CGST @ 9% 2 990.00'                -> 990.0 (Expected: 990.0)
+'SGST @ 9% 2 990.00'                -> 990.0 (Expected: 990.0)
+'CGST @ 9% (State Code 06) 990.00'  -> 990.0 (Expected: 990.0)
+'CGST @ 9% 2990.00'                 -> 990.0 (Expected: 990.0)
+'SGST @ 9% 2990.00'                 -> 990.0 (Expected: 990.0)
+'LED Tube Light 20W'                -> None (Expected: None)
+'Pack of 20'                        -> None (Expected: None)
+
+ALL TEST CASES PASSED PERFECTLY!

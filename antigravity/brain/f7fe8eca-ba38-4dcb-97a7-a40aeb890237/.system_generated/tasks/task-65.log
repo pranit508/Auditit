@@ -1,0 +1,157 @@
+
+========================================================
+  🚀 AUDIT IT - Retail Bill Verification Engine
+  Serving on: http://localhost:3000
+  Root Dir:   /Users/pranit405/.gemini/antigravity/scratch/audit-it
+========================================================
+
+Press Ctrl+C to stop the server.
+
+[AUDIT IT] 127.0.0.1 - "GET / HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - "GET /index.html HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - "GET / HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxCalculator.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - "GET /index.html HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxCalculator.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - "GET / HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxCalculator.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - "GET / HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxCalculator.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/invoiceTextParser.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - "GET / HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /styles.css HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /app.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /data/sampleInvoices.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/auditEngine.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/aiExtractor.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxCalculator.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/DashboardHero.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/invoiceTextParser.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -

@@ -1,0 +1,12 @@
+Command exited with code 0.
+
+Command output:
+total 208
+drwxr-xr-x@  8 pranit405  staff    256 Nov  2 19:08 .
+drwxr-xr-x@ 11 pranit405  staff    352 Nov  2 22:34 ..
+-rw-r--r--@  1 pranit405  staff   2678 Nov  3 00:49 ApiKeyModal.js
+-rw-r--r--@  1 pranit405  staff  42179 Nov  3 01:35 AuditScorecard.js
+-rw-r--r--@  1 pranit405  staff  11066 Nov  2 19:06 CaSlipModal.js
+-rw-r--r--@  1 pranit405  staff  15732 Nov  2 23:13 DashboardHero.js
+-rw-r--r--@  1 pranit405  staff  18511 Nov  3 01:25 InvoiceViewer.js
+-rw-r--r--@  1 pranit405  staff   8017 Nov  2 23:11 ReviewWorkspace.js

@@ -1,0 +1,18 @@
+Task: f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-1826
+Status: RUNNING
+Log: file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-1826.log
+Log output:
+<truncated 34 lines>
+  127.0.0.1:62394 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62394 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:62396 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62396 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:62400 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62400 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:62402 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62402 - "POST /api/process-invoice HTTP/1.1" 200 OK
+
+Last progress: 11m16s ago

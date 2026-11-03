@@ -1,0 +1,38 @@
+Command exited with code 0.
+
+Command output:
+131-    // Compute code-calculated tax & deemed profit under Sec 44AD
+132-    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+133-    const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
+134-    
+135-    this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+136:    this.currentView = "review";
+137-    this.render();
+138-    window.scrollTo({ top: 0, behavior: "smooth" });
+139-    this.showToast(`Loaded ${rawSample.scenarioName}`, "info");
+140-  }
+141-
+--
+198-        disclaimer: "Not tax advice; verify with your CA.",
+199-        isAiGenerated: false
+200-      }
+201-    };
+202-
+203:    this.currentView = "review";
+204-    this.render();
+205-    window.scrollTo({ top: 0, behavior: "smooth" });
+206-    this.showToast("Created new bill - start editing line items live!", "success");
+207-  }
+208-
+--
+258-      // Compute code-calculated tax & deemed profit under Sec 44AD
+259-      const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+260-      const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
+261-      this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+262-
+263:      this.currentView = "review";
+264-      this.hideProcessingOverlay();
+265-      this.render();
+266-      window.scrollTo({ top: 0, behavior: "smooth" });
+267-
+268-      this.showToast("Invoice analyzed by Gemini 2.5 Flash successfully!", "success");

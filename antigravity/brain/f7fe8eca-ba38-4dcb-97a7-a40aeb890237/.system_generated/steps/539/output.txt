@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+GEMINI_API_KEY is: not_set

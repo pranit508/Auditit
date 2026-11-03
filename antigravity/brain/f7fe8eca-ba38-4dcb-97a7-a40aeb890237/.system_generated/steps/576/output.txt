@@ -1,0 +1,16 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:133:        if billed > (qty * rate * 10) and billed > 100000:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:274:    if (Math.abs(cgst - sgst) > 1.00) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:289:  // Discrepancy rule: If difference exceeds ₹1.00
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:290:  const hasTotalDiscrepancy = Math.abs(totalDiff) > 1.00;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:98:      if (billed > (qty * rate * 10) && billed > 100000) return false;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:255:      const estTotal = total_declared || 1000;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:69:    // 4. Reject if total amount matches corrupt pincode/number (billed > qty * rate * 10 and billed > 100000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:70:    if (!isNaN(billed) && billed > (qty * rate * 10) && billed > 100000) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:76:      baseTax = 15000 + (deemedProfit - 600000) * 0.10;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:77:    } else if (deemedProfit <= 1200000) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:79:    } else if (deemedProfit <= 1500000) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:80:      baseTax = 90000 + (deemedProfit - 1200000) * 0.20;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:82:      baseTax = 150000 + (deemedProfit - 1500000) * 0.30;

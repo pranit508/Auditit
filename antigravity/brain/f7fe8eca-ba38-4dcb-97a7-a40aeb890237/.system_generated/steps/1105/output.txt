@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:32:export function parseWordsToNumber(text) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:263:      const parsedWordTotal = parseWordsToNumber(line);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:254:          const wt = parseWordsToNumber(line);

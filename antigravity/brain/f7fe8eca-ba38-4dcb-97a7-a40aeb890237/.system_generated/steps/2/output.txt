@@ -1,0 +1,19 @@
+A1: (Recommended) Math & line-item verification (Quantity × Rate = Amount, Subtotal, Discounts, Grand Total), (Recommended) GST split verification (CGST + SGST = total GST, or IGST applicability & rate calculation), Supplier GSTIN format & presence validation, Duplicate invoice number or missing invoice date warning, HSN / SAC code presence check, Privacy, Safety & Masking ChecksPre-Processing Masking: Mask private details (such as bank account numbers, IFSC codes, and sensitive personal contacts) before passing raw text or data to any external AI service.   Raw Upload Deletion: Ensure uploaded raw files/photos are scheduled for deletion after processing to maintain shopkeeper trust.   
+Missing & Unclear Detail Checks (AI + Flagging Logic)Critical Header Presence: Flag if core invoice details are missing—such as invoice number, date, or supplier/vendor name.   Readability / Blurry Fields: If any number, rate, or tax field cannot be read with high certainty due to poor lighting or blur, explicitly mark it as "Unclear / Needs Review" rather than guessing.   User Confirmation Trigger: Prompt the user to manually verify or edit flagged/unclear fields in the split review screen before generating the final report.   
+A2: (Recommended) Simple English with familiar Indian retail terms (₹ Rupee symbol, Parcha/Bill, GSTIN, clear pass/fail badges)
+A3: Create the hero section for the AUDIT IT dashboard using a 2-column layout (stacks on mobile):
+
+1. Left Column (Upload Box):
+   - Centered drag-and-drop container with dashed border and an upload icon.
+   - Accepts image (.jpg, .jpeg, .png) and PDF files.
+   - Text: "Upload supplier invoice or photo".
+   - Subtle caption at the bottom: "Privacy secured: bank details masked, files deleted after audit".
+
+2. Right Column (Demo Scenarios):
+   - Header: "Or test with sample bills:"
+   - Three clickable card buttons:
+     a) "Sample 1: Clean Bill" (Sharma Wholesale, Green 'Math Verified' pill badge)
+     b) "Sample 2: Math Error" (Modern Electrical, Red '₹1,000 Overcharge' pill badge)
+     c) "Sample 3: Missing GSTIN" (Gupta Packaging, Amber 'Review Needed' pill badge)
+   - When any card is clicked, populate the audit review screen directly with the corresponding sample invoice JSON data without needing to upload a file.
+A4: (Recommended) Visual comparison view: Bill preview with visual highlights on errors + Clear 'Difference Summary' (e.g. 'You were overcharged by ₹240')

@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+Cleaned Items Count: 2
+ - Basmati Rice 25kg
+ - Wheat Flour Atta 50kg
+All Python test cases passed successfully!

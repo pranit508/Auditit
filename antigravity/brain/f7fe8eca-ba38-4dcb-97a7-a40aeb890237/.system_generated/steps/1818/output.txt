@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+export function parseIndianCurrency(val) {
+export function parseWordsToNumber(text) {
+export function extractTaxAmountFromMatch(line, taxType, subtotal = 0) {
+export function isLikelyInvoice(text) {
+export function sliceDocumentZones(lines) {
+export function parseLineItemRTL(line, itemId = "item-1") {
+export function parseInvoiceText(rawText, sourceFileName = "Uploaded Bill") {

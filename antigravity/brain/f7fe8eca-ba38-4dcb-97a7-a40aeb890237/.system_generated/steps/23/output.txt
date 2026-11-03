@@ -1,0 +1,13 @@
+Command exited with code 0.
+
+Command output:
+==> Formulae
+brotli		gh		libpsl		mpg123		sdl3
+ca-certificates	git		libssh2		ncurses		sl
+cowsay		htop		libunistring	openssl@3	svt-av1
+curl		json-c		libvmaf		openssl@4	tree
+dav1d		lame		libvpx		opus		x264
+ffmpeg		libnghttp2	libyaml		pcre2		x265
+fortune		libnghttp3	lolcat		ruby		xz
+gettext		libngtcp2	lz4		sdl2-compat	zstd
+

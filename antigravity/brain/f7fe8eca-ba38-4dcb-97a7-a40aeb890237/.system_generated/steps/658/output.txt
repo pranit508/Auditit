@@ -1,0 +1,1 @@
+Made 1 replacement in /Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js starting at line 21 (+1/-52 lines).

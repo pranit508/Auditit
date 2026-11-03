@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+pip not found
+/usr/bin/pip3

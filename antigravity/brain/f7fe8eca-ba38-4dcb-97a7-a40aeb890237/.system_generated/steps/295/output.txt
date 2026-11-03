@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+Sample 3 Missing inputs count: 2
+ - Supplier GSTIN
+ - Rate for Heavy Duty Air Bubble Wrap Roll
+Is calculations halted: True

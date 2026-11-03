@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+Line 1 Rate & Amount verified: 2535.0 2535.0
+Line 2 Rate & Amount verified: 1270.0 1270.0
+Subtotal verified: 3805.0
+Grand Total overridden from 2173.9 to: 4490.0
+ALL CRITICAL PARSER CHECKS PASS!

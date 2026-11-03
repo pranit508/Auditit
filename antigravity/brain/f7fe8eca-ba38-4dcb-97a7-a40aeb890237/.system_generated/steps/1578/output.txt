@@ -1,0 +1,21 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:11:    onUpdateHeader,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:139:      onUpdateHeader,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:9:    onUpdateHeader,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:737:  if (inputVendor && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:738:    inputVendor.addEventListener("input", (e) => onUpdateHeader("vendor_name", e.target.value));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:740:  if (inputGstin && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:741:    inputGstin.addEventListener("input", (e) => onUpdateHeader("gstin", e.target.value.trim().toUpperCase()));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:743:  if (inputTotalDeclared && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:744:    inputTotalDeclared.addEventListener("input", (e) => onUpdateHeader("total_declared", parseFloat(e.target.value) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:752:  if (inputCgst && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:753:    inputCgst.addEventListener("input", (e) => onUpdateHeader("cgst", parseFloat(e.target.value) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:755:  if (inputSgst && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:756:    inputSgst.addEventListener("input", (e) => onUpdateHeader("sgst", parseFloat(e.target.value) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:758:  if (inputIgst && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:759:    inputIgst.addEventListener("input", (e) => onUpdateHeader("igst", parseFloat(e.target.value) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:770:      if (onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:771:        onUpdateHeader("gst_preset", { cgst: halfTax, sgst: halfTax, igst: 0 });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:69:        onUpdateHeader: (field, val) => this.handleUpdateHeader(field, val),

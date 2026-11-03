@@ -1,0 +1,15 @@
+Task: f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-65
+Status: RUNNING
+Log: file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-65.log
+Log output:
+
+========================================================
+  🚀 AUDIT IT - Retail Bill Verification Engine
+  Serving on: http://localhost:3000
+  Root Dir:   /Users/pranit405/.gemini/antigravity/scratch/audit-it
+========================================================
+
+Press Ctrl+C to stop the server.
+
+
+Last progress: 21s ago

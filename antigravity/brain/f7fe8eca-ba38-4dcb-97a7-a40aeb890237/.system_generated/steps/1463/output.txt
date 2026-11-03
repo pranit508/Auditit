@@ -1,0 +1,304 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:8:def parse_inr(val) -> float:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:22:def parseIndianCurrency(val) -> float:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:31:def parse_words_to_number(text: str) -> float:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/yacc.py:323:    def parse(self, input=None, lexer=None, debug=False, tracking=False, tokenfunc=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/yacc.py:348:    def parsedebug(self, input=None, lexer=None, debug=False, tracking=False, tokenfunc=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/yacc.py:695:    def parseopt(self, input=None, lexer=None, debug=False, tracking=False, tokenfunc=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/yacc.py:1001:    def parseopt_notrack(self, input=None, lexer=None, debug=False, tracking=False, tokenfunc=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/yacc.py:2895:def parse_grammar(doc, file, line):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/cpp.py:611:    def parsegen(self,input,source=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/ply/cpp.py:873:    def parse(self,input,source=None,ignore={}):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/c_parser.py:130:    def parse(self, text, filename='', debug=False):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/_ast_gen.py:37:    def parse_cfgfile(self, filename):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/__init__.py:51:def parse_file(filename, use_cpp=False, cpp_path='cpp', cpp_args='',
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography/hazmat/bindings/_rust/x509.pyi:42:def parse_name_bytes(data: bytes) -> x509.Name: ...
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography/hazmat/bindings/_rust/declarative_asn1.pyi:122:    def parse(self, cls: type): ...
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography/hazmat/bindings/_rust/asn1.pyi:7:def parse_spki_for_data(data: bytes) -> bytes: ...
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography/x509/name.py:439:    def parse(self) -> Name:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/_helpers.py:88:def parse_content_type(header_value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/_agent_identity_utils.py:161:def parse_certificate(cert_bytes):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/genai/_extra_utils.py:471:def parse_config_for_mcp_usage(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/genai/_extra_utils.py:492:async def parse_config_for_mcp_sessions(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/cparser.py:370:    def parse(self, csource, override=False, packed=False, pack=None,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/cparser.py:560:    def parse_type(self, cdecl):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/cparser.py:563:    def parse_type_and_quals(self, cdecl):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/starlette/schemas.py:97:    def parse_docstring(self, func_or_method: Callable[..., Any]) -> dict[str, Any]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/starlette/formparsers.py:84:    async def parse(self) -> FormData:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/starlette/formparsers.py:226:    async def parse(self) -> FormData:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/click/core.py:952:    def parse_args(self, ctx: Context, args: t.List[str]) -> t.List[str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/click/core.py:1408:    def parse_args(self, ctx: Context, args: t.List[str]) -> t.List[str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/click/core.py:1648:    def parse_args(self, ctx: Context, args: t.List[str]) -> t.List[str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/click/parser.py:328:    def parse_args(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/server.py:542:    def parse(self) -> Generator[None]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/protocol.py:559:    def parse(self) -> Generator[None]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/client.py:298:    def parse(self) -> Generator[None]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/legacy/framing.py:204:def parse_close(data: bytes) -> tuple[int, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/http11.py:103:    def parse(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/http11.py:208:    def parse(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/http11.py:291:def parse_line(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/http11.py:318:def parse_headers(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/cli.py:57:    def parse(self) -> Generator[None, None, None]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/frames.py:203:    def parse(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/frames.py:386:    def parse(cls, data: bytes) -> Close:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/uri.py:61:def parse_uri(uri: str) -> WebSocketURI:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/uri.py:142:def parse_proxy(proxy: str) -> Proxy:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:88:def parse_OWS(header: str, pos: int) -> int:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:106:def parse_token(header: str, pos: int, header_name: str) -> tuple[str, int]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:130:def parse_quoted_string(header: str, pos: int, header_name: str) -> tuple[str, int]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:165:def parse_list(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:231:def parse_connection_option(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:247:def parse_connection(header: str) -> list[ConnectionOption]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:268:def parse_upgrade_protocol(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:286:def parse_upgrade(header: str) -> list[UpgradeProtocol]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:302:def parse_extension_item_param(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:338:def parse_extension_item(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:363:def parse_extension(header: str) -> list[ExtensionHeader]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:426:def parse_subprotocol_item(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:442:def parse_subprotocol(header: str) -> list[Subprotocol]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:502:def parse_token68(header: str, pos: int, header_name: str) -> tuple[str, int]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:518:def parse_end(header: str, pos: int, header_name: str) -> None:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/headers.py:527:def parse_authorization_basic(header: str) -> tuple[str, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/requests/utils.py:365:def parse_list_header(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/requests/utils.py:397:def parse_dict_header(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/requests/utils.py:904:def parse_header_links(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/network/download.py:78:def parse_content_disposition(content_disposition: str, default_filename: str) -> str:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/utils/misc.py:588:def parse_netloc(netloc):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/utils/distutils_args.py:25:def parse_distutils_args(args: List[str]) -> Dict[str, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/utils/wheel.py:67:def parse_wheel(wheel_zip, name):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/cli/base_command.py:91:    def parse_args(self, args: List[str]) -> Tuple[Any, Any]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/cli/main_parser.py:48:def parse_command(args: List[str]) -> Tuple[str, List[str]]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/req_file.py:116:def parse_requirements(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/req_file.py:316:    def parse(self, filename: str, constraint: bool) -> Iterator[ParsedLine]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/req_file.py:375:    def parse_line(line: str) -> Tuple[str, Values]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/req_file.py:428:    def parser_exit(self: Any, msg: str) -> "NoReturn":
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/constructors.py:60:def parse_editable(editable_req: str) -> Tuple[Optional[str], str, Set[str]]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/constructors.py:175:def parse_req_from_editable(editable_req: str) -> RequirementParts:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/req/constructors.py:274:def parse_req_from_line(name: str, line_source: Optional[str]) -> RequirementParts:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/index/collector.py:304:def parse_links(page: "HTMLPage") -> Iterable[Link]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/packaging/tags.py:96:def parse_tag(tag: str) -> FrozenSet[Tag]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/packaging/version.py:42:def parse(version: str) -> Union["LegacyVersion", "Version"]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/packaging/utils.py:81:def parse_wheel_filename(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/packaging/utils.py:117:def parse_sdist_filename(filename: str) -> Tuple[NormalizedName, Version]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/_backport/sysconfig.py:386:def parse_config_h(fp, vars=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/version.py:37:    def parse(self, s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/version.py:97:    def parse_requirement(self, s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/version.py:266:    def parse(self, s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/version.py:605:    def parse(self, s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/version.py:675:    def parse(self, s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/util.py:56:def parse_marker(marker_string):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/util.py:145:def parse_requirement(req):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/util.py:806:def parse_credentials(netloc):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/util.py:869:def parse_name_and_version(p):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/database.py:890:        def parse_requires_data(data):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/database.py:917:        def parse_requires_path(req_path):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/cachecontrol/controller.py:21:def parse_uri(uri):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/cachecontrol/controller.py:66:    def parse_cache_control(self, headers):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/requests/utils.py:344:def parse_list_header(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/requests/utils.py:376:def parse_dict_header(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/requests/utils.py:850:def parse_header_links(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/_inputstream.py:869:    def parse(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/html5parser.py:26:def parse(doc, treebuilder="etree", namespaceHTMLElements=True, **kwargs):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/html5parser.py:49:def parseFragment(doc, container="div", treebuilder="etree", namespaceHTMLElements=True, **kwargs):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/html5parser.py:262:    def parse(self, stream, *args, **kwargs):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/html5parser.py:287:    def parseFragment(self, stream, *args, **kwargs):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/html5parser.py:315:    def parseError(self, errorcode="XXX-undefined-error", datavars=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/html5parser.py:380:    def parseRCDataRawtext(self, token, contentType):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:370:def parse_key_value_pair(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:386:def parse_key(src: str, pos: Pos) -> Tuple[Pos, Key]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:404:def parse_key_part(src: str, pos: Pos) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:420:def parse_one_line_basic_str(src: str, pos: Pos) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:425:def parse_array(src: str, pos: Pos, parse_float: ParseFloat) -> Tuple[Pos, list]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:449:def parse_inline_table(src: str, pos: Pos, parse_float: ParseFloat) -> Tuple[Pos, dict]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:481:def parse_basic_str_escape(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:511:def parse_basic_str_escape_multiline(src: str, pos: Pos) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:515:def parse_hex_char(src: str, pos: Pos, hex_len: int) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:526:def parse_literal_str(src: str, pos: Pos) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:535:def parse_multiline_str(src: str, pos: Pos, *, literal: bool) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:566:def parse_basic_str(src: str, pos: Pos, *, multiline: bool) -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:598:def parse_regex(src: str, pos: Pos, regex: "Pattern") -> Tuple[Pos, str]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/tomli/_parser.py:605:def parse_value(  # noqa: C901
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/util/retry.py:353:    def parse_retry_after(self, retry_after):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/util/url.py:330:def parse_url(url):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:127:def parse_version(v):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:2478:    def parse(cls, src, dist=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:2507:    def parse_group(cls, group, lines, dist=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:2520:    def parse_map(cls, data, dist=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:2646:    def parsed_version(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:3075:def parse_requirements(strs):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__init__.py:3147:    def parse(s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:1640:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:1901:    def parseString(self, instring, parseAll=False):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2459:    def parseWithTabs(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2565:    def parseFile(self, file_or_filename, parseAll=False):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2820:    def parseImpl(self, *args):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2852:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2890:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2896:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:2952:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3000:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3060:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3197:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3247:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3339:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3352:    def parseImplAsGroupList(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3361:    def parseImplAsMatch(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3514:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3606:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3690:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3730:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3765:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3779:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3798:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3812:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3836:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:3857:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4049:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4126:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4249:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4374:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4460:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4543:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4603:    def parseImpl(self, instring, loc=0, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4657:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4686:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4779:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4847:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:4941:    def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:6061:        def parseImpl(self, instring, loc, doActions=True):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/python_multipart/multipart.py:167:def parse_options_header(value: str | bytes | None) -> tuple[bytes, dict[bytes, bytes]]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/python_multipart/multipart.py:1826:def parse_form(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/util/retry.py:320:    def parse_retry_after(self, retry_after: str) -> float:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/util/url.py:367:def parse_url(url: str) -> Url:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/package_index.py:54:def parse_requirement_arg(spec):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/package_index.py:63:def parse_bdist_wininst(name):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:135:def parse_configuration(distribution, command_options, ignore_option_errors=False):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:196:    def parsers(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:329:        def parser(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:436:        def parse(value):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:462:    def parse_section(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:474:    def parse(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:542:    def parsers(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:616:    def parsers(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:680:    def parse_section_packages__find(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:701:    def parse_section_entry_points(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:719:    def parse_section_package_data(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:726:    def parse_section_exclude_package_data(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:733:    def parse_section_extras_require(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/config.py:743:    def parse_section_data_files(self, section_options):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/packaging/tags.py:115:def parse_tag(tag):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/packaging/version.py:48:def parse(version):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:1363:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:1608:    def parseString( self, instring, parseAll=False ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2070:    def parseWithTabs( self ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2173:    def parseFile( self, file_or_filename, parseAll=False ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2394:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2431:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2479:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2522:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2539:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2579:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2707:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2813:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:2928:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3015:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3081:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3121:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3155:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3169:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3188:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3203:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3226:    def parseImpl(self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3247:    def parseImpl(self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3397:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3465:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3547:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3651:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3737:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3813:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3836:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3859:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:3939:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:4003:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:4094:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/dist.py:791:    def parse_config_files(self, filenames=None, ignore_option_errors=False):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/version.py:134:    def parse (self, vstring):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/version.py:309:    def parse (self, vstring):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/sysconfig.py:282:def parse_config_h(fp, g=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/sysconfig.py:317:def parse_makefile(fn, g=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/dist.py:382:    def parse_config_files(self, filenames=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/dist.py:440:    def parse_command_line(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/packaging/tags.py:115:def parse_tag(tag):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/packaging/version.py:48:def parse(version):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:1363:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:1608:    def parseString( self, instring, parseAll=False ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2070:    def parseWithTabs( self ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2173:    def parseFile( self, file_or_filename, parseAll=False ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2394:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2431:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2479:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2522:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2539:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2579:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2707:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2813:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:2928:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3015:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3081:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3121:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3155:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3169:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3188:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3203:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3226:    def parseImpl(self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3247:    def parseImpl(self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3397:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3465:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3547:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3651:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3737:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3813:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3836:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3859:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:3939:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:4003:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:4094:    def parseImpl( self, instring, loc, doActions=True ):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:112:def parse_version(v):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:2485:    def parse(cls, src, dist=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:2514:    def parse_group(cls, group, lines, dist=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:2527:    def parse_map(cls, data, dist=None):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:2644:    def parsed_version(self):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:3065:def parse_requirements(strs):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/__init__.py:3138:    def parse(s):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/color.py:208:def parse_tuple(value: Tuple[Any, ...]) -> RGBA:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/color.py:222:def parse_str(value: str) -> RGBA:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/color.py:284:def parse_color_value(value: Union[int, str], max_val: int = 255) -> float:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/color.py:299:def parse_float_alpha(value: Union[None, str, float, int]) -> Optional[float]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/color.py:321:def parse_hsl(h: str, h_units: str, sat: str, light: str, alpha: Optional[float] = None) -> RGBA:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/tools.py:36:def parse_obj_as(type_: Type[T], obj: Any, *, type_name: Optional[NameFactory] = None) -> T:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/tools.py:41:def parse_file_as(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/tools.py:63:def parse_raw_as(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/env_settings.py:131:        def parse_env_var(cls, field_name: str, raw_val: str) -> Any:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/mypy.py:87:def parse_mypy_version(version: str) -> Tuple[int, ...]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/mypy.py:927:def parse_toml(config_file: str) -> Optional[Dict[str, Any]]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/main.py:541:    def parse_obj(cls: Type['Model'], obj: Any) -> 'Model':
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/main.py:552:    def parse_raw(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/main.py:575:    def parse_file(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/datetime_parse.py:105:def parse_date(value: Union[date, StrBytesIntFloat]) -> date:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/datetime_parse.py:137:def parse_time(value: Union[time, StrBytesIntFloat]) -> time:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/datetime_parse.py:175:def parse_datetime(value: Union[datetime, StrBytesIntFloat]) -> datetime:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/v1/datetime_parse.py:213:def parse_duration(value: StrBytesIntFloat) -> timedelta:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/color.py:258:def parse_tuple(value: tuple[Any, ...]) -> RGBA:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/color.py:280:def parse_str(value: str) -> RGBA:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/color.py:354:def parse_color_value(value: Union[int, str], max_val: int = 255) -> float:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/color.py:381:def parse_float_alpha(value: Union[None, str, float, int]) -> Optional[float]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/color.py:411:def parse_hsl(h: str, h_units: str, sat: str, light: str, alpha: Optional[float] = None) -> RGBA:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/version.py:101:def parse_mypy_version(version: str) -> tuple[int, int, int]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/mypy.py:1394:def parse_toml(config_file: str) -> dict[str, Any] | None:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/main.py:1383:    def parse_obj(cls, obj: Any) -> Self:  # noqa: D102
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/main.py:1397:    def parse_raw(  # noqa: D102
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/main.py:1451:    def parse_file(  # noqa: D102
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic/deprecated/tools.py:30:def parse_obj_as(type_: type[T], obj: Any, type_name: NameFactory | None = None) -> T:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2441:              def parse(self, data: bytes) -> Self:

@@ -1,0 +1,26 @@
+Command exited with code 0.
+
+Command output:
+560-            </div>
+561-          </div>
+562-
+563-          <div class="flex items-center space-x-2">
+564-            <button 
+565:              id="btn-refresh-tax-ai" 
+566-              class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-semibold border border-slate-700 transition-all flex items-center space-x-1"
+567-              title="Refresh suggestions using Gemini 2.5 Flash"
+568-            >
+569-              <span>✨ Gemini 2.5 Flash</span>
+570-            </button>
+--
+717-  const btnBack = container.querySelector("#btn-back-dashboard");
+718-  if (btnBack && onBack) {
+719-    btnBack.addEventListener("click", onBack);
+720-  }
+721-
+722:  const btnRefreshTax = container.querySelector("#btn-refresh-tax-ai");
+723-  if (btnRefreshTax && onRefreshTaxAi) {
+724-    btnRefreshTax.addEventListener("click", onRefreshTaxAi);
+725-  }
+726-
+727-  const btnAddItem = container.querySelector("#btn-add-item");

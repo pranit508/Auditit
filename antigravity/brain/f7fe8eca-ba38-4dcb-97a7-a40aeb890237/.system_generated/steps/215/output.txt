@@ -1,0 +1,16 @@
+Command exited with code 0.
+
+Command output:
+Sample 4 Rejection Output:
+ {
+  "status": "REJECTED_INVALID_DOCUMENT",
+  "is_valid_bill": false,
+  "rejection_reason": "Uploaded image is not a financial bill or invoice (detected personal photo, landscape snapshot, or non-commercial image).",
+  "issues": [
+    {
+      "type": "ERROR",
+      "title": "Non-Invoice Upload Detected",
+      "description": "Uploaded image is not a financial bill or invoice (detected personal photo, landscape snapshot, or non-commercial image)."
+    }
+  ]
+}

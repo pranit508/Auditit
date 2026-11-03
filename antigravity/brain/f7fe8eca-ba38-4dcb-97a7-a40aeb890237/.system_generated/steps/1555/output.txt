@@ -1,0 +1,7 @@
+Command exited with code 1.
+
+Command output:
+  File "<string>", line 38
+    assert data_774["declared_total"] == 4489.9, f"Expected 4489.9, got {data_774[\"declared_total\"]}"
+                                                                                                       ^
+SyntaxError: f-string expression part cannot include a backslash

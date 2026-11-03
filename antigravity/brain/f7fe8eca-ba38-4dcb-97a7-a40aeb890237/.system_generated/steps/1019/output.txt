@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+Parsed Words Result: 4490.0
+Success!

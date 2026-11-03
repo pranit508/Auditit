@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+JXA Parser & Audit Engine Verification Passed 100%! Subtotal=11000 CGST=990 SGST=990 IGST=0 Total=12980 VerifiedTotal=12980

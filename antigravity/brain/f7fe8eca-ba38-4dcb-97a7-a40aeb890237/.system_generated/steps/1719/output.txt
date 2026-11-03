@@ -1,0 +1,93 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:265:    for key in ["subtotal", "cgst", "sgst", "igst", "declared_total", "total_declared"]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:290:    cgst = float(data.get("cgst") or 0.0)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:298:        if cgst == 0 and sgst == 0 and calculated_subtotal > 0:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:299:            cgst = round(calculated_subtotal * 0.09, 2)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:301:            data["cgst"] = cgst
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:303:        elif cgst > 0 and sgst == 0:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:304:            sgst = cgst
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:306:        elif sgst > 0 and cgst == 0:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:307:            cgst = sgst
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:308:            data["cgst"] = cgst
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:310:        # Inter-state: CGST = 0, SGST = 0, IGST applies
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:311:        cgst = 0.0
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:313:        data["cgst"] = 0.0
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:319:    total_tax = round(cgst + sgst + igst, 2)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:520:        "cgst": "342.45",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:46:  "cgst": string or null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:119:          const fallbackTotal = Math.round((Number(cleaned.subtotal || 0) + Number(cleaned.cgst || 0) + Number(cleaned.sgst || 0) + Number(cleaned.igst || 0)) * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:193:            const fallbackTotal = Math.round((Number(cleaned.subtotal || 0) + Number(cleaned.cgst || 0) + Number(cleaned.sgst || 0) + Number(cleaned.igst || 0)) * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:270:    cgst: 0,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:205:  let cgst = round2(Number(invoice.cgst) || 0);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:224:        description: `Both Supplier (${supplierState}) and Buyer (${buyerState}) are in the same state. Intra-state supply requires IGST to be ₹0.00 and uses CGST + SGST.`
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:227:    // CGST and SGST equality check
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:228:    if (cgst > 0 || sgst > 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:229:      if (Math.abs(cgst - sgst) > 1.00) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:233:          title: "CGST and SGST Mismatch",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:234:          description: `Intra-state GST requires CGST (${formatRupees(cgst)}) to equal SGST (${formatRupees(sgst)}).`
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:239:    // Inter-State: CGST and SGST must be 0, IGST applies
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:240:    if (cgst > 0 || sgst > 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:244:        title: "CGST/SGST on Inter-State Bill",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:245:        description: `Supplier state (${supplierState}) and Buyer state (${buyerState}) differ. Inter-state supply requires CGST and SGST to be ₹0.00, and IGST (${formatRupees(igst)}) to apply.`
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:250:  const totalTax = round2(cgst + sgst + igst);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:158:  const totTax = Math.round(((Number(sanitized.cgst) || 0) + (Number(sanitized.sgst) || 0) + (Number(sanitized.igst) || 0)) * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:119:    "amount", "hsn", "cgst", "sgst", "igst", "balance", "payable", "rupees", "mrp"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:143:  const tableFooterRegex = /(?:sub\s*total|item\s+subtotal|taxable\s+value|gross\s+amount|total\s+tax|cgst|sgst|igst|total\s+in\s+words|amount\s+in\s+words|grand\s+total|invoice\s+total|net\s+payable|total\s+payable|balance\s+due|round\s+off)/i;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:426:  // Extract Subtotal, CGST, SGST, IGST, and Grand Total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:428:  let cgst = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:458:    // CGST line pattern: /(?:CGST|Central GST)[\s@%]*([0-9\.]+)?%?[\s:]*[₹\s]*([0-9,]+(?:\.[0-9]{2})?)/i
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:459:    const cgstMatch = line.match(/(?:CGST|Central GST)[\s@%]*([0-9\.]+)?%?[\s:]*[₹\s]*([0-9,]+(?:\.[0-9]{2})?)/i);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:460:    if (cgstMatch && !/subtotal|total\s+in\s+words/i.test(line)) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:461:      const amt = extractTaxAmountFromMatch(cgstMatch, line);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:462:      if (amt > 0) cgst = amt;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:528:    // Default tax split to CGST + SGST (e.g. 9% + 9% = 18%, giving ₹990 CGST and ₹990 SGST on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:529:    if (cgst === 0 && sgst === 0 && subtotal > 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:530:      cgst = round2(subtotal * 0.09);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:532:    } else if (cgst > 0 && sgst === 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:533:      sgst = cgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:534:    } else if (sgst > 0 && cgst === 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:535:      cgst = sgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:539:    // Set CGST = 0, SGST = 0, and IGST = 18% (₹1,980.00 on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:540:    cgst = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:548:  const expectedTotal = round2(subtotal + cgst + sgst + igst);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:596:    cgst,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:218:  ["subtotal", "cgst", "sgst", "igst", "declared_total", "total_declared"].forEach(key => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:246:  let cgst = Number(res.cgst) || 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:253:    if (cgst === 0 && sgst === 0 && calculatedSubtotal > 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:254:      cgst = Math.round(calculatedSubtotal * 0.09 * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:256:      res.cgst = cgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:258:    } else if (cgst > 0 && sgst === 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:259:      sgst = cgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:261:    } else if (sgst > 0 && cgst === 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:262:      cgst = sgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:263:      res.cgst = cgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:266:    cgst = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:268:    res.cgst = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:276:  const totalTax = Math.round((cgst + sgst + igst) * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:62:Total Declared GST: ${formatRupees(audit.totalTax)} (CGST: ${formatRupees(invoice.cgst || 0)}, SGST: ${formatRupees(invoice.sgst || 0)}, IGST: ${formatRupees(invoice.igst || 0)})
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:12:  const totalGstOnBill = round2((Number(invoice.cgst) || 0) + (Number(invoice.sgst) || 0) + (Number(invoice.igst) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:203:                ${invoice.cgst > 0 ? `
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:205:                    <span>CGST:</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:206:                    <span class="font-mono">${formatRupees(invoice.cgst)}</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/CaSlipModal.js:98:                  <td class="p-2 border border-slate-300 font-medium">Taxes (CGST + SGST / IGST)</td>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:509:            <label class="block text-[10px] font-semibold text-slate-500 mb-1">CGST (Intra-State) ₹</label>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:513:              id="input-cgst" 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:514:              value="${invoice.cgst || 0}"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:632:              However, Indian tax laws (Section 16 of the CGST Act) mandate that ITC is strictly disallowed if your supplier does not have an active, verified GSTIN. 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:752:  // Tax inputs (CGST, SGST, IGST)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:753:  const inputCgst = container.querySelector("#input-cgst");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:757:  if (inputCgst && onUpdateHeader) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:758:    inputCgst.addEventListener("input", (e) => onUpdateHeader("cgst", parseFloat(e.target.value) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:782:      let newCgst = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:787:        // Intra-State: Set IGST strictly to 0, default split to CGST + SGST (e.g. 9% + 9% = 18%, ₹990 + ₹990 on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:789:        newCgst = round2(taxAmount / 2);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:792:        // Inter-State: Set CGST = 0, SGST = 0, and IGST = 18% (₹1,980.00 on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:793:        newCgst = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:799:      if (inputCgst) inputCgst.value = newCgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:805:        onUpdateHeader("gst_preset", { cgst: newCgst, sgst: newSgst, igst: newIgst });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:149:      cgst: 377.50, // 2.5%
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:221:      const taxes = Math.round(((Number(extractedInvoice.cgst) || 0) + (Number(extractedInvoice.sgst) || 0) + (Number(extractedInvoice.igst) || 0)) * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:300:      this.currentInvoice.cgst = value.cgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:322:    const totalTax = round2((this.currentInvoice.cgst || 0) + (this.currentInvoice.sgst || 0) + (this.currentInvoice.igst || 0));

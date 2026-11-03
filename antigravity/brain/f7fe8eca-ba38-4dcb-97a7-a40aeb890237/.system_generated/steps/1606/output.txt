@@ -1,0 +1,126 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:264:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-265-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-266-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-267-  handleAddItem() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-268-    if (!this.currentInvoice) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-269-    const newItem = {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-270-      id: "item-" + Date.now(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-271-      description: "New Item " + (this.currentInvoice.items.length + 1),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-272-      hsn: "9900",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-273-      qty: 1,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-274-      rate: 100.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-275-      amount: 100.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-276-      is_blurry: false
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-277-    };
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-278-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-279-    this.currentInvoice.items.push(newItem);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:280:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-281-    this.showToast("Added new line item", "info");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-282-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-283-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-284-  handleDeleteItem(index) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-285-    if (!this.currentInvoice || this.currentInvoice.items.length <= 1) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-286-      this.showToast("Invoice must contain at least 1 item", "error");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-287-      return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-288-    }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-289-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-290-    this.currentInvoice.items.splice(index, 1);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:291:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-292-    this.showToast("Removed line item", "info");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-293-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-294-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-295-  handleUpdateHeader(field, value) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-296-    if (!this.currentInvoice) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-297-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-298-    if (field === "gst_preset") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-299-      this.currentInvoice.cgst = value.cgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-300-      this.currentInvoice.sgst = value.sgst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-301-      this.currentInvoice.igst = value.igst;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-302-    } else {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-303-      this.currentInvoice[field] = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-304-    }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-305-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:306:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-307-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-308-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-309-  handleAutoFixMath() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-310-    if (!this.currentInvoice) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-311-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-312-    // Fix each item's declared amount to equal qty * rate
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-313-    let newSubtotal = 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-314-    this.currentInvoice.items.forEach(item => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-315-      item.amount = round2(item.qty * item.rate);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-316-      item.error_flag = false;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-317-      newSubtotal += item.amount;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-318-    });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-319-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-320-    this.currentInvoice.subtotal = round2(newSubtotal);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-321-    const totalTax = round2((this.currentInvoice.cgst || 0) + (this.currentInvoice.sgst || 0) + (this.currentInvoice.igst || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-322-    this.currentInvoice.total_declared = round2(this.currentInvoice.subtotal + totalTax);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-323-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:324:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-325-    this.showToast("Auto-corrected all math discrepancies to verified total!", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-326-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-327-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-328-  handleUpdateTaxSettings(settings) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-329-    this.userTaxSettings = { ...this.userTaxSettings, ...settings };
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:330:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-331-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-332-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-333-  handleSubmitValidInputs(fields) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-334-    if (!this.currentInvoice) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-335-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-336-    Object.keys(fields).forEach(key => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-337-      const { value, itemIndex } = fields[key];
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-338-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-339-      if (key === "gstin") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-340-        if (value.toUpperCase() === "UNREGISTERED") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-341-          this.currentInvoice.is_unregistered_vendor = true;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-342-          this.currentInvoice.gstin = "";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-343-        } else {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-344-          this.currentInvoice.gstin = value.toUpperCase();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-345-          this.currentInvoice.is_unregistered_vendor = false;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-346-        }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-347-      } else if (key === "vendor_name") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-348-        this.currentInvoice.vendor_name = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-349-      } else if (key === "invoice_no") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-350-        this.currentInvoice.invoice_no = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-351-      } else if (key === "total_declared") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-352-        this.currentInvoice.total_declared = parseFloat(value) || 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-353-      } else if (key.startsWith("item_rate_") && itemIndex !== null) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-354-        if (this.currentInvoice.items[itemIndex]) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-355-          const rateVal = parseFloat(value) || 0;
+--
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:370:    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-371-    this.showToast("Valid inputs confirmed! Calculations completed.", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-372-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-373-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:374:  recomputeEverything() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-375-    // 1. Audit invoice strictly in code
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-376-    this.currentAudit = auditInvoice(this.currentInvoice);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-377-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-378-    // 2. Recompute tax metrics strictly in code
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-379-    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-380-    
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-381-    // Retain current AI suggestions text while updating dynamic numbers
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-382-    const prevAi = this.taxData ? this.taxData.ai_suggestions : null;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-383-    const ai_suggestions = prevAi || {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-384-      suggestions: [
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-385-        "Recommended ITR Form: File ITR-4 Sugam under Sec 44AD presumptive scheme.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-386-        this.currentAudit.gstinValid ? "GST ITC: 100% eligible Input Tax Credit." : "GST ITC: Warning - missing GSTIN.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-387-        "Advance Tax: Pay by March 15 to prevent interest."
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-388-      ],
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-389-      disclaimer: "Not tax advice; verify with your CA.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-390-      isAiGenerated: false
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-391-    };
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-392-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-393-    this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-394-    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-395-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-396-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-397-  async handleRefreshTaxAi() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-398-    if (!this.taxData) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-399-    this.showToast("Invoking Gemini 2.5 Flash for tax preparation suggestions...", "info");

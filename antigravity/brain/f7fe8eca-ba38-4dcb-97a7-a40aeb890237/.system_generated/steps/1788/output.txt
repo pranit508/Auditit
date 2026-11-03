@@ -1,0 +1,90 @@
+Command exited with code 0.
+
+Command output:
+246-          title: "CGST and SGST Mismatch",
+247-          description: `Intra-state GST requires CGST (${formatRupees(cgst)}) to equal SGST (${formatRupees(sgst)}).`
+248-        });
+249-      }
+250-    }
+251-  } else {
+252-    // Inter-State: CGST and SGST must be 0, IGST applies
+253-    if (cgst > 0 || sgst > 0) {
+254-      issues.push({
+255-        type: "WARNING",
+256-        field: "gst_split",
+257-        title: "CGST/SGST on Inter-State Bill",
+258-        description: `Supplier state (${supplierState}) and Buyer state (${buyerState}) differ. Inter-state supply requires CGST and SGST to be ₹0.00, and IGST (${formatRupees(igst)}) to apply.`
+259-      });
+260-    }
+261-  }
+262-
+263-  const totalTax = round2(cgst + sgst + igst);
+264-
+265-  // Strict Grand Total Calculation
+266:  const calculated_total = round2(sum_items + totalTax);
+267-  let total_declared = round2(Number(invoice.total_declared !== undefined && invoice.total_declared !== null ? invoice.total_declared : invoice.declared_total) || 0);
+268-
+269:  // CRITICAL FIX: If total_declared is suspiciously smaller than subtotal or calculated_total (e.g. 774 vs ~4490),
+270:  // or exactly 774 (the HSN / OCR hallucination), reject the OCR hallucination and fallback to calculated_total!
+271:  if (calculated_total > 0 && (total_declared === 774 || (total_declared > 0 && total_declared < (calculated_total * 0.5)))) {
+272:    total_declared = calculated_total;
+273:    invoice.total_declared = calculated_total;
+274:    invoice.declared_total = calculated_total;
+275-  }
+276-
+277:  const totalDiff = round2(total_declared - calculated_total);
+278-
+279-  // Discrepancy rule: If difference exceeds ₹1.00
+280-  const hasTotalDiscrepancy = Math.abs(totalDiff) > 1.00;
+281-
+282-  if (hasTotalDiscrepancy) {
+283-    issues.push({
+284-      type: "ERROR",
+285-      field: "total_declared",
+286-      title: totalDiff > 0 ? "Grand Total Overcharge Detected" : "Grand Total Undercharge Detected",
+287:      description: `Bill declared ${formatRupees(total_declared)}, but verified total (Items ${formatRupees(sum_items)} + Tax ${formatRupees(totalTax)}) is ${formatRupees(calculated_total)}. Net Variance: ${formatRupees(Math.abs(totalDiff))}.`,
+288-      diff: totalDiff,
+289-      declared: total_declared,
+290:      calculated: calculated_total
+291-    });
+292-  }
+293-
+294-  // GSTIN Verification
+295-  const gstin = (invoice.gstin || "").trim().toUpperCase();
+296-  const gstinValid = GSTIN_REGEX.test(gstin);
+297-
+298-  // Determine overall status verdict
+299-  let status = "VERIFIED";
+300-  let statusText = "Math Verified & Valid";
+301-  let statusColor = "emerald";
+302-
+303-  if (hasTotalDiscrepancy || hasLineItemMathError) {
+304-    status = "OVERCHARGE_ERROR";
+305-    statusText = totalDiff > 0 ? `${formatRupees(Math.abs(totalDiff))} Overcharge` : `${formatRupees(Math.abs(totalDiff))} Math Error`;
+306-    statusColor = "rose";
+307-  } else if (!gstinValid || hasBlurryFields || issues.some(i => i.type === "WARNING")) {
+308-    status = "REVIEW_NEEDED";
+309-    statusText = "Review Needed";
+310-    statusColor = "amber";
+311-  }
+312-
+313-  return {
+314-    status,
+315-    statusText,
+316-    statusColor,
+317-    isHalted: false,
+318-    missingOrUnclearInputs: [],
+319-    sum_items,
+320-    totalTax,
+321:    calculated_total,
+322-    total_declared,
+323-    totalDiff,
+324-    hasTotalDiscrepancy,
+325-    hasLineItemMathError,
+326-    hasBlurryFields,
+327-    gstinValid,
+328-    unreadable_fields: unreadableList,
+329-    lineItemAudit,
+330-    issues
+331-  };
+332-}

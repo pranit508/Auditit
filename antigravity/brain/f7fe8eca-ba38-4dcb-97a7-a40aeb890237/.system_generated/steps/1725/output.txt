@@ -1,0 +1,17 @@
+Command exited with code 1.
+
+There were sandbox errors that may or may not be related to the failure. If you think the failure is because of running in the sandbox, you can run the command again with `BypassSandbox` set to true to request explicit user permission.
+
+Command output:
+'CGST @ 9%: 990.00'                 -> 990.0 (Expected: 990.0)
+'SGST @ 9%: 990.00'                 -> 990.0 (Expected: 990.0)
+'CGST @ 9% 990.00'                  -> 990.0 (Expected: 990.0)
+'1. CGST @ 9%: 990.00'              -> 990.0 (Expected: 990.0)
+'2. SGST @ 9%: 990.00'              -> 990.0 (Expected: 990.0)
+'CGST @ 9% 2 990.00'                -> 990.0 (Expected: 990.0)
+'SGST @ 9% 2 990.00'                -> 990.0 (Expected: 990.0)
+'CGST @ 9% (State Code 06) 990.00'  -> 990.0 (Expected: 990.0)
+'CGST @ 9% 2990.00'                 -> 299.0 (Expected: 990.0)
+Traceback (most recent call last):
+  File "<string>", line 89, in <module>
+AssertionError: Failed for CGST @ 9% 2990.00: got 299.0, expected 990.0

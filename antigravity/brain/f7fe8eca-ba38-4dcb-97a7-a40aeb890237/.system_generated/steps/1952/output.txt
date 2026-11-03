@@ -1,0 +1,38 @@
+Command exited with code 0.
+
+Command output:
+158-      }
+159-
+160-      // Tab 2 Action buttons
+161-      const btnTaxDash = document.getElementById("btn-tax-back-dash");
+162-      if (btnTaxDash) {
+163:        btnTaxDash.addEventListener("click", () => this.goToDashboard());
+164-      }
+165-      const btnTaxCa = document.getElementById("btn-tax-ca-slip");
+166-      if (btnTaxCa) {
+167-        btnTaxCa.addEventListener("click", () => this.openCaSlipModal());
+168-      }
+--
+184-            onAutoFixMath: () => this.handleAutoFixMath(),
+185-            onUpdateTaxSettings: (settings) => this.handleUpdateTaxSettings(settings),
+186-            onSubmitValidInputs: (fields) => this.handleSubmitValidInputs(fields),
+187-            onCopyNote: (openWhatsApp) => this.handleCopyDiscrepancyNote(openWhatsApp),
+188-            onOpenCaSlip: () => this.openCaSlipModal(),
+189:            onBack: () => this.goToDashboard()
+190-          });
+191-        }
+192-      } else {
+193-        const taxMount = document.getElementById("tax-and-itr-tab-mount");
+194-        if (taxMount) {
+--
+588-    }, () => {
+589-      this.modalMount.innerHTML = "";
+590-    });
+591-  }
+592-
+593:  goToDashboard() {
+594-    this.currentView = "dashboard";
+595-    this.activeReviewTab = "audit";
+596-    this.render();
+597-    window.scrollTo({ top: 0, behavior: "smooth" });
+598-  }

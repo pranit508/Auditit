@@ -1,0 +1,23 @@
+Task: f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-65
+Status: RUNNING
+Log: file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-65.log
+Log output:
+<truncated 118 lines>
+ 127.0.0.1 - "GET /components/CaSlipModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/privacyMasker.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /utils/invoiceTextParser.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - "GET /components/AuditScorecard.js HTTP/1.1" 200 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+[AUDIT IT] 127.0.0.1 - code 404, message File not found
+[AUDIT IT] 127.0.0.1 - "GET /favicon.ico HTTP/1.1" 404 -
+
+Last progress: 5m50s ago

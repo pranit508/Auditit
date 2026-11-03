@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+Sample 1 sum: 23400.0 tot: 24570.0 diff vs 24570: 0.0
+Sample 2 Item 3 diff: 1000.0
+Sample 2 correct sum: 16150.0 billed total: 20237, verified: 19237.0 diff: 1000.0

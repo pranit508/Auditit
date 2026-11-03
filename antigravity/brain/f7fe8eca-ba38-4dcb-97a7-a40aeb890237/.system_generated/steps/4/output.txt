@@ -1,0 +1,4 @@
+A1: (Recommended) Segmented Toggle: 1-tap toggle between 'Original Bill' and 'Audit Report' with a sticky bottom summary card
+A2: (Recommended) Click-to-edit inline inputs: Clicking flagged or unclear fields opens quick-edit inputs that instantly recalculate the totals
+A3: (Recommended) Downloadable/Printable PDF Audit Slip for CA or record-keeping, 'Copy Discrepancy Note' to clipboard with 1 tap
+A4: (Recommended) Interactive overlay bounding boxes: Red box over math error, Amber over missing/unclear data, Green over verified totals (tap/click syncs with list)

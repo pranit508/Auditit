@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+Cleaned Subtotal: 11000.0
+Cleaned CGST: 990.0
+Cleaned SGST: 990.0
+Cleaned IGST: 0.0
+Cleaned Total: 12980.0
+
+Python clean_items verification passed 100%!

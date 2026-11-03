@@ -1,0 +1,15 @@
+Command exited with code 1.
+
+There were sandbox errors that may or may not be related to the failure. If you think the failure is because of running in the sandbox, you can run the command again with `BypassSandbox` set to true to request explicit user permission.
+
+Command output:
+Cleaned Items Count: 2
+Sanitized Vendor Name: Modern Electrical & Hardware
+Sanitized Items Count: 3
+  * LED Tube Light 20W | Qty: 10.0 | Rate: 250.0 | Total: 2500.0
+  * 06AAECM4821F1ZX | Qty: 1.0 | Rate: 100.0 | Total: 100.0
+  * Basmati Rice 25kg | Qty: 5.0 | Rate: 900.0 | Total: 4500.0
+Traceback (most recent call last):
+  File "/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py", line 172, in <module>
+    assert len(sanitized["items"]) == 2, f"Expected 2 items, got {len(sanitized['items'])}"
+AssertionError: Expected 2 items, got 3

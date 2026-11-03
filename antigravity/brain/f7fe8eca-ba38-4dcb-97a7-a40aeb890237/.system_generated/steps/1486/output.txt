@@ -1,0 +1,75 @@
+Command exited with code 0.
+
+Command output:
+<USER_REQUEST>
+CRITICAL PARSER REFACTOR: IMPLEMENT 3-TIER PRODUCTION INVOICE EXTRACTION PIPELINE
+
+Refactor our invoice parsing pipeline across backend and client fallback to eliminate brittle line-by-line regex. Implement these 3 steps:
+
+--------------------------------------------------------------------------------
+STEP 1: TABLE-ANCHOR BOUNDARY SLICING (in invoiceTextParser.js / parser logic)
+--------------------------------------------------------------------------------
+Stop running OCR regex top-to-bottom across the entire document text. Instead, slice the document into 3 distinct vertical zones:
+1. HEADER ZONE (Top to Table Start):
+   - Start: Beginning of text.
+   - End: Table Header row containing at least two keywords: ['Description', 'Item', 'Particulars', 'HSN', 'Qty', 'Rate', 'Amount'].
+   - Purpose: Extract Vendor Name, GSTIN, Invoice Number, and Date ONLY.
+   - Guardrail: Never extract any line from this zone as an item, even if it contains numbers, addresses ('Shop No', 'Plot', 'Bazaar'), or phone numbers.
+
+2. LINE ITEM ZONE (Strict Table Boundaries):
+   - Start: Immediately after the Table Header row.
+   - End: Table Footer row matching: ['Subtotal', 'Item Subtotal', 'Taxable Value', 'Total Tax', 'CGST', 'SGST', 'IGST', 'Total in Words'].
+   - Purpose: Extract ONLY physical products/services strictly located between these two boundaries. Discard any line without a valid product name and positive rate/amount.
+
+3. SUMMARY & TAX ZONE (Table End to Bottom):
+   - Start: Subtotal / Tax rows down to the end of the text.
+   - Purpose: Extract Subtotal, CGST, SGST, IGST, and the printed Grand Total ('Invoice Total Demanded', 'Net Payable', 'Grand Total').
+   - Guardrail: Bank details, payment notes, and terms & conditions belong here and must never leak into items.
+
+--------------------------------------------------------------------------------
+STEP 2: RIGHT-TO-LEFT (REVERSE) NUMERIC COLUMN PARSER (for Line Item extraction)
+--------------------------------------------------------------------------------
+Do not parse table lines from left to right, because descriptions often contain numbers (e.g., '20W', '2.5 sq mm', '90m') that fool column splitters.
+
+For every line within the LINE ITEM ZONE, parse tokens from RIGHT TO LEFT:
+1. Clean commas from numbers (treat commas strictly as thousands separators, e.g., '2,535.00' -> 2535.0, '1,270.00' -> 1270.0).
+2. Scan for numbers starting from the end of the line:
+   - Token 1 (Last Number) = Billed Amount (total_amount)
+   - Token 2 (Second-to-Last Number) = Unit Rate (unit_rate)
+   - Token 3 (Third-to-Last Number) = Quantity (quantity)
+   - Token 4 (Optional Number) = HSN/SAC code (4 to 8 digits)
+3. Everything remaining to the left of these numeric tokens = Description.
+4. Validation Check:
+   - Discard the line if (quantity * unit_rate) deviates by more than 5% from total_amount unless a known discount column exists.
+   - Strip leading/trailing punctuation and unit abbreviations ('NOS', 'PCS', '|', '[', ']').
+
+--------------------------------------------------------------------------------
+STEP 3: GEMINI VISION MULTIMODAL EXTRACTION AS PRIMARY (FastAPI / Backend)
+--------------------------------------------------------------------------------
+Ensure client-side text parsing is strictly a fallback. Route the primary extraction through Gemini 2.5 Flash using direct visual layout understanding:
+
+1. Send the file bytes directly (image/jpeg, image/png, or application/pdf) using the Gemini 2.5 Flash model with temperature=0.0.
+2. Support both API key formats in headers:
+   - If key starts with 'AQ.': pass as Authorization: Bearer <key>
+   - Otherwise: pass as x-goog-api-key: <key>
+3. Use a structured JSON schema:
+   {
+     "vendor_name": string,
+     "gstin": string,
+     "invoice_number": string,
+     "items": [
+       {"description": string, "quantity": number, "unit_rate": number, "total_amount": number}
+     ],
+     "subtotal": number,
+     "cgst": number,
+     "sgst": number,
+     "igst": number,
+     "declared_total": number
+   }
+4. Post-processing reconciliation:
+   - Ensure declared_total matches the printed total on the bill. If declared_total is suspiciously less than 50% of subtotal (e.g., extracting an HSN/tax fragment like 774 or 20), recalculate declared_total = subtotal + cgst + sgst + igst.
+   - Synchronize property names: set both `declared_total` and `total_declared` to the same value so the frontend audit engine never receives undefined.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-03T01:00:39+05:30.
+</ADDITIONAL_METADATA>

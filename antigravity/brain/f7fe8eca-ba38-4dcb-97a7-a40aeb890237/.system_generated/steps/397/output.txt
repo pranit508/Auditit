@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+Cleaned Items: [{'description': 'Basmati Rice 25kg', 'quantity': 10, 'unit_rate': 950.0}, {'description': 'Toor Dal 1kg', 'quantity': 5, 'unit_rate': 140.0}]
+
+ Direct In-Process Python Test PASSED!

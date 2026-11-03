@@ -1,0 +1,1 @@
+Made 1 replacement in /Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js starting at line 3 (+0/-2 lines).

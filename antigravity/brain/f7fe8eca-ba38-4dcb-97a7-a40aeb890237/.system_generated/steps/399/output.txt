@@ -1,0 +1,4 @@
+Command exited with code 1.
+
+Command output:
+zsh:95: unmatched "

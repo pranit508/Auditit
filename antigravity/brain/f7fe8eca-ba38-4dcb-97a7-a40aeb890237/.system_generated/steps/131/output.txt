@@ -1,0 +1,1 @@
+Made 1 replacement in /Users/pranit405/.gemini/antigravity/scratch/audit-it/components/DashboardHero.js starting at line 270 (+8/-0 lines).

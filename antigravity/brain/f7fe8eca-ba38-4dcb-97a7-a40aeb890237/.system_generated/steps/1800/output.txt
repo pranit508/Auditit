@@ -1,0 +1,102 @@
+Command exited with code 0.
+
+Command output:
+198-    let billed = rawBilled !== undefined && rawBilled !== null && String(rawBilled).trim() !== "" ? parseInr(rawBilled) : (qty * rate);
+199-
+200-    // Column swap fallback
+201-    if (billed > 0 && qty === billed && (rate === 1 || rate === 2)) {
+202-      qty = 1.0;
+203-      rate = billed;
+204-    }
+205-
+206-    it.quantity = qty;
+207-    it.qty = qty;
+208-    it.unit_rate = rate;
+209-    it.rate = rate;
+210-    it.total_amount = billed;
+211-    it.amount = billed;
+212-    cleanItems.push(it);
+213-  }
+214-
+215-  res.items = cleanItems;
+216-
+217-  // 3. Ensure numeric fields strip commas cleanly via parseInr
+218:  ["subtotal", "cgst", "sgst", "igst", "declared_total", "total_declared"].forEach(key => {
+219-    if (res[key] !== undefined && res[key] !== null && String(res[key]).trim() !== "" && String(res[key]).toLowerCase() !== "null") {
+220-      res[key] = parseInr(res[key]);
+221-    }
+222-  });
+223-
+224-  // 4. SUB-TOTAL CALCULATION:
+225-  // Do not trust random OCR numbers near the bank details for Subtotal.
+226-  // Calculate the Subtotal deterministically from the extracted items:
+227-  // subtotal = sum(item.quantity * item.unit_rate for item in items)
+228-  // For this bill: 2535 + 1270 = 3805.00.
+229-  let calculatedSubtotal = 0;
+230-  if (cleanItems.length > 0) {
+231-    calculatedSubtotal = Math.round(cleanItems.reduce((acc, it) => acc + (it.quantity * it.unit_rate), 0) * 100) / 100;
+232-    res.subtotal = calculatedSubtotal;
+233-    res.calculated_subtotal = calculatedSubtotal;
+234-  } else {
+235-    calculatedSubtotal = Number(res.subtotal) || 0;
+236-  }
+237-
+238-  // 5. INTRA-STATE vs INTER-STATE AUTO-DETERMINATION & GRAND TOTAL SANITY CHECK:
+239-  const suppGstin = String(res.gstin || "").trim().toUpperCase();
+240-  const buyerGstin = String(res.buyer_gstin || "06CORPP2712A1Z1").trim().toUpperCase();
+241-  res.buyer_gstin = buyerGstin;
+242-  const suppState = suppGstin.length >= 2 && !isNaN(suppGstin.slice(0, 2)) ? suppGstin.slice(0, 2) : "06";
+243-  const buyerState = buyerGstin.length >= 2 && !isNaN(buyerGstin.slice(0, 2)) ? buyerGstin.slice(0, 2) : "06";
+244-  const isIntraState = suppState === buyerState;
+245-
+246:  let cgst = Number(res.cgst) || 0;
+247-  let sgst = Number(res.sgst) || 0;
+248-  let igst = Number(res.igst) || 0;
+249-
+250-  if (isIntraState) {
+251-    igst = 0;
+252-    res.igst = 0;
+253:    if (cgst === 0 && sgst === 0 && calculatedSubtotal > 0) {
+254:      cgst = Math.round(calculatedSubtotal * 0.09 * 100) / 100;
+255-      sgst = Math.round(calculatedSubtotal * 0.09 * 100) / 100;
+256:      res.cgst = cgst;
+257-      res.sgst = sgst;
+258:    } else if (cgst > 0 && sgst === 0) {
+259:      sgst = cgst;
+260-      res.sgst = sgst;
+261:    } else if (sgst > 0 && cgst === 0) {
+262:      cgst = sgst;
+263:      res.cgst = cgst;
+264-    }
+265-  } else {
+266:    cgst = 0;
+267-    sgst = 0;
+268:    res.cgst = 0;
+269-    res.sgst = 0;
+270-    if (igst === 0 && calculatedSubtotal > 0) {
+271-      igst = Math.round(calculatedSubtotal * 0.18 * 100) / 100;
+272-      res.igst = igst;
+273-    }
+274-  }
+275-
+276:  const totalTax = Math.round((cgst + sgst + igst) * 100) / 100;
+277-  const expectedTotal = Math.round((calculatedSubtotal + totalTax) * 100) / 100;
+278-
+279-  // Cross-check against printed 'Total in words' line if present
+280-  let wordTotal = 0;
+281-  const rawOcr = String(res.raw_ocr_text || res.raw_text || res.notes || "");
+282-  for (const candidateText of [rawOcr, String(res.notes || ""), String(res.amount_in_words || ""), String(res.total_in_words || "")]) {
+283-    if (candidateText) {
+284-      for (const line of candidateText.split(/\r?\n/)) {
+285-        if (/(?:total|amount|rupees)\s+(?:in\s+words|in\s+word)/i.test(line) || /rupees\s+[a-z\s]+only/i.test(line)) {
+286-          const wt = parseWordsToNumber(line);
+287-          if (wt > 0) {
+288-            wordTotal = wt;
+289-            break;
+290-          }
+291-        }
+292-      }
+293-    }
+294-    if (wordTotal > 0) break;
+295-  }
+296-

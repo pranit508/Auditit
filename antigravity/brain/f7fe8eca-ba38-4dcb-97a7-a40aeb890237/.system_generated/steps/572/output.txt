@@ -1,0 +1,26 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:42:    is_valid_bill: bool
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:33:   - Set is_valid_bill to false.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:37:   - Set is_valid_bill to true.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:44:  "is_valid_bill": boolean,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:249:      is_valid_bill: false,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:275:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:142:  if (invoice.is_valid_bill === false) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:148:      is_valid_bill: false,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:181:      is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:327:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:63:      is_valid_bill: false,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:328:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:13:  if (invoice.is_valid_bill === false || audit.isHalted) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:44:            audit.is_valid_bill === false
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:56:          ${audit.is_valid_bill !== false && !audit.isHalted ? `
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:49:        ${invoice.is_valid_bill === false ? `
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:22:  if (audit.is_valid_bill === false) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:52:              <span class="bg-slate-100 px-2 py-0.5 rounded">is_valid_bill: false</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:6:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:65:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:126:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:186:    is_valid_bill: false,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:225:      if (extractedInvoice.is_valid_bill === false) {

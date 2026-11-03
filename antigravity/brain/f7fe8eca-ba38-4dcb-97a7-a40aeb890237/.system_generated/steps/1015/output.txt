@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py

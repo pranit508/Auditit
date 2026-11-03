@@ -1,0 +1,78 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:241:        dec_tot = float(cleaned.get("declared_total") if cleaned.get("declared_total") is not None else (cleaned.get("total_declared") or 0.0))
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:248:            cleaned["total_declared"] = fallback_total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:251:            cleaned["total_declared"] = dec_tot
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:278:                        dec_tot = float(cleaned.get("declared_total") if cleaned.get("declared_total") is not None else (cleaned.get("total_declared") or 0.0))
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:285:                            cleaned["total_declared"] = fallback_total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:288:                            cleaned["total_declared"] = dec_tot
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:323:    dec_tot = float(sanitized_data.get("declared_total") if sanitized_data.get("declared_total") is not None else (sanitized_data.get("total_declared") or 0.0))
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:330:        sanitized_data["total_declared"] = fallback_total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:333:        sanitized_data["total_declared"] = dec_tot
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:265:    for key in ["subtotal", "cgst", "sgst", "igst", "declared_total", "total_declared"]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:336:    current_declared = float(data.get("declared_total") if data.get("declared_total") is not None else (data.get("total_declared") or 0.0))
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:353:        data["total_declared"] = word_total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:358:        data["total_declared"] = fallback_total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:360:        data["total_declared"] = current_declared if current_declared > 0 else expected_total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:361:        data["declared_total"] = data["total_declared"]
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:594:    assert clean_res["total_declared"] == 4490.0
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:106:        if (parsed.declared_total !== undefined && parsed.total_declared === undefined) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:107:          parsed.total_declared = parsed.declared_total;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:117:        const curDeclared = Number(cleaned.declared_total !== undefined ? cleaned.declared_total : (cleaned.total_declared || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:121:          cleaned.total_declared = fallbackTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:124:          cleaned.total_declared = curDeclared;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:191:          const curDeclared = Number(cleaned.declared_total !== undefined ? cleaned.declared_total : (cleaned.total_declared || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:195:            cleaned.total_declared = fallbackTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:198:            cleaned.total_declared = curDeclared;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:273:    total_declared: 0,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:122:  if (invoice.total_declared === null || invoice.total_declared === undefined || Number(invoice.total_declared) <= 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:124:      field: "total_declared",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:127:      currentValue: invoice.total_declared || "",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:254:  let total_declared = round2(Number(invoice.total_declared !== undefined && invoice.total_declared !== null ? invoice.total_declared : invoice.declared_total) || 0);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:256:  // CRITICAL FIX: If total_declared is suspiciously smaller than subtotal or calculated_total (e.g. 774 vs ~4490),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:258:  if (calculated_total > 0 && (total_declared === 774 || (total_declared > 0 && total_declared < (calculated_total * 0.5)))) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:259:    total_declared = calculated_total;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:260:    invoice.total_declared = calculated_total;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:264:  const totalDiff = round2(total_declared - calculated_total);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:272:      field: "total_declared",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:274:      description: `Bill declared ${formatRupees(total_declared)}, but verified total (Items ${formatRupees(sum_items)} + Tax ${formatRupees(totalTax)}) is ${formatRupees(calculated_total)}. Net Variance: ${formatRupees(Math.abs(totalDiff))}.`,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:276:      declared: total_declared,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:309:    total_declared,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:160:  let decTot = Number(sanitized.total_declared !== undefined && sanitized.total_declared !== null ? sanitized.total_declared : sanitized.declared_total) || 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:164:  sanitized.total_declared = decTot;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:431:  let total_declared = null;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:489:          total_declared = nums[nums.length - 1];
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:551:    if (!total_declared || total_declared <= 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:553:    } else if (total_declared < (expectedTotal * 0.70) || total_declared > (expectedTotal * 1.50)) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:558:  if (total_declared === 774 || total_declared === 20 || (subtotal > 0 && total_declared < (subtotal * 0.5))) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:563:    total_declared = word_grand_total;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:565:    total_declared = Math.round(expectedTotal * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:566:  } else if (!total_declared && expectedTotal > 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:567:    total_declared = expectedTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:599:    total_declared,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:600:    declared_total: total_declared,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:218:  ["subtotal", "cgst", "sgst", "igst", "declared_total", "total_declared"].forEach(key => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:297:  const currentDeclared = Number(res.declared_total !== undefined && res.declared_total !== null ? res.declared_total : (res.total_declared || 0)) || 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:314:    res.total_declared = wordTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:319:    res.total_declared = fallbackTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:321:    res.total_declared = currentDeclared > 0 ? currentDeclared : expectedTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:322:    res.declared_total = res.total_declared;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:35:  note += `• Billed Amount on Parcha: *${formatRupees(audit.total_declared)}*\n`;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:64:Billed Grand Total: ${formatRupees(audit.total_declared)}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:226:                  <div class="flex justify-between items-center ${audit.hasTotalDiscrepancy ? 'p-1.5 bg-rose-50 rounded ring-2 ring-rose-500 cursor-pointer animate-pulse' : 'p-1.5 bg-emerald-50 rounded ring-1 ring-emerald-400'}" data-box-id="total_declared">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:233:                        ${formatRupees(invoice.total_declared)}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/CaSlipModal.js:105:                  <td class="p-2 border border-slate-300 text-right font-mono text-slate-900">${formatRupees(audit.total_declared)}</td>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:266:            ${formatRupees(audit.total_declared)}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:336:              value="${invoice.total_declared || 0}"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:749:    inputTotalDeclared.addEventListener("input", (e) => onUpdateHeader("total_declared", parseFloat(e.target.value) || 0));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:50:    total_declared: 24570.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:110:    total_declared: 20237.00, // Should have been 16,150 + 1453.50 + 1453.50 = 19,057.00 (Discrepancy: ₹1,180.00)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:169:    total_declared: 14337.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:217:    total_declared: 3706.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:152:      total_declared: 15855.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:223:      let decTotal = Number(extractedInvoice.total_declared !== undefined && extractedInvoice.total_declared !== null ? extractedInvoice.total_declared : extractedInvoice.declared_total) || 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:226:        extractedInvoice.total_declared = decTotal;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:323:    this.currentInvoice.total_declared = round2(this.currentInvoice.subtotal + totalTax);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:352:      } else if (key === "total_declared") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:353:        this.currentInvoice.total_declared = parseFloat(value) || 0;

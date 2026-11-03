@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:92:    2. 'AIzaSy' standard API keys (x-goog-api-key: AIzaSy...)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:130:            # Standard AIzaSy key passed via header or query param
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:228:    # First attempt: direct REST caller supporting both AQ. Bearer tokens and AIzaSy keys
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:249:        # Secondary fallback using google.genai Client (for standard AIzaSy keys)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ApiKeyModal.js:27:            placeholder="AIzaSy..." 

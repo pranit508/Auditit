@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:38:# Exact Pydantic Schemas (No is_valid_bill or gatekeeper rejection fields)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:265:    is_valid_bill: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:255:    is_valid_bill: true,

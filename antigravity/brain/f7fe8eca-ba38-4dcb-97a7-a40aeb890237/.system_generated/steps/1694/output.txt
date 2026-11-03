@@ -1,0 +1,15 @@
+Command exited with code 0.
+
+Command output:
+✓ Requirement 1 (Regex & Wattage/Quantity Exclusion) PASSED!
+✓ Requirement 2a (Intra-State 06 vs 06 -> CGST 990, SGST 990, IGST 0) PASSED!
+✓ Requirement 2b (Inter-State 07 vs 06 -> CGST 0, SGST 0, IGST 1980) PASSED!
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+✓ Requirement 3 (FastAPI & Server Endpoint Sync) PASSED!
+
+🎉 ALL GST TAX EXTRACTION & VERIFICATION TESTS PASSED SUCCESSFULLY!

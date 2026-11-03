@@ -1,0 +1,12 @@
+Task: f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-599
+Status: DONE
+Log: file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-599.log
+Log output:
+<truncated 6 lines>
+"), FutureWarning)
+gemini-2.5-flash: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemini-api/docs/get-started).', 'status': 'NOT_FOUND'}}
+gemini-2.5-flash-lite: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash-lite is no longer available to new users. Please update your code to use models/gemini-3.5-flash-lite for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemini-api/docs/get-started).', 'status': 'NOT_FOUND'}}
+gemini-flash-latest: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+gemini-3.5-flash: OK
+
+Last progress: 0s ago

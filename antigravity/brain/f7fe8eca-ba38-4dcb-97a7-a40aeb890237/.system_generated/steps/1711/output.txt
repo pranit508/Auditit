@@ -1,0 +1,36 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:528:    // Default tax split to CGST + SGST (e.g. 9% + 9% = 18%, giving ₹990 CGST and ₹990 SGST on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:539:    // Set CGST = 0, SGST = 0, and IGST = 18% (₹1,980.00 on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:771:      // Recalculate dynamically based on current Subtotal (e.g. 11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:787:        // Intra-State: Set IGST strictly to 0, default split to CGST + SGST (e.g. 9% + 9% = 18%, ₹990 + ₹990 on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:792:        // Inter-State: Set CGST = 0, SGST = 0, and IGST = 18% (₹1,980.00 on ₹11,000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pyasn1/type/univ.py:745:            icon1 Icon ::= '001100010011001000110011'B
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pyasn1/type/univ.py:748:        icon1 = Icon.fromBinaryString('001100010011001000110011')
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:290:        0x71100000712,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:516:        0x1110000011103,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:670:        0x11100000112,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:772:        0x21100000212,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:913:        0x51100000512,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:1210:        0x1E1100001E12,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:1588:        0xAB110000AB17,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:1598:        0xFA110000FA12,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:1688:        0x1100000011047,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:1694:        0x1110000011135,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/uts46data.py:5791:        0x11000,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/msgpack/fallback.py:421:        elif b & 0b11100000 == 0b11100000:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/msgpack/fallback.py:423:        elif b & 0b11100000 == 0b10100000:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/msgpack/fallback.py:429:        elif b & 0b11110000 == 0b10010000:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/msgpack/fallback.py:434:        elif b & 0b11110000 == 0b10000000:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:886:        0x11100000112,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:988:        0x21100000212,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1129:        0x51100000512,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1426:        0x1e1100001e12,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1795:        0xab110000ab17,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1805:        0xfa110000fa12,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1881:        0x1100000011047,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1886:        0x1110000011135,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/uts46data.py:5863:    (0x11000, 'V'),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:8:    vendor_address: "Shop 14, Khari Baoli Spice Market, Old Delhi, Delhi - 110006",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:184:    vendor_address: "Shop 12, Main Market, Delhi - 110006",

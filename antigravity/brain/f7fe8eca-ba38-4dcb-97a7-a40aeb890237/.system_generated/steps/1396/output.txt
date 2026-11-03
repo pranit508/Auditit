@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py:93:        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key.strip()}"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:136:      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${effectiveKey.trim()}`;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxSuggestions.js:56:      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${effectiveKey.trim()}`;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/genai/_api_client.py:681:      self._http_options.base_url = 'https://generativelanguage.googleapis.com/'

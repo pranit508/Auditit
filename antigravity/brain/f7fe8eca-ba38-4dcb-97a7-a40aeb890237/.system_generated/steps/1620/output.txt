@@ -1,0 +1,12 @@
+Command exited with code 0.
+
+Command output:
+'CGST @ 9%: ₹990.00'           -> 990.0
+'CGST @ 9%: 990.00'            -> 990.0
+'Central GST 9.0% : 990.00'    -> 990.0
+'CGST: 990.00'                 -> 990.0
+'CGST 990.00'                  -> 990.0
+'CGST: ₹1,980.00'              -> 1980.0
+'CGST @ 9%: 1,624.95'          -> 1624.95
+'LED Tube Light 20W'           -> 0
+'Pack of 20'                   -> 0

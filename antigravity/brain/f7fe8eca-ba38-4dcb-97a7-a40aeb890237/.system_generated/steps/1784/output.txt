@@ -1,0 +1,34 @@
+Command exited with code 0.
+
+Command output:
+284-
+285-  handleDeleteItem(index) {
+286-    if (!this.currentInvoice || this.currentInvoice.items.length <= 1) {
+287-      this.showToast("Invoice must contain at least 1 item", "error");
+288-      return;
+289-    }
+290-
+291-    this.currentInvoice.items.splice(index, 1);
+292-    this.recomputeEverything();
+293-    this.showToast("Removed line item", "info");
+294-  }
+295-
+296-  handleUpdateHeader(field, value) {
+297-    if (!this.currentInvoice) return;
+298-
+299:    if (field === "gst_preset") {
+300-      this.currentInvoice.cgst = value.cgst;
+301-      this.currentInvoice.sgst = value.sgst;
+302-      this.currentInvoice.igst = value.igst;
+303-    } else {
+304-      this.currentInvoice[field] = value;
+305-    }
+306-
+307-    this.recomputeEverything();
+308-  }
+309-
+310-  handleAutoFixMath() {
+311-    if (!this.currentInvoice) return;
+312-
+313-    // Fix each item's declared amount to equal qty * rate
+314-    let newSubtotal = 0;

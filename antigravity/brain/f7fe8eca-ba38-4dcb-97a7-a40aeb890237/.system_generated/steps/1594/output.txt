@@ -1,0 +1,73 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:49:    gstin: Optional[str] = None
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:217:  "gstin": "string",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:99:    gstin_pattern = re.compile(r'\b\d{2}[A-Z]{5}\d{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}\b', re.IGNORECASE)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:109:        "gstin", "gst no", "contact", "phone", "mobile", "tel", 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:123:        if gstin_pattern.search(desc) or phone_pattern.search(desc):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:361:        "haryana", "delhi", "gstin", "gtin", "state", "thirteen", "thousand", 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:365:    gstin_pattern = re.compile(r'\b\d{2}[A-Z]{5}\d{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}\b', re.IGNORECASE)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:381:        if gstin_pattern.search(desc) or phone_pattern.search(desc) or pan_pattern.search(desc):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py:40:            - invoices_missing_gstin
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py:74:        "invoices_missing_gstin": audit_summary.get("invoices_missing_gstin", 0),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py:130:    missing_count = audit_summary.get("invoices_missing_gstin", 0)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py:157:        "invoices_missing_gstin": 0,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:34:  "gstin": string or null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:261:    gstin: null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:61:  const gstinStr = (invoice.gstin || "").trim().toUpperCase();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:62:  if (!gstinStr && !invoice.is_unregistered_vendor) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:64:      field: "gstin",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:71:  } else if (gstinStr && !GSTIN_REGEX.test(gstinStr) && !invoice.is_unregistered_vendor) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:73:      field: "gstin",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:75:      description: `GSTIN "${gstinStr}" does not match Indian 15-character GST structure. Enter correct GSTIN or mark as Unregistered.`,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:76:      currentValue: gstinStr,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:252:  const gstin = (invoice.gstin || "").trim().toUpperCase();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:253:  const gstinValid = GSTIN_REGEX.test(gstin);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:264:  } else if (!gstinValid || hasBlurryFields || issues.some(i => i.type === "WARNING")) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:284:    gstinValid,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:68:      "gstin", "gtin", "state", "thirteen", "thousand", 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:95:    "gst", "gstin", "subtotal", "total", "grand total", "qty", "rate", 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:307:  const forbiddenRegex = /gstin|\bpan\b|acc\.?\s*(?:number|no)|account|bank|ifsc|maharashtra|mumbai|delhi|haryana|karnataka|gujarat|authorised|signature|terms|condition|e-way|plot|sector|industrial area|bazaar|road|street/i;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:343:  const gstinMatch = (headerZone.join(" ") + " " + rawText).match(GSTIN_REGEX);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:344:  const gstin = gstinMatch ? gstinMatch[0].toUpperCase() : null;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:345:  if (!gstin) unreadable_fields.push("gstin");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:537:    gstin,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxSuggestions.js:35:    invoices_missing_gstin: audit_summary.invoices_missing_gstin,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxSuggestions.js:135:  const hasMissingGstin = audit_summary.invoices_missing_gstin > 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:20:  "gstin", "gtin", "state", "thirteen", "thousand", 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:39:  if (!audit.gstinValid) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:56:Supplier GSTIN: ${invoice.gstin || "MISSING / UNVERIFIED"}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:13:  const isGstinValid = audit.gstinValid;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:65:    invoices_missing_gstin: missingGstinCount,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:68:    supplier_gstin: invoice.gstin || "MISSING",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:93:                    ${audit.gstinValid 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:94:                      ? `<span class="font-mono bg-emerald-50 text-emerald-900 border border-emerald-300 px-1.5 py-0.5 rounded font-semibold text-[11px]">${invoice.gstin}</span>`
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:95:                      : `<span class="relative group cursor-pointer inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-300 animate-pulse" data-box-id="gstin">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:96:                          ⚠️ ${invoice.gstin ? 'Invalid Format: ' + invoice.gstin : 'Missing / Not Stated'}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/CaSlipModal.js:65:              <div class="text-slate-600 mt-0.5">GSTIN: <span class="font-mono font-bold ${audit.gstinValid ? 'text-slate-800' : 'text-rose-600'}">${invoice.gstin || "MISSING / NOT PROVIDED"}</span></div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:123:        const gstinInput = container.querySelector(`input[data-field="gstin"]`);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:124:        if (gstinInput) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:125:          gstinInput.value = "UNREGISTERED";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:126:          gstinInput.classList.add("bg-emerald-50", "text-emerald-800", "font-bold");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:161:      eligible_itc: audit.gstinValid ? audit.totalTax : 0,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:162:      disallowed_itc: !audit.gstinValid ? audit.totalTax : 0,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:163:      invoices_missing_gstin: audit.gstinValid ? 0 : 1,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:178:        audit.gstinValid 
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:312:              <span class="font-bold text-[9px] ${audit.gstinValid ? 'text-emerald-600' : 'text-amber-600'}">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:313:                ${audit.gstinValid ? '✓ Valid' : '⚠️ Missing / Invalid'}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:318:              id="input-gstin"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:319:              value="${invoice.gstin || ''}"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:322:              class="w-full px-2.5 py-1.5 rounded-lg border ${audit.gstinValid ? 'border-slate-300' : 'border-amber-400 bg-amber-50/50'} text-xs font-mono uppercase text-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:734:  const inputGstin = container.querySelector("#input-gstin");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:741:    inputGstin.addEventListener("input", (e) => onUpdateHeader("gstin", e.target.value.trim().toUpperCase()));
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:9:    gstin: "07AAAAA0000A1Z5",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:66:    gstin: "27AABCM8291Q1Z8",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:122:    unreadable_fields: ["gstin", "items[1].rate"],
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:125:    gstin: "", // INTENTIONALLY MISSING GSTIN
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:182:    gstin: "07AAECM4821F1ZX",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:123:      gstin: "07AAAAA0000A1Z5",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:339:      if (key === "gstin") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:342:          this.currentInvoice.gstin = "";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:344:          this.currentInvoice.gstin = value.toUpperCase();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:386:        this.currentAudit.gstinValid ? "GST ITC: 100% eligible Input Tax Credit." : "GST ITC: Warning - missing GSTIN.",

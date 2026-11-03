@@ -1,0 +1,16 @@
+Task: f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-1293
+Status: DONE
+Log: file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-1293.log
+Log output:
+<truncated 27 lines>
+
+    raise self._exception
+  File "/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/genai/_api_client.py", line 1144, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/genai/errors.py", line 108, in raise_for_response
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://ai.google.dev/gemini-api/docs/get-started).', 'status': 'NOT_FOUND'}}
+
+Last progress: 1s ago

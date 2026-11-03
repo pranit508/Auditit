@@ -1,0 +1,8 @@
+Command exited with code 127.
+
+Command output:
+zsh:1: command not found: node
+zsh:2: command not found: node
+zsh:3: command not found: node
+zsh:4: command not found: node
+zsh:5: command not found: node

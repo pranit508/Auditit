@@ -1,0 +1,155 @@
+Command exited with code 0.
+
+Command output:
+10-import { renderDashboardHero } from "./components/DashboardHero.js";
+11-import { renderReviewWorkspace } from "./components/ReviewWorkspace.js";
+12-import { renderCaSlipModal } from "./components/CaSlipModal.js";
+13-import { renderApiKeyModal } from "./components/ApiKeyModal.js";
+14-
+15-class AuditItApp {
+16-  constructor() {
+17-    this.currentView = "dashboard"; // "dashboard" | "review"
+18-    this.currentInvoice = null;
+19-    this.currentAudit = null;
+20:    this.taxData = null;
+21-    this.userTaxSettings = { annualTurnover: 3600000, digitalRatio: 0.60 };
+22-    this.isProcessing = false;
+23-    const defaultKey = "AQ.Ab8RN6LhTNa6kIQRpd_OijgrXNfmwLOw7rcxiMN8aWW-_U7mPw";
+24-    this.apiKey = localStorage.getItem("audit_it_gemini_api_key") || defaultKey;
+25-    if (!localStorage.getItem("audit_it_gemini_api_key")) {
+26-      try { localStorage.setItem("audit_it_gemini_api_key", defaultKey); } catch (_) {}
+27-    }
+28-
+29-    this.mainMount = document.getElementById("app-main");
+30-    this.modalMount = document.getElementById("modal-container");
+--
+54-    if (this.currentView === "dashboard") {
+55-      renderDashboardHero(this.mainMount, {
+56-        hasApiKey: !!this.apiKey,
+57-        onSelectSample: (sampleKey) => this.loadSample(sampleKey),
+58-        onFileUpload: (file) => this.handleFileUpload(file),
+59-        onCreateManualBill: () => this.createManualBill(),
+60-        onOpenApiKeyModal: () => this.openApiKeyModal()
+61-      });
+62-    } else if (this.currentView === "review") {
+63-      renderReviewWorkspace(this.mainMount, this.currentInvoice, this.currentAudit, {
+64:        taxData: this.taxData,
+65-        onRefreshTaxAi: () => this.handleRefreshTaxAi(),
+66-        onUpdateItem: (idx, action, val) => this.handleUpdateItem(idx, action, val),
+67-        onAddItem: () => this.handleAddItem(),
+68-        onDeleteItem: (idx) => this.handleDeleteItem(idx),
+69-        onUpdateHeader: (field, val) => this.handleUpdateHeader(field, val),
+70-        onAutoFixMath: () => this.handleAutoFixMath(),
+71-        onUpdateTaxSettings: (settings) => this.handleUpdateTaxSettings(settings),
+72-        onSubmitValidInputs: (fields) => this.handleSubmitValidInputs(fields),
+73-        onCopyNote: (openWhatsApp) => this.handleCopyDiscrepancyNote(openWhatsApp),
+74-        onOpenCaSlip: () => this.openCaSlipModal(),
+--
+100-    if (!rawSample) return;
+101-
+102-    // Deep copy to allow editing without mutating original sample
+103-    this.currentInvoice = JSON.parse(JSON.stringify(rawSample));
+104-    this.currentAudit = auditInvoice(this.currentInvoice);
+105-
+106-    // Compute code-calculated tax & deemed profit under Sec 44AD
+107-    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+108-    const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
+109-    
+110:    this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+111-    this.currentView = "review";
+112-    this.render();
+113-    window.scrollTo({ top: 0, behavior: "smooth" });
+114-    this.showToast(`Loaded ${rawSample.scenarioName}`, "info");
+115-  }
+116-
+117-  createManualBill() {
+118-    this.currentInvoice = {
+119-      id: "manual-" + Date.now(),
+120-      scenarioName: "Manual Bill Entry",
+--
+154-        bank_name: "State Bank of India",
+155-        account_number: "•••• •••• •••• 1029",
+156-        ifsc: "SBIN••••••"
+157-      },
+158-      payment_terms: "Cash on delivery",
+159-      notes: "Manual invoice entered on shop counter."
+160-    };
+161-
+162-    this.currentAudit = auditInvoice(this.currentInvoice);
+163-    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+164:    this.taxData = {
+165-      audit_summary,
+166-      calculated_tax,
+167-      ai_suggestions: {
+168-        suggestions: [
+169-          "Recommended ITR Form: File ITR-4 Sugam under Sec 44AD presumptive scheme without maintaining formal books.",
+170-          "GST ITC Opportunity / Risk: Verified GSTIN ensures 100% of GST paid directly reduces your monthly tax outgo.",
+171-          "Advance Tax & Action Item: Remind yourself of the March 15 advance tax deadline."
+172-        ],
+173-        disclaimer: "Not tax advice; verify with your CA.",
+174-        isAiGenerated: false
+--
+226-        extractedInvoice.total_declared = decTotal;
+227-        extractedInvoice.declared_total = decTotal;
+228-      }
+229-
+230-      this.currentInvoice = extractedInvoice;
+231-      this.currentAudit = auditInvoice(this.currentInvoice);
+232-
+233-      // Compute code-calculated tax & deemed profit under Sec 44AD
+234-      const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+235-      const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
+236:      this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+237-
+238-      this.currentView = "review";
+239-      this.hideProcessingOverlay();
+240-      this.render();
+241-      window.scrollTo({ top: 0, behavior: "smooth" });
+242-
+243-      this.showToast("Invoice analyzed by Gemini 2.5 Flash successfully!", "success");
+244-    } catch (err) {
+245-      this.hideProcessingOverlay();
+246-      this.showToast("Could not process invoice: " + err.message, "error");
+--
+373-  }
+374-
+375-  recomputeEverything() {
+376-    // 1. Audit invoice strictly in code
+377-    this.currentAudit = auditInvoice(this.currentInvoice);
+378-
+379-    // 2. Recompute tax metrics strictly in code
+380-    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+381-    
+382-    // Retain current AI suggestions text while updating dynamic numbers
+383:    const prevAi = this.taxData ? this.taxData.ai_suggestions : null;
+384-    const ai_suggestions = prevAi || {
+385-      suggestions: [
+386-        "Recommended ITR Form: File ITR-4 Sugam under Sec 44AD presumptive scheme.",
+387-        this.currentAudit.gstinValid ? "GST ITC: 100% eligible Input Tax Credit." : "GST ITC: Warning - missing GSTIN.",
+388-        "Advance Tax: Pay by March 15 to prevent interest."
+389-      ],
+390-      disclaimer: "Not tax advice; verify with your CA.",
+391-      isAiGenerated: false
+392-    };
+393-
+394:    this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+395-    this.render();
+396-  }
+397-
+398-  async handleRefreshTaxAi() {
+399:    if (!this.taxData) return;
+400-    this.showToast("Invoking Gemini 2.5 Flash for tax preparation suggestions...", "info");
+401-    
+402:    const { audit_summary, calculated_tax } = this.taxData;
+403-    const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
+404:    this.taxData.ai_suggestions = ai_suggestions;
+405-    
+406-    this.render();
+407-    this.showToast(ai_suggestions.isAiGenerated ? "Updated via Gemini 2.5 Flash!" : "Tax suggestions refreshed", "success");
+408-  }
+409-
+410-  handleCopyDiscrepancyNote(openWhatsApp = false) {
+411-    if (!this.currentInvoice || !this.currentAudit) return "";
+412-    const noteText = generateSupplierDisputeNote(this.currentInvoice, this.currentAudit);
+413-
+414-    if (openWhatsApp) {

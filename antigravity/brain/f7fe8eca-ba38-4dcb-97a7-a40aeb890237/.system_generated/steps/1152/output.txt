@@ -1,0 +1,18 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:122:  if (invoice.total_declared === null || invoice.total_declared === undefined || Number(invoice.total_declared) <= 0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:124:      field: "total_declared",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:126:      description: "The grand total declared on the physical parcha is missing or unread.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:127:      currentValue: invoice.total_declared || "",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:165:      const declaredAmount = round2(Number(item.amount) || 0);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:170:      const diff = round2(declaredAmount - calculatedAmount);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:179:          description: `Billed as ${formatRupees(declaredAmount)}, but precision formula (${qty} × ${formatRupees(rate)}) calculates ${formatRupees(calculatedAmount)}. Discrepancy: ${formatRupees(Math.abs(diff))}.`,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:181:          declared: declaredAmount,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:194:        declaredAmount,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:224:  const total_declared = round2(Number(invoice.total_declared) || 0);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:225:  const totalDiff = round2(total_declared - calculated_total);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:233:      field: "total_declared",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:235:      description: `Bill declared ${formatRupees(total_declared)}, but verified total (Items ${formatRupees(sum_items)} + Tax ${formatRupees(totalTax)}) is ${formatRupees(calculated_total)}. Net Variance: ${formatRupees(Math.abs(totalDiff))}.`,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:237:      declared: total_declared,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:270:    total_declared,

@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+node not found
+/opt/homebrew/Library/Homebrew/test/language/node

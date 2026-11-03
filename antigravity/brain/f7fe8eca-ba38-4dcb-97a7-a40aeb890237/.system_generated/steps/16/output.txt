@@ -1,0 +1,9 @@
+Command exited with code 1.
+
+Command output:
+PATH=/Users/pranit405/.gemini/antigravity/bin:/Users/pranit405/Library/Application Support/Antigravity/bin:/Users/pranit405/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/opt/homebrew/bin
+python not found
+/usr/bin/python3
+/opt/homebrew/bin/brew
+/bin/zsh
+/bin/bash

@@ -1,0 +1,11 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+status: 200
+data: {'total_itc': 0.0, 'is_inter_state': False, 'gstin_valid': False, 'itc_compliance_notes': ['Warning: Supplier GSTIN missing or unverified. Verify on GST portal.'], 'taxable_business_income': 192000.0, 'projected_income_tax': 0.0, 'rebate_87a_applied': True, 'tax_audit_required': False, 'itr_form_suggested': 'ITR-4 (Sugam)', 'compliance_message': 'Presumptive scheme elected. No formal profit & loss or balance sheet required under Section 44AB.'}

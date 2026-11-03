@@ -1,0 +1,71 @@
+Command exited with code 0.
+
+Command output:
+1-#!/usr/bin/env python3
+2-"""
+3-AUDIT IT - Retail Bill Verification Engine
+4:FastAPI + Google GenAI Server
+5-"""
+6-
+7-import os
+8-import sys
+9-import json
+10-import base64
+11-from typing import List, Optional, Union
+12-
+13-import uvicorn
+14-import httpx
+15:from fastapi import FastAPI, UploadFile, File, Header
+16-from fastapi.responses import Response, JSONResponse
+17-from fastapi.middleware.cors import CORSMiddleware
+18-from fastapi.staticfiles import StaticFiles
+19-from pydantic import BaseModel
+20-from google import genai
+21-from google.genai import types
+22-
+23-# Default Gemini API key provided by user
+24-DEFAULT_GEMINI_API_KEY = "AQ.Ab8RN6LhTNa6kIQRpd_OijgrXNfmwLOw7rcxiMN8aWW-_U7mPw"
+25-
+--
+50-    buyer_gstin: Optional[str] = None
+51-    invoice_number: Optional[str] = None
+52-    date: Optional[str] = None
+53-    items: List[InvoiceItem] = []
+54-    subtotal: Optional[Union[float, int, str]] = None
+55-    cgst: Optional[Union[float, int, str]] = None
+56-    sgst: Optional[Union[float, int, str]] = None
+57-    igst: Optional[Union[float, int, str]] = None
+58-    declared_total: Optional[Union[float, int, str]] = None
+59-
+60:app = FastAPI(title="AUDIT IT - Bill Verification API")
+61-
+62-# Enable CORS for local development and cross-origin requests
+63-app.add_middleware(
+64-    CORSMiddleware,
+65-    allow_origins=["*"],
+66-    allow_credentials=True,
+67-    allow_methods=["*"],
+68-    allow_headers=["*"],
+69-)
+70-
+--
+336-        "success": True,
+337-        "extracted_data": sanitized_data,
+338-        "invoice": sanitized_data
+339-    }
+340-
+341-# Mount static files to serve the frontend web application
+342-app.mount("/", StaticFiles(directory=SCRIPT_DIR, html=True), name="static")
+343-
+344-def run(port: int = 3000):
+345-    print("\n" + "="*56)
+346:    print("  🚀 AUDIT IT - FastAPI + Google GenAI Server")
+347-    print(f"  Serving on: http://localhost:{port}")
+348-    print(f"  Model:      gemini-2.5-flash / gemini-3.5-flash")
+349-    print(f"  Root Dir:   {SCRIPT_DIR}")
+350-    print("="*56 + "\n")
+351-    uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
+352-
+353-if __name__ == "__main__":
+354-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 3000
+355-    run(port)

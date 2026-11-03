@@ -1,0 +1,14 @@
+Command exited with code 1.
+
+There were sandbox errors that may or may not be related to the failure. If you think the failure is because of running in the sandbox, you can run the command again with `BypassSandbox` set to true to request explicit user permission.
+
+Command output:
+Sanitized Supplier Name: 'Sharma Enterprises'
+
+Retained Items:
+ - LED Tube Light 20W | Qty: 10.0 | Rate: 250.0 | Amount: 2500.0
+ - Basmati Rice 25kg | Qty: 4.0 | Rate: 950.0 | Amount: 3800.0
+ - BZKPALZD89 | Qty: 1.0 | Rate: 50.0 | Amount: 50.0
+Traceback (most recent call last):
+  File "<string>", line 38, in <module>
+AssertionError: Expected 2 items

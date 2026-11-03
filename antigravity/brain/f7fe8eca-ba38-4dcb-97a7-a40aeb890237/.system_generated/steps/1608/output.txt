@@ -1,0 +1,12 @@
+Command exited with code 0.
+
+Command output:
+MATCH: 'CGST @ 9%: ₹990.00'           -> rate='9'    amt='990.00'  
+MATCH: 'CGST 9%: 990.00'              -> rate='9'    amt='990.00'  
+MATCH: 'Central GST @ 9% : 990.00'    -> rate='9'    amt='990.00'  
+MATCH: 'CGST: 990.00'                 -> rate=None   amt='990.00'  
+MATCH: 'CGST: ₹1,980.00'              -> rate=None   amt='1,980.00'
+MATCH: 'CGST 9% 1,624.95'             -> rate='9'    amt='1,624.95'
+NO MATCH: 'LED Tube Light 20W'
+NO MATCH: 'Pack of 20'
+NO MATCH: '20W LED Batten'

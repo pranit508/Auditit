@@ -1,0 +1,16 @@
+Command exited with code 0.
+
+Command output:
+total 176
+drwxr-xr-x@ 12 pranit405  staff    384 Nov  2 22:12 .
+drwxr-xr-x@ 10 pranit405  staff    320 Nov  2 19:09 ..
+-rw-r--r--@  1 pranit405  staff  10214 Nov  2 22:24 aiExtractor.js
+-rw-r--r--@  1 pranit405  staff  11740 Nov  2 22:00 auditEngine.js
+-rw-r--r--@  1 pranit405  staff   8880 Nov  2 22:27 clean_items.py
+-rw-r--r--@  1 pranit405  staff   3202 Nov  2 19:04 discrepancyNote.js
+-rw-r--r--@  1 pranit405  staff  11250 Nov  2 22:25 invoiceTextParser.js
+-rw-r--r--@  1 pranit405  staff   3890 Nov  2 22:27 itemCleaner.js
+-rw-r--r--@  1 pranit405  staff   4928 Nov  2 22:27 privacyMasker.js
+-rw-r--r--@  1 pranit405  staff   4698 Nov  2 22:00 taxCalculator.js
+-rw-r--r--@  1 pranit405  staff   5991 Nov  2 19:46 taxSuggestions.js
+-rw-r--r--@  1 pranit405  staff   7181 Nov  2 19:46 tax_suggestions.py

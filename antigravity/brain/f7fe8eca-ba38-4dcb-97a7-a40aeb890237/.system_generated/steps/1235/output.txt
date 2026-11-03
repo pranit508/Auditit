@@ -1,0 +1,68 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:100:- The Grand Total MUST be the overall final payable invoice amount, NOT a column entry, tax rate, or HSN fragment like '774'.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/server.py:103:- If you see a small number like '774', it is an HSN code, partial tax, or serial number. DO NOT use it as `declared_total`.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:283:    # If the OCR extracted '774' or '585132', reject them because they are bank/account/IFSC digits.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:306:    # Reject bank/account/IFSC digits (e.g. 774, 585132) if wildly outside expected total
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:486:        "declared_total": "774",  # Misread bank digits
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:559:    # Verify Grand Total sanity check: bank digits 774 rejected and overridden to 4490.0 via words
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:20:- The Grand Total MUST be the overall final payable invoice amount, NOT a column entry, tax rate, or HSN fragment like '774'.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:23:- If you see a small number like '774', it is an HSN code, partial tax, or serial number. DO NOT use it as \`declared_total\`.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:360:  // If the OCR extracted '774' or '585132', reject them because they are bank/account/IFSC digits.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:241:  // If the OCR extracted '774' or '585132', reject them because they are bank/account/IFSC digits.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/yacctab.py:324:  ('unary_operator -> LNOT','unary_operator',1,'p_unary_operator','c_parser.py',1774),
+Binary file /Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography/hazmat/bindings/_rust.abi3.so matches
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic_core-2.46.5.dist-info/sboms/pydantic-core.cyclonedx.json:706:          "content": "19ce3e0da2ec68599d193c93d088142efd7f9c5d6fc9b803774855747dc6a84f"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic_core-2.46.5.dist-info/sboms/pydantic-core.cyclonedx.json:1640:          "content": "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:394:        0x177200001774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/idnadata.py:1159:        0x177200001774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/uts46data.py:1488:        0x1774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/idna/uts46data.py:7162:        0x1D774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/httpcore-1.0.9.dist-info/METADATA:215:- Handle `sni_hostname` extension with SOCKS proxy. (#774)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography-50.0.2.dist-info/sboms/cryptography-rust.cyclonedx.json:342:          "content": "5baebc0774151f905a1a2cc41989300b1e6fbb29aff0ceffa1064fdd3088d582"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/charset_normalizer/constant.py:350:    "Enclosed Ideographic Supplement": range(127488, 127744),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/charset_normalizer/constant.py:351:    "Miscellaneous Symbols and Pictographs": range(127744, 128512),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:52:1198,3869,3313,4060, 410,2211, 302, 590, 361,1963,   8, 204,  58,4296,7311,1931,  # 2774
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:54:3616,   3,  10,3870,1471,  29,2774,1135,2852,1939, 873, 130,3242,1123, 312,7315,  # 2806
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:84:1699,7351,4312,1424,2437,3115,3624,2590,3316,1774,1940,3413,3880,4070, 309,1369,  # 3286
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:177:1126, 653,2945,3263,7539,2337, 889,3540,3919,3081,2989, 903,1250,4395,3920,3434,  # 4774
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:188:4142,1686,1794, 416,2556,1902,1953,1803,7559,3773,2785,3774,1159,2316,7560,2867,  # 4950
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:267:3215,7739,7740,3361,1828,7741,1277,4476,1565,2047,7742,1636,3568,3093,7743, 869,  # 6214
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:268:2839, 655,3811,3812,3094,3989,3000,3813,1310,3569,4477,7744,7745,7746,1733, 558,  # 6230
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:270:2793, 913,1054,3990,7747,1027,7748,3046,3991,4479, 982,2662,3362,3148,3465,3216,  # 6262
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:271:3217,1946,2794,7749, 571,4480,7750,1830,7751,3570,2583,1523,2424,7752,2089, 984,  # 6278
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:281: 510,7772,1927,2241,1812,1644,3575,7773,4490,3692,7774,7775,2663,1573,1534,7776,  # 6438
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:302:2253, 574,3822,1603, 295,1535, 705,3823,4219, 283, 858, 417,7828,7829,3224,4503,  # 6774
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:367:3858,1973,4281,8038,4282,3167, 823,1303,1288,1236,2848,3495,4044,3398, 774,3859,  # 7814
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/gb2312freq.py:50: 249,4088,1746,1873,2047,1774, 581,1813, 358,1174,3590,1014,1561,4844,2245, 670,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/gb2312freq.py:181:3192,2910,2010, 140,2395,2859,  55,1082,2012,2901, 662, 419,2081,1438, 680,2774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/gb2312freq.py:189: 774,4474,4254, 604,3430,4264, 392,2514,2588, 452, 237,1408,3018, 988,4531,1970,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/gb2312freq.py:217:1213, 560,3266, 917, 763,3909,3249,1760, 868,1958, 764,1782,2097, 145,2277,3774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/jisfreq.py:116:5761,5762,5763,5764,5765,5766,5767,5768,5769,5770,5771,5772,5773,5774,5775,5776, # 1072
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/jisfreq.py:291: 480,2083,1774,3458, 923,2279,1350, 221,3086,  85,2233,2234,3835,1585,3010,2147, # 3872
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/jisfreq.py:314:2514,1267,2412,2610, 177,2703,3542, 774,1927,1344, 616,1432,1595,1018, 172,4360, # 4240
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:122:4555,2915,5114,4238,1726, 320,5115,3996,3046, 788,2996,5116,2831,1774,1327,2873, # 1184
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:295:2774, 808,2616,3765,3406,4105,4355,3123,2539, 526,3407,3900,4356, 955,5510,1620, # 3952
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:316:5568,5569,1799,4732,3774,2619,4733,3641,1645,2376,4734,5570,2938, 669,2211,2675, # 4288
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:354:1243,5680,4142, 963,2250,4773,5681,2714,3658,3186,5682,5683,2596,2332,5684,4774, # 4896
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:366:3937,1974,4425,5721,4426,3192, 823,1303,1288,1236,2861,3542,4148,3435, 774,3938, # 5088
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:379:4805,5770,2864,4806,4807,1221,2982,4157,2520,5771,5772,5773,1868,1990,5774,5775, # 5296
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euckrfreq.py:55: 709,1770,1118,1771, 241,1772,1773,1774,1271,1775, 569,1776, 999,1777,1778,1779,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euckrfreq.py:125:2194, 613, 424,2195, 979, 108, 449, 589,  27, 172,  81,1031,  80, 774, 281, 350,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:326:    0x774: 82,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/idnadata.py:1375:        0x177200001774,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/uts46data.py:1517:    (0x1774, 'X'),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/uts46data.py:7139:    (0x1D774, 'M', 'ε'),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/idna/uts46data.py:7724:    (0x1F774, 'X'),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/certifi/cacert.pem:607:# Serial: 17199774589125277788362757014266862032
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/certifi/cacert.pem:785:# Serial: 4835703278459682877484360
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/certifi/cacert.pem:1948:# Serial: 6643877497813316402
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pydantic-2.13.5.dist-info/METADATA:1262:* Ensure `cached_property` can be set on Pydantic models by [@Viicos](https://github.com/Viicos) in [#10774](https://github.com/pydantic/pydantic/pull/10774)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/httpx/_status_codes.py:20:        * RFC 2774: An HTTP Extension Framework
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/certifi/cacert.pem:2694:bmF0774BxL4YSFlhgjICICadVGNA3jdgUM/I2O2dgq43mLyjj0xMqTQrbO/7lZsm
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/certifi/cacert.pem:2739:# Serial: 159662495401136852707857743206
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/certifi/cacert.pem:2895:# Serial: 11930366277458970227240571539258396554
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip-21.2.4.dist-info/RECORD:601:pip/_vendor/chardet/sjisprober.py,sha256=IIt-lZj0WJqK4rmUZzKZP4GJlE8KUEtFYVuY96ek5MQ,3774
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/charset_normalizer-3.5.2.dist-info/RECORD:23:charset_normalizer/api.py,sha256=VUVapYmPFpyAM3m2mKn9-AjZQAIxKyOJaKu4cPxCf4E,35774
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/charset_normalizer-3.5.2.dist-info/METADATA:348:- Return 0.0 CharsetMatch.multi_byte_usage for empty payloads instead of crashing (#774)

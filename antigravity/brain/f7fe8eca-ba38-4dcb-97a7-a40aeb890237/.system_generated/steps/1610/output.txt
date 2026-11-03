@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:113:            <!-- BUYER DETAILS -->

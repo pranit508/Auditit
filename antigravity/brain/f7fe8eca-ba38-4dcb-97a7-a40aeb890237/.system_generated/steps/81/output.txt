@@ -1,0 +1,14 @@
+Command exited with code 0.
+
+Command output:
+Tax Suggestions Output:
+ {
+  "suggestions": [
+    "Recommended ITR Form: File ITR-4 Sugam under Section 44AD presumptive scheme because your retail turnover is within \u20b92-3 Crores, allowing you to declare deemed profit without maintaining formal balance sheets.",
+    "GST ITC Opportunity / Risk: You have \u20b93,087.00 in eligible Input Tax Credit ready to claim, which directly offsets your GST liability.",
+    "Advance Tax & Action Item: Remind yourself to pay 100% of your advance tax by March 15 to prevent interest penalties under Section 234B/234C."
+  ],
+  "disclaimer": "Not tax advice; verify with your CA.",
+  "raw_text": "1. Recommended ITR Form: File ITR-4 Sugam under Section 44AD presumptive scheme because your retail turnover is within \u20b92-3 Crores, allowing you to declare deemed profit without maintaining formal balance sheets.\n2. GST ITC Opportunity / Risk: You have \u20b93,087.00 in eligible Input Tax Credit ready to claim, which directly offsets your GST liability.\n3. Advance Tax & Action Item: Remind yourself to pay 100% of your advance tax by March 15 to prevent interest penalties under Section 234B/234C.\n\nDisclaimer: Not tax advice; verify with your CA.",
+  "is_ai_generated": false
+}

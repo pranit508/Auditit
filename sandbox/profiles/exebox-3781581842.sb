@@ -1,0 +1,195 @@
+
+; macOS Seatbelt sandbox profile
+
+; Sandbox profile language version, not the version of this sandbox rule set.
+(version 1)
+
+; Deny everything by default.
+; For debugging, can try:
+;	(allow (with report) default)
+(deny default (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN"))
+
+; System operations.
+
+(allow distributed-notification-post)
+(allow dynamic-code-generation)
+(allow iokit-get-properties)
+
+; Note: Other sandboxes restrict the list of iokit services.
+; We allow everything for now.
+(allow iokit-open)
+
+(allow iokit-open-user-client)
+(allow ipc-posix-sem)
+(allow ipc-posix-shm)
+
+; Note: Other sandboxes restrict the list of mach-lookup services.
+; We allow everything for now, except com.apple.sysmond, which runs outside the
+; sandbox and returns process tables and full command-line arguments (e.g. to
+; pgrep -lf), bypassing same-sandbox process-info* and kern.procargs restrictions.
+(allow mach-lookup)
+(deny mach-lookup (global-name "com.apple.sysmond"))
+
+; Chromium-based browsers (Google Chrome, Chrome for Testing, Chromium, and
+; Electron's default bundle ID com.github.Electron; packaged Electron apps with
+; custom bundle IDs are not covered) bootstrap_check_in a per-PID
+; "<bundle-id>.MachPortRendezvousServer.<pid>" service at startup and abort with
+; BOOTSTRAP_NOT_PRIVILEGED (1100) if it is denied. Chromium's crash handler
+; (chrome_crashpad_handler) also bootstrap_check_in's an
+; "org.chromium.crashpad.child_port_handshake.<...>" service and CHECK-fails if denied.
+(allow mach-register
+       (local-name-prefix "com.google.Chrome.MachPortRendezvousServer.")
+       (global-name-prefix "com.google.Chrome.MachPortRendezvousServer.")
+       (local-name-prefix "com.google.chrome.for.testing.MachPortRendezvousServer.")
+       (global-name-prefix "com.google.chrome.for.testing.MachPortRendezvousServer.")
+       (local-name-prefix "org.chromium.Chromium.MachPortRendezvousServer.")
+       (global-name-prefix "org.chromium.Chromium.MachPortRendezvousServer.")
+       (local-name-prefix "com.github.Electron.MachPortRendezvousServer.")
+       (global-name-prefix "com.github.Electron.MachPortRendezvousServer.")
+       (local-name-prefix "org.chromium.crashpad.child_port_handshake.")
+       (global-name-prefix "org.chromium.crashpad.child_port_handshake."))
+
+(allow mach-priv-task-port (target same-sandbox))
+(allow necp-client-open)
+(allow process-exec)
+(allow process-fork)
+(allow process-info* (target same-sandbox))
+(allow signal (target same-sandbox))
+
+; Note: Other sandboxes restrict the list of sysctls that can be read.
+; We allow everything for now.
+(allow sysctl-read)
+; Deny reading another process's argv and envp via KERN_PROCARGS / KERN_PROCARGS2
+; (e.g. via pgrep -lf or direct sysctl calls), since sysctl-read is not scoped to
+; same-sandbox like process-info*. Omit (with message ...) so routine ps probes
+; inside the sandbox do not surface as sandbox-blocked command errors.
+(deny sysctl-read (sysctl-name-prefix "kern.procargs"))
+(allow sysctl-write (sysctl-name "kern.tcsm_enable"))  ; for Node / V8
+(allow system-necp-client-action)
+(allow user-preference-read)
+
+; Network - allow inbound listeners
+(allow network-bind)
+(allow network-inbound)
+(allow file-read* (literal "/"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/AppleInternal"))
+(allow file-read* process-exec* (subpath "/AppleInternal"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Applications"))
+(allow file-read* process-exec* (subpath "/Applications"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Applications/Antigravity.app/Contents/Resources/bin/language_server"))
+(allow file-read* process-exec* (subpath "/Applications/Antigravity.app/Contents/Resources/bin/language_server"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/BinaryCache"))
+(allow file-read* process-exec* (subpath "/BinaryCache"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/BuildSupport"))
+(allow file-read* process-exec* (subpath "/BuildSupport"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Library"))
+(allow file-read* process-exec* (subpath "/Library"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/System"))
+(allow file-read* process-exec* (subpath "/System"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.CFUserTextEncoding"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.CFUserTextEncoding"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.cache"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.docker"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.env"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity"))
+(allow file-read-metadata (subpath "/Users/pranit405/.gemini/antigravity"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity/bin"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/antigravity/bin"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity/brain"))
+(allow file-read-metadata (subpath "/Users/pranit405/.gemini/antigravity/brain"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/browser_recordings"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity/builtin"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/antigravity/builtin"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity/conversations"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/html_artifacts"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/knowledge"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity/mcp"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/antigravity/mcp"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/memory"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/plugin_data"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/scratch"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/antigravity/skills"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/antigravity/skills"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/.gemini/antigravity/worktrees"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config"))
+(allow file-read-metadata (subpath "/Users/pranit405/.gemini/config"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/AGENTS.md"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/AGENTS.md"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/GEMINI.md"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/GEMINI.md"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/agents"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/agents"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/agents.json"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/agents.json"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/config.json"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/plugins"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/plugins"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/plugins.json"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/plugins.json"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/projects"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/projects"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/rules"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/rules"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/rules.json"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/rules.json"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/sidecars"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/sidecars"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/skills"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/skills"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/config/skills.json"))
+(allow file-read* process-exec* (subpath "/Users/pranit405/.gemini/config/skills.json"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gemini/sandbox/profiles"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.gitcookies"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.kube"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.netrc"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/.ssh"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/Desktop"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/Documents"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/Downloads"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/Library/Application Support"))
+(allow file-read-metadata (subpath "/Users/pranit405/Library/Application Support"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/Library/Application Support/go"))
+(allow file-read-metadata (subpath "/Users/pranit405/Library/Application Support/go"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/Library/Application Support/go/telemetry"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/Library/Caches"))
+(deny file-read* file-write* file-ioctl process-exec* (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/Users/pranit405/_netrc"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/Users/pranit405/memory"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/bin"))
+(allow file-read* process-exec* (subpath "/bin"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/dev/autofs_nowait"))
+(allow file-read* process-exec* (subpath "/dev/autofs_nowait"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/dtracehelper"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/fd"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/null"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/ptmx"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/random"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/tty"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/urandom"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/dev/zero"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/etc"))
+(allow file-read* process-exec* (subpath "/etc"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/opt/homebrew"))
+(allow file-read* process-exec* (subpath "/opt/homebrew"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/private/etc"))
+(allow file-read* process-exec* (subpath "/private/etc"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/private/tmp"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/private/var/db/timezone"))
+(allow file-read* process-exec* (subpath "/private/var/db/timezone"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/private/var/folders/lw/j40gkywj3xn9n9r62rxbpf040000gn/T"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/private/var/select"))
+(allow file-read* process-exec* (subpath "/private/var/select"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/sbin"))
+(allow file-read* process-exec* (subpath "/sbin"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/tmp"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/usr"))
+(allow file-read* process-exec* (subpath "/usr"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/var/db/timezone"))
+(allow file-read* process-exec* (subpath "/var/db/timezone"))
+(allow file-read* file-write* file-ioctl process-exec* (subpath "/var/folders/lw/j40gkywj3xn9n9r62rxbpf040000gn/T"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/var/folders/lw/j40gkywj3xn9n9r62rxbpf040000gn/T/exebox-cert-3137586433.crt"))
+(allow file-read* process-exec* (subpath "/var/folders/lw/j40gkywj3xn9n9r62rxbpf040000gn/T/exebox-cert-3137586433.crt"))
+(deny file-write* file-ioctl (with message "EXEBOX ID N4SZZGGIM6L3HBBDVJPYA25CAN") (subpath "/var/select"))
+(allow file-read* process-exec* (subpath "/var/select"))
+(allow file-read* file-write* file-ioctl (regex #"^/dev/tty[^/]*$"))

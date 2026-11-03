@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+total 0
+drwxr-xr-x@ 2 pranit405  staff  64 Nov  2 19:02 .
+drwxr-xr-x@ 3 pranit405  staff  96 Nov  2 19:02 ..

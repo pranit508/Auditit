@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+5:    scenarioName: "Sample 1: Clean Bill",
+63:    scenarioName: "Sample 2: Math Error",
+123:    scenarioName: "Sample 3: Missing GSTIN",
+182:    scenarioName: "Sample 4: Retail Hardware & Electrical Bill",

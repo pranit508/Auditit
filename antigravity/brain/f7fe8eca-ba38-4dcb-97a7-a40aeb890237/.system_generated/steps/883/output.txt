@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:59:export async function extractInvoiceFromDocument(file, apiKey = null, onProgress = null) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:7:import { extractInvoiceFromDocument } from "./utils/aiExtractor.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:187:      let extractedInvoice = await extractInvoiceFromDocument(file, this.apiKey, (msg) => {

@@ -1,0 +1,51 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:116:                <span class="text-slate-400 uppercase tracking-wider text-[9px] font-bold block">Billed To (Retailer / ग्राहक):</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:224:                      <span class="text-[10px] font-bold uppercase text-slate-700 block">Billed Grand Total:</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:235:              <strong>Calculated vs Declared Difference:</strong> You are being billed <span class="underline decoration-rose-500 font-bold">${formatRupees(Math.abs(audit.totalDiff))}</span> more than the verified sum of goods and taxes.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:264:          <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Billed on Invoice</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:288:      <!-- REAL-TIME EDITABLE BILL HEADERS (Vendor, GSTIN, Billed Total) -->
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:329:              <span>Billed Grand Total (₹)</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:368:                <th class="py-2 text-right w-24">Billed (₹)</th>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:430:                    <!-- Billed Amount -->
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:244:        raw_billed = item.get("total_amount") if item.get("total_amount") is not None else item.get("amount")
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:245:        billed = parse_inr(raw_billed) if raw_billed is not None and str(raw_billed).strip() != "" else round(qty * rate, 2)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:250:        if billed > 0 and qty == billed and rate in [1.0, 2.0, 1, 2]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:252:            rate = billed
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:258:        item["total_amount"] = billed
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:259:        item["amount"] = billed
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:389:        raw_billed = item.get("total_amount") if item.get("total_amount") is not None else item.get("amount", 0)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:394:            billed = float(raw_billed or 0)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:404:        # If billed total is astronomically different from qty * rate (like 42 * 14 = 588 vs 131001), skip
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:405:        if billed > (qty * rate * 10) and billed > 100000:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:411:        if billed > 0 and qty == billed and rate in [1, 2, 1.0, 2.0]:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:413:            rate = billed
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:426:        normalized["total_amount"] = billed if billed > 0 else round(qty * rate, 2)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:125:      label: "Billed Grand Total (कुल राशि)",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:179:          description: `Billed as ${formatRupees(declaredAmount)}, but precision formula (${qty} × ${formatRupees(rate)}) calculates ${formatRupees(calculatedAmount)}. Discrepancy: ${formatRupees(Math.abs(diff))}.`,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:102:      let billed = Number(item.total_amount !== undefined ? item.total_amount : item.amount) || 0;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:109:      if (billed > 0 && qty === billed && (rate === 1 || rate === 2)) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:111:        rate = billed;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:117:      // If billed total is astronomically different from qty * rate (like 42 * 14 = 588 vs 131001), skip
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:118:      if (billed > (qty * rate * 10) && billed > 100000) return false;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:129:      item.total_amount = billed > 0 ? billed : Math.round(qty * rate * 100) / 100;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:200:      // Last figure is Billed Amount
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:337:  // Set Billed Grand Total to word total if available or if numeric OCR misread (e.g. 2173.9 vs 4490.0)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:340:      console.info("[AUDIT IT] Setting Billed Grand Total to " + word_grand_total + " from 'Total in words' (corrected from " + total_declared + ")");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:67:    const billed = Number(item.total_amount !== undefined ? item.total_amount : item.amount);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:72:    if (billed > 0 && qty === billed && (rate === 1 || rate === 2)) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:73:      console.info("[AUDIT IT] Column swap detected: qty=" + qty + ", rate=" + rate + ", total=" + billed + " -> swapping to qty=1.0, rate=" + billed);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:75:      rate = billed;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:87:    // 4. Reject if total amount matches corrupt pincode/number (billed > qty * rate * 10 and billed > 100000)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:88:    if (!isNaN(billed) && billed > (qty * rate * 10) && billed > 100000) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:100:      total_amount: isNaN(billed) || billed <= 0 ? (qty * rate) : billed,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:101:      amount: isNaN(billed) || billed <= 0 ? (qty * rate) : billed,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:197:    const rawBilled = it.total_amount !== undefined ? it.total_amount : it.amount;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:198:    let billed = rawBilled !== undefined && rawBilled !== null && String(rawBilled).trim() !== "" ? parseInr(rawBilled) : (qty * rate);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:201:    if (billed > 0 && qty === billed && (rate === 1 || rate === 2)) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:203:      rate = billed;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:210:    it.total_amount = billed;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:211:    it.amount = billed;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:35:  note += `• Billed Amount on Parcha: *${formatRupees(audit.total_declared)}*\n`;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/discrepancyNote.js:64:Billed Grand Total: ${formatRupees(audit.total_declared)}

@@ -1,0 +1,76 @@
+Command exited with code 0.
+
+Command output:
+1-// AUDIT IT - Main Application Controller with Real-Time Reactive Auditing
+2-import { SAMPLE_INVOICES } from "./data/sampleInvoices.js";
+3-import { auditInvoice, round2 } from "./utils/auditEngine.js";
+4-import { cleanExtractedItems, sanitizeAndCleanInvoice } from "./utils/itemCleaner.js";
+5-import { sanitizeInvoiceData } from "./utils/privacyMasker.js";
+6-import { generateSupplierDisputeNote } from "./utils/discrepancyNote.js";
+7-import { extractInvoiceFromDocument } from "./utils/aiExtractor.js";
+8-import { calculateTaxMetrics } from "./utils/taxCalculator.js";
+9-import { generate_tax_suggestions } from "./utils/taxSuggestions.js";
+10-import { renderDashboardHero } from "./components/DashboardHero.js";
+11:import { renderReviewWorkspace } from "./components/ReviewWorkspace.js";
+12-import { renderCaSlipModal } from "./components/CaSlipModal.js";
+13-import { renderApiKeyModal } from "./components/ApiKeyModal.js";
+14-
+15-class AuditItApp {
+16-  constructor() {
+17-    this.currentView = "dashboard"; // "dashboard" | "review"
+18-    this.currentInvoice = null;
+19-    this.currentAudit = null;
+20-    this.taxData = null;
+21-    this.userTaxSettings = { annualTurnover: 3600000, digitalRatio: 0.60 };
+22-    this.isProcessing = false;
+23-    const defaultKey = "AQ.Ab8RN6LhTNa6kIQRpd_OijgrXNfmwLOw7rcxiMN8aWW-_U7mPw";
+24-    this.apiKey = localStorage.getItem("audit_it_gemini_api_key") || defaultKey;
+25-    if (!localStorage.getItem("audit_it_gemini_api_key")) {
+26-      try { localStorage.setItem("audit_it_gemini_api_key", defaultKey); } catch (_) {}
+27-    }
+28-
+29-    this.mainMount = document.getElementById("app-main");
+30-    this.modalMount = document.getElementById("modal-container");
+31-    this.toastMount = document.getElementById("toast-container");
+--
+43-    let focusInfo = null;
+44-    if (activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA")) {
+45-      focusInfo = {
+46-        id: activeEl.id,
+47-        action: activeEl.getAttribute("data-action"),
+48-        index: activeEl.getAttribute("data-index"),
+49-        selectionStart: activeEl.selectionStart,
+50-        selectionEnd: activeEl.selectionEnd
+51-      };
+52-    }
+53-
+54-    if (this.currentView === "dashboard") {
+55-      renderDashboardHero(this.mainMount, {
+56-        hasApiKey: !!this.apiKey,
+57-        onSelectSample: (sampleKey) => this.loadSample(sampleKey),
+58-        onFileUpload: (file) => this.handleFileUpload(file),
+59-        onCreateManualBill: () => this.createManualBill(),
+60-        onOpenApiKeyModal: () => this.openApiKeyModal()
+61-      });
+62-    } else if (this.currentView === "review") {
+63:      renderReviewWorkspace(this.mainMount, this.currentInvoice, this.currentAudit, {
+64-        taxData: this.taxData,
+65-        onRefreshTaxAi: () => this.handleRefreshTaxAi(),
+66-        onUpdateItem: (idx, action, val) => this.handleUpdateItem(idx, action, val),
+67-        onAddItem: () => this.handleAddItem(),
+68-        onDeleteItem: (idx) => this.handleDeleteItem(idx),
+69-        onUpdateHeader: (field, val) => this.handleUpdateHeader(field, val),
+70-        onAutoFixMath: () => this.handleAutoFixMath(),
+71-        onUpdateTaxSettings: (settings) => this.handleUpdateTaxSettings(settings),
+72-        onSubmitValidInputs: (fields) => this.handleSubmitValidInputs(fields),
+73-        onCopyNote: (openWhatsApp) => this.handleCopyDiscrepancyNote(openWhatsApp),
+74-        onOpenCaSlip: () => this.openCaSlipModal(),
+75-        onBack: () => this.goToDashboard()
+76-      });
+77-    }
+78-
+79-    // Restore focus seamlessly if user was actively typing
+80-    if (focusInfo) {
+81-      let targetInput = null;
+82-      if (focusInfo.id) {
+83-        targetInput = document.getElementById(focusInfo.id);

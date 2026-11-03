@@ -1,0 +1,20 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:294:    # Sanity guard: prevent stray '2' injection (e.g. 2990 -> 990.00)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:295:    if cgst in (2990.0, 2990):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:298:    if sgst in (2990.0, 2990):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:301:    if igst in (2990.0, 2990):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:212:  // SANITY GUARD: If CGST or SGST is 2990 (stray '2' prepended to 990), correct to 990.00:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:213:  if (cgst === 2990 || cgst === 2990.0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:217:  if (sgst === 2990 || sgst === 2990.0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:155:    if (chosen === 2990 || chosen === 2990.0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:572:  //   * CGST @ 9% = 990.00 (NOT 2990.00)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:573:  //   * SGST @ 9% = 990.00 (NOT 2990.00)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:578:  if (cgst === 2990 || cgst === 2990.0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:581:  if (sgst === 2990 || sgst === 2990.0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:584:  if (igst === 2990 || igst === 2990.0) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:178:3541,1342,1681,1718, 766,3264, 286,  89,2946,3649,7540,1713,7541,2597,3334,2990,  # 4790
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/gb2312freq.py:190:3034,3310, 540,2370,1562,1288,2990, 502,4765,1147,   4,1853,2708, 207, 294,2814,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:70: 266, 152, 149, 468,1899,4208,4516,  77, 187,5028,3038,  37,   5,2990,5029,3979, #  352
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/constants.py:2442:    "rbrkslu;": "\u2990",

@@ -1,0 +1,26 @@
+Command exited with code 0.
+
+Command output:
+613-            type="range" 
+614-            min="0" 
+615-            max="100" 
+616-            step="5"
+617-            value="${calculated_tax.digital_percent}"
+618:            id="slider-digital-ratio"
+619-            class="w-full accent-emerald-500 cursor-pointer"
+620-          />
+621-        </div>
+622-
+623-        <!-- ADVISORY CALLOUT BOX -->
+--
+821-      }
+822-    });
+823-  });
+824-
+825-  // Digital ratio slider
+826:  const sliderDigital = container.querySelector("#slider-digital-ratio");
+827-  if (sliderDigital && onUpdateTaxSettings) {
+828-    sliderDigital.addEventListener("input", (e) => {
+829-      const val = parseFloat(e.target.value) / 100;
+830-      onUpdateTaxSettings({ digitalRatio: val });
+831-    });

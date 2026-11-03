@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:11:export function calculateTaxMetrics(invoice, audit, settings = {}) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:8:import { calculateTaxMetrics } from "./utils/taxCalculator.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:107:    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:163:    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:234:      const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:380:    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);

@@ -1,0 +1,91 @@
+Command exited with code 0.
+
+Command output:
+// Deterministic Tax & ITR Calculator for Small Indian Retail Shopkeepers
+// Core Rule: "Code does the math, deterministic calculations only"
+import { round2 } from "./auditEngine.js";
+
+/**
+ * Calculates turnover, deemed profit under Sec 44AD, and estimated tax under New Regime
+ * @param {Object} invoice
+ * @param {Object} audit
+ * @param {Object} [settings] - Optional user overrides for turnover and digital ratio
+ */
+export function calculateTaxMetrics(invoice, audit, settings = {}) {
+  const totalGstOnBill = round2((Number(invoice.cgst) || 0) + (Number(invoice.sgst) || 0) + (Number(invoice.igst) || 0));
+  const isGstinValid = audit.gstinValid;
+
+  const eligibleItc = isGstinValid ? totalGstOnBill : 0;
+  const blockedItc = isGstinValid ? 0 : totalGstOnBill;
+  const missingGstinCount = isGstinValid ? 0 : 1;
+
+  // Annualized turnover: default to ₹36,00,000 or user slider value
+  const annualTurnover = Number(settings.annualTurnover) || 3600000;
+  
+  // Digital vs Cash ratio: default 60% digital, 40% cash
+  const digitalRatio = settings.digitalRatio !== undefined ? Number(settings.digitalRatio) : 0.60;
+  const cashRatio = round2(1 - digitalRatio);
+
+  // Section 44AD Presumptive Profit: 6% for digital turnover, 8% for cash turnover
+  const digitalProfit = (annualTurnover * digitalRatio) * 0.06;
+  const cashProfit = (annualTurnover * cashRatio) * 0.08;
+  const deemedProfit = round2(digitalProfit + cashProfit);
+
+  // Estimated Tax under New Tax Regime (Section 115BAC)
+  // Slabs:
+  // Up to ₹3,00,000: Nil
+  // ₹3,00,001 to ₹6,00,000: 5%
+  // ₹6,00,001 to ₹9,00,000: 10%
+  // ₹9,00,001 to ₹12,00,000: 15%
+  // ₹12,00,001 to ₹15,00,000: 20%
+  // Above ₹15,00,000: 30%
+  // Rebate under Section 87A: If total income <= ₹7,00,000, tax liability is ₹0.
+  let baseTax = 0;
+  if (deemedProfit > 700000) {
+    if (deemedProfit <= 600000) {
+      baseTax = (deemedProfit - 300000) * 0.05;
+    } else if (deemedProfit <= 900000) {
+      baseTax = 15000 + (deemedProfit - 600000) * 0.10;
+    } else if (deemedProfit <= 1200000) {
+      baseTax = 45000 + (deemedProfit - 900000) * 0.15;
+    } else if (deemedProfit <= 1500000) {
+      baseTax = 90000 + (deemedProfit - 1200000) * 0.20;
+    } else {
+      baseTax = 150000 + (deemedProfit - 1500000) * 0.30;
+    }
+  }
+
+  // 4% Health & Education Cess
+  const estimatedTaxLiability = round2(baseTax * 1.04);
+
+  const audit_summary = {
+    total_turnover: annualTurnover,
+    deemed_profit: deemedProfit,
+    number_of_invoices_analyzed: 1,
+    current_invoice_total: audit.calculated_total,
+    total_gst_paid_on_purchases: totalGstOnBill,
+    eligible_itc: eligibleItc,
+    invoices_missing_gstin: missingGstinCount,
+    disallowed_itc: blockedItc,
+    vendor_name: invoice.vendor_name || "Supplier",
+    supplier_gstin: invoice.gstin || "MISSING",
+    digital_ratio: digitalRatio,
+    cash_ratio: cashRatio
+  };
+
+  const calculated_tax = {
+    recommended_form: "ITR-4 (Presumptive Scheme - Sec 44AD)",
+    annual_turnover: annualTurnover,
+    digital_percent: Math.round(digitalRatio * 100),
+    cash_percent: Math.round(cashRatio * 100),
+    deemed_net_profit: deemedProfit,
+    profit_computation_basis: `Calculated at 6% digital (${Math.round(digitalRatio * 100)}%) / 8% cash (${Math.round(cashRatio * 100)}%)`,
+    estimated_tax_liability: estimatedTaxLiability,
+    tax_regime: "New Regime (Section 115BAC)",
+    rebate_87a_applied: deemedProfit <= 700000,
+    eligible_itc: eligibleItc,
+    blocked_itc: blockedItc
+  };
+
+  return { audit_summary, calculated_tax };
+}

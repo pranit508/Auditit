@@ -1,0 +1,24 @@
+Command exited with code 0.
+
+Command output:
+544-      <div class="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 rounded-2xl border border-slate-800 p-4 sm:p-5 shadow-md text-white space-y-4">
+545-        
+546-        <!-- Header -->
+547-        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+548-          <div class="flex items-center space-x-2.5">
+549-            <div class="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">
+550-              ₹
+551-            </div>
+552-            <div>
+553-              <h4 class="text-xs sm:text-sm font-extrabold tracking-tight text-white flex items-center space-x-2">
+554:                <span>Tax & ITR Insights</span>
+555-                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+556-                  Sec 44AD Presumptive
+557-                </span>
+558-              </h4>
+559-              <p class="text-[10px] text-slate-400">Deterministic Tax Calculation & Gemini 2.5 Flash Advisory</p>
+560-            </div>
+561-          </div>
+562-
+563-          <div class="flex items-center space-x-2">
+564-            <button 

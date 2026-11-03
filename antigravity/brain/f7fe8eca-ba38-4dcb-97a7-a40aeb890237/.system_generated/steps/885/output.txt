@@ -1,0 +1,13 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:4:import { sanitizeInvoiceData } from "./privacyMasker.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:110:        return sanitizeInvoiceData(parsed);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:165:          return sanitizeInvoiceData(parsed);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:183:        return sanitizeInvoiceData(parsed);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:208:        return sanitizeInvoiceData(parsed);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:242:  return sanitizeInvoiceData(cleanExtracted);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/privacyMasker.js:46:export function sanitizeInvoiceData(rawInvoice) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:5:import { sanitizeInvoiceData } from "./utils/privacyMasker.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:205:          extractedInvoice = sanitizeInvoiceData(extractedInvoice);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:208:        extractedInvoice = sanitizeInvoiceData(extractedInvoice);

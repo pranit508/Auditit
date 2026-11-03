@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/euctwfreq.py:178:3541,1342,1681,1718, 766,3264, 286,  89,2946,3649,7540,1713,7541,2597,3334,2990,  # 4790
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/gb2312freq.py:190:3034,3310, 540,2370,1562,1288,2990, 502,4765,1147,   4,1853,2708, 207, 294,2814,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/chardet/big5freq.py:70: 266, 152, 149, 468,1899,4208,4516,  77, 187,5028,3038,  37,   5,2990,5029,3979, #  352
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/html5lib/constants.py:2442:    "rbrkslu;": "\u2990",

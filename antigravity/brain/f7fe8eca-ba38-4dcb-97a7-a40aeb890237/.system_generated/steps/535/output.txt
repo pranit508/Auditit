@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+r1 text: "{\"hello\": \"world\"}"
+r1 json(): '{"hello": "world"}'
+r2 text: {"hello": "world"}
+r2 json(): {'hello': 'world'}

@@ -1,0 +1,126 @@
+Command exited with code 0.
+
+Command output:
+265:    this.recomputeEverything();
+266-  }
+267-
+268-  handleAddItem() {
+269-    if (!this.currentInvoice) return;
+270-    const newItem = {
+271-      id: "item-" + Date.now(),
+272-      description: "New Item " + (this.currentInvoice.items.length + 1),
+273-      hsn: "9900",
+274-      qty: 1,
+275-      rate: 100.00,
+276-      amount: 100.00,
+277-      is_blurry: false
+278-    };
+279-
+280-    this.currentInvoice.items.push(newItem);
+281:    this.recomputeEverything();
+282-    this.showToast("Added new line item", "info");
+283-  }
+284-
+285-  handleDeleteItem(index) {
+286-    if (!this.currentInvoice || this.currentInvoice.items.length <= 1) {
+287-      this.showToast("Invoice must contain at least 1 item", "error");
+288-      return;
+289-    }
+290-
+291-    this.currentInvoice.items.splice(index, 1);
+292:    this.recomputeEverything();
+293-    this.showToast("Removed line item", "info");
+294-  }
+295-
+296-  handleUpdateHeader(field, value) {
+297-    if (!this.currentInvoice) return;
+298-
+299-    if (field === "gst_preset") {
+300-      this.currentInvoice.cgst = value.cgst;
+301-      this.currentInvoice.sgst = value.sgst;
+302-      this.currentInvoice.igst = value.igst;
+303-    } else {
+304-      this.currentInvoice[field] = value;
+305-    }
+306-
+307:    this.recomputeEverything();
+308-  }
+309-
+310-  handleAutoFixMath() {
+311-    if (!this.currentInvoice) return;
+312-
+313-    // Fix each item's declared amount to equal qty * rate
+314-    let newSubtotal = 0;
+315-    this.currentInvoice.items.forEach(item => {
+316-      item.amount = round2(item.qty * item.rate);
+317-      item.error_flag = false;
+318-      newSubtotal += item.amount;
+319-    });
+320-
+321-    this.currentInvoice.subtotal = round2(newSubtotal);
+322-    const totalTax = round2((this.currentInvoice.cgst || 0) + (this.currentInvoice.sgst || 0) + (this.currentInvoice.igst || 0));
+323-    this.currentInvoice.total_declared = round2(this.currentInvoice.subtotal + totalTax);
+324-
+325:    this.recomputeEverything();
+326-    this.showToast("Auto-corrected all math discrepancies to verified total!", "success");
+327-  }
+328-
+329-  handleUpdateTaxSettings(settings) {
+330-    this.userTaxSettings = { ...this.userTaxSettings, ...settings };
+331:    this.recomputeEverything();
+332-  }
+333-
+334-  handleSubmitValidInputs(fields) {
+335-    if (!this.currentInvoice) return;
+336-
+337-    Object.keys(fields).forEach(key => {
+338-      const { value, itemIndex } = fields[key];
+339-
+340-      if (key === "gstin") {
+341-        if (value.toUpperCase() === "UNREGISTERED") {
+342-          this.currentInvoice.is_unregistered_vendor = true;
+343-          this.currentInvoice.gstin = "";
+344-        } else {
+345-          this.currentInvoice.gstin = value.toUpperCase();
+346-          this.currentInvoice.is_unregistered_vendor = false;
+347-        }
+348-      } else if (key === "vendor_name") {
+349-        this.currentInvoice.vendor_name = value;
+350-      } else if (key === "invoice_no") {
+351-        this.currentInvoice.invoice_no = value;
+352-      } else if (key === "total_declared") {
+353-        this.currentInvoice.total_declared = parseFloat(value) || 0;
+354-      } else if (key.startsWith("item_rate_") && itemIndex !== null) {
+355-        if (this.currentInvoice.items[itemIndex]) {
+356-          const rateVal = parseFloat(value) || 0;
+--
+371:    this.recomputeEverything();
+372-    this.showToast("Valid inputs confirmed! Calculations completed.", "success");
+373-  }
+374-
+375:  recomputeEverything() {
+376-    // 1. Audit invoice strictly in code
+377-    this.currentAudit = auditInvoice(this.currentInvoice);
+378-
+379-    // 2. Recompute tax metrics strictly in code
+380-    const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
+381-    
+382-    // Retain current AI suggestions text while updating dynamic numbers
+383-    const prevAi = this.taxData ? this.taxData.ai_suggestions : null;
+384-    const ai_suggestions = prevAi || {
+385-      suggestions: [
+386-        "Recommended ITR Form: File ITR-4 Sugam under Sec 44AD presumptive scheme.",
+387-        this.currentAudit.gstinValid ? "GST ITC: 100% eligible Input Tax Credit." : "GST ITC: Warning - missing GSTIN.",
+388-        "Advance Tax: Pay by March 15 to prevent interest."
+389-      ],
+390-      disclaimer: "Not tax advice; verify with your CA.",
+391-      isAiGenerated: false
+392-    };
+393-
+394-    this.taxData = { audit_summary, calculated_tax, ai_suggestions };
+395-    this.render();
+396-  }
+397-
+398-  async handleRefreshTaxAi() {
+399-    if (!this.taxData) return;
+400-    this.showToast("Invoking Gemini 2.5 Flash for tax preparation suggestions...", "info");

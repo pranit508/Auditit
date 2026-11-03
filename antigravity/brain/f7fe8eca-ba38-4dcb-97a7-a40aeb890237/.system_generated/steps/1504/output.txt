@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:5:import { parseInvoiceText, isLikelyInvoice } from "./invoiceTextParser.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:209:        const parsed = parseInvoiceText(pdfText, file.name);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:234:        const parsed = parseInvoiceText(extractedText, file.name);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:329:export function parseInvoiceText(rawText, sourceFileName = "Uploaded Bill") {

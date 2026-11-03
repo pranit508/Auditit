@@ -1,0 +1,1 @@
+Made 1 replacement in /Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js starting at line 41 (+15/-1 lines).

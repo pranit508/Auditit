@@ -1,0 +1,111 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/tax_suggestions.py:58:                "Document rejected by gatekeeper: not a commercial bill or invoice.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:34:   - Set rejection_reason explaining why (e.g. "Uploaded image is not a financial bill or invoice").
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:39:   - NEVER make up or hallucinate missing data or dummy items. If a field (like GSTIN or invoice number) is not present or unreadable, set it to null and append it to unreadable_fields.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:45:  "rejection_reason": string or null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:250:      rejection_reason: "Uploaded image is not a financial bill or invoice (detected personal photo, screenshot, or non-commercial image).",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:276:    rejection_reason: null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:141:  // 1. First Check: Document Validity Gatekeeper (Not an invoice)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:143:    const reason = invoice.rejection_reason || "Uploaded image is not a financial bill, cash memo, or invoice.";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:149:      isHalted: false,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:150:      rejection_reason: reason,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:173:  // 2. Second Check: Missing or Unclear Inputs Gatekeeper
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:182:      isHalted: true,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/auditEngine.js:328:    isHalted: false,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:64:      rejection_reason: "Uploaded document does not contain commercial invoice text, GSTIN, or billing line items.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:329:    rejection_reason: null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxSuggestions.js:16:        "Document was rejected by the gatekeeper: not a commercial bill or invoice.",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:13:  if (invoice.is_valid_bill === false || audit.isHalted) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:28:        recommended_form: audit.isHalted ? "Calculations Paused" : "None (Invalid Document)",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:33:        profit_computation_basis: audit.isHalted ? "Waiting for user to confirm missing or unclear bill details" : "No financial calculations on rejected non-bill document",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/taxCalculator.js:35:        tax_regime: audit.isHalted ? "Paused" : "N/A",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/README.md:23:### 2. Strict Input Validation & Calculations Gatekeeper
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:46:              : audit.isHalted
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:56:          ${audit.is_valid_bill !== false && !audit.isHalted ? `
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:101:          <span class="text-xs font-bold font-mono ${audit.isHalted ? 'text-amber-700' : audit.hasTotalDiscrepancy ? 'text-rose-600' : 'text-emerald-700'}">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:102:            ${audit.isHalted ? 'Input Needed (Paused)' : audit.hasTotalDiscrepancy ? `Diff: ${formatRupees(audit.totalDiff)}` : 'Math Verified ✓'}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/ReviewWorkspace.js:106:          ${!audit.isHalted ? `
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/DashboardHero.js:193:              <!-- Sample 4: Non-Invoice Photo (Rejection Gatekeeper Test) -->
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/DashboardHero.js:211:                  Rejection Test
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/InvoiceViewer.js:57:              ${invoice.rejection_reason || "This document was not recognized as an official retail or wholesale bill."}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:21:  // IF DOCUMENT IS NOT A VALID INVOICE (Gatekeeper Rejection)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:32:                Gatekeeper Rejection
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:38:                ${audit.rejection_reason || "The uploaded image or document is not a genuine commercial bill, cash memo, or tax receipt."}
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:76:  if (audit.isHalted) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/c_parser.py:1450:        dummytype = c_ast.TypeDecl(None, None, None, None)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/c_parser.py:1452:            decl=dummytype,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pycparser/_build_tables.py:4:# A dummy for generating the lexing/parsing tables and and
+Binary file /Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cryptography/hazmat/bindings/_rust.abi3.so matches
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/pluggable.py:146:        # Dummy value. This variable is only used via injection, not exposed to ctor
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/_embedding.h:55:# define cffi_write_barrier()       InterlockedCompareExchange(&_cffi_dummy,0,0)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/_embedding.h:57:static volatile LONG _cffi_dummy;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/lock.py:7:        from dummy_thread import allocate_lock
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/lock.py:12:        from _dummy_thread import allocate_lock
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/cffi/cparser.py:564:        ast, macros = self._parse('void __dummy(\n%s\n);' % cdecl)[:2]
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/click/types.py:1063:#: A dummy parameter type that just does nothing.  From a user's
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/websockets/frames.py:167:            # Encode just what we need, plus two dummy bytes to elide later.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/requests/cookies.py:20:    import dummy_threading as threading
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/utils/logging.py:18:    import dummy_threading as threading  # type: ignore
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/utils/parallel.py:24:from multiprocessing.dummy import Pool as ThreadPool
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_internal/utils/parallel.py:33:# On platforms without sem_open, multiprocessing[.dummy] Pool
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pep517/in_process/_in_process.py:287:class _DummyException(Exception):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pep517/in_process/_in_process.py:302:    except getattr(backend, 'UnsupportedOperation', _DummyException):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/locators.py:18:    import dummy_threading as threading
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/version.py:716:        return self.is_valid_matcher('dummy_name (%s)' % s)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/compat.py:641:        from dummy_thread import get_ident as _get_ident
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/index.py:16:    from dummy_threading import Thread
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/util.py:30:    import dummy_threading as threading
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/resources.py:338:_dummy_module = types.ModuleType(str('__dummy__'))
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/resources.py:354:        module = _dummy_module
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/distlib/wheel.py:160:            self.name = 'dummy'
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/requests/cookies.py:22:    import dummy_threading as threading
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/six.py:278:    MovedModule("_dummy_thread", "dummy_thread", "_dummy_thread" if sys.version_info < (3, 9) else "_thread"),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/six.py:858:    # This requires a bit of explanation: the basic idea is to make a dummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/connection.py:529:class DummyConnection(object):
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/connection.py:536:    HTTPSConnection = DummyConnection  # noqa: F811
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/six.py:288:        "_dummy_thread",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/six.py:289:        "dummy_thread",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/six.py:290:        "_dummy_thread" if sys.version_info < (3, 9) else "_thread",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/six.py:932:    # This requires a bit of explanation: the basic idea is to make a dummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/connectionpool.py:14:    DummyConnection,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/urllib3/connectionpool.py:978:        if not self.ConnectionCls or self.ConnectionCls is DummyConnection:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pip/_vendor/pyparsing.py:1622:                        loc, dummy = e._parse(instring, loc)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pyasn1_modules/rfc4210.py:197:         rejection              (2),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pyasn1_modules/rfc4210.py:207:        ('rejection', 2),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pyasn1_modules/rfc3161.py:81:    ('rejection', 2),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/wsproto_impl.py:72:        # Rejection state
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/connection.py:1081:class DummyConnection:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/connection.py:1086:    HTTPSConnection = DummyConnection  # type: ignore[misc, assignment] # noqa: F811
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/connectionpool.py:19:    DummyConnection,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1056:        if not self.ConnectionCls or self.ConnectionCls is DummyConnection:  # type: ignore[comparison-overlap]
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/packaging/_compat.py:30:    # This requires a bit of explanation: the basic idea is to make a dummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_vendor/pyparsing.py:1345:                        loc,dummy = e._parse( instring, loc )
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/command/easy_install.py:962:        # Create a dummy distribution object until we build the real distro
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/fancy_getopt.py:214:        'object' is None or not supplied, creates a new OptionDummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/fancy_getopt.py:224:            object = OptionDummy()
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/fancy_getopt.py:436:class OptionDummy:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/fancy_getopt.py:437:    """Dummy class just used as a place to hold command-line option
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/fancy_getopt.py:441:        """Create a new OptionDummy instance.  The attributes listed in
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/setuptools/_distutils/dist.py:1025:    """Dummy class to hold the distribution meta-data: name, version,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/packaging/_compat.py:30:    # This requires a bit of explanation: the basic idea is to make a dummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/pkg_resources/_vendor/pyparsing.py:1345:                        loc,dummy = e._parse( instring, loc )
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:535:_overload_dummy = typing._overload_dummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:586:        return _overload_dummy
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2206:class _EllipsisDummy: ...
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2213:        parameters = (*parameters[:-1], _EllipsisDummy)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2220:    if parameters[-1] is not _EllipsisDummy:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2222:    # Remove dummy again
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2223:    concatenate.__args__ = tuple(p if p is not _EllipsisDummy else ...
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:2229:                                        if p is not _EllipsisDummy)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:3663:        a dummy callable that simply returns its argument. Usage::
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:3691:            class Dummy:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/typing_extensions.py:3700:            return (Dummy,)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:7:    rejection_reason: null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:66:    rejection_reason: null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:127:    rejection_reason: null,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:187:    rejection_reason: "Uploaded image is not a financial bill or invoice (detected personal photo, landscape snapshot, or non-commercial image).",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:190:      text: "Rejection Test",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:209:    notes: "Rejected at document validation gatekeeper."
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:226:        this.showToast(extractedInvoice.rejection_reason || "Non-invoice document rejected", "error");

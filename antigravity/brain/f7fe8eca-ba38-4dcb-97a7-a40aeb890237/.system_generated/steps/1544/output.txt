@@ -1,0 +1,4 @@
+Command exited with code 127.
+
+Command output:
+zsh:1: command not found: node

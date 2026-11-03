@@ -1,0 +1,35 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+models/gemini-2.5-flash
+models/gemini-2.5-flash-preview-tts
+models/gemini-flash-latest
+models/gemini-flash-lite-latest
+models/gemini-2.5-flash-lite
+models/gemini-2.5-flash-image
+models/gemini-3-flash-preview
+models/gemini-3.1-flash-lite-preview
+models/gemini-3.1-flash-lite
+models/gemini-3.1-flash-image-preview
+models/gemini-3.1-flash-image
+models/gemini-3.1-flash-lite-image
+models/gemini-3.5-flash
+models/gemini-3.5-flash-lite
+models/gemini-omni-flash-preview
+models/gemini-omni-1.1-flash
+models/gemini-3.6-flash
+models/gemini-3.7-flash
+models/gemini-3.8-flash
+models/gemini-3.1-flash-tts-preview
+models/gemini-3.8-flash-tts
+models/gemini-3.8-flash-lite-tts
+models/gemini-2.5-flash-native-audio-latest
+models/gemini-2.5-flash-native-audio-preview-09-2025
+models/gemini-2.5-flash-native-audio-preview-12-2025
+models/gemini-3.1-flash-live-preview

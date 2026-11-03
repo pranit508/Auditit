@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+Cleaned Items Count: 2
+Sanitized Vendor Name: Modern Electrical & Hardware
+Sanitized Items Count: 2
+  * LED Tube Light 20W | Qty: 10.0 | Rate: 250.0 | Total: 2500.0
+  * Basmati Rice 25kg | Qty: 5.0 | Rate: 900.0 | Total: 4500.0
+All sanitize_invoice_data test cases passed successfully!

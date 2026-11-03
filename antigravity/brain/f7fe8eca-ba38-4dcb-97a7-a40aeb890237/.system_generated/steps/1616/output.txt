@@ -1,0 +1,246 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:37:    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-38-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-39-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:40:  render() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-41-    // Save active element focus and selection
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-42-    const activeEl = document.activeElement;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-43-    let focusInfo = null;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-44-    if (activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA")) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-45-      focusInfo = {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-46-        id: activeEl.id,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-47-        action: activeEl.getAttribute("data-action"),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-48-        index: activeEl.getAttribute("data-index"),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-49-        selectionStart: activeEl.selectionStart,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-50-        selectionEnd: activeEl.selectionEnd
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-51-      };
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-52-    }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-53-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-54-    if (this.currentView === "dashboard") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-55-      renderDashboardHero(this.mainMount, {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-56-        hasApiKey: !!this.apiKey,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-57-        onSelectSample: (sampleKey) => this.loadSample(sampleKey),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-58-        onFileUpload: (file) => this.handleFileUpload(file),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-59-        onCreateManualBill: () => this.createManualBill(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-60-        onOpenApiKeyModal: () => this.openApiKeyModal()
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-61-      });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-62-    } else if (this.currentView === "review") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-63-      renderReviewWorkspace(this.mainMount, this.currentInvoice, this.currentAudit, {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-64-        taxData: this.taxData,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-65-        onRefreshTaxAi: () => this.handleRefreshTaxAi(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-66-        onUpdateItem: (idx, action, val) => this.handleUpdateItem(idx, action, val),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-67-        onAddItem: () => this.handleAddItem(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-68-        onDeleteItem: (idx) => this.handleDeleteItem(idx),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-69-        onUpdateHeader: (field, val) => this.handleUpdateHeader(field, val),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-70-        onAutoFixMath: () => this.handleAutoFixMath(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-71-        onUpdateTaxSettings: (settings) => this.handleUpdateTaxSettings(settings),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-72-        onSubmitValidInputs: (fields) => this.handleSubmitValidInputs(fields),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-73-        onCopyNote: (openWhatsApp) => this.handleCopyDiscrepancyNote(openWhatsApp),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-74-        onOpenCaSlip: () => this.openCaSlipModal(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-75-        onBack: () => this.goToDashboard()
+--
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:112:    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-113-    window.scrollTo({ top: 0, behavior: "smooth" });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-114-    this.showToast(`Loaded ${rawSample.scenarioName}`, "info");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-115-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-116-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-117-  createManualBill() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-118-    this.currentInvoice = {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-119-      id: "manual-" + Date.now(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-120-      scenarioName: "Manual Bill Entry",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-121-      vendor_name: "Gupta General Traders",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-122-      vendor_address: "Wholesale Mandi, Shop 4B, Delhi",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-123-      gstin: "07AAAAA0000A1Z5",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-124-      invoice_no: `INV-${new Date().getFullYear()}-${Math.floor(100 + Math.random() * 900)}`,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-125-      date: new Date().toISOString().split("T")[0],
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-126-      badge: { text: "Manual Draft", color: "slate" },
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-127-      items: [
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-128-        {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-129-          id: "item-1",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-130-          description: "Basmati Rice 25kg",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-131-          hsn: "1006",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-132-          qty: 10,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-133-          rate: 850.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-134-          amount: 8500.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-135-          is_blurry: false
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-136-        },
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-137-        {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-138-          id: "item-2",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-139-          description: "Refined Mustard Oil 15L Tin",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-140-          hsn: "1514",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-141-          qty: 4,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-142-          rate: 1650.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-143-          amount: 6600.00,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-144-          is_blurry: false
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-145-        }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-146-      ],
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-147-      subtotal: 15100.00,
+--
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:178:    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-179-    window.scrollTo({ top: 0, behavior: "smooth" });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-180-    this.showToast("Created new bill - start editing line items live!", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-181-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-182-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-183-  async handleFileUpload(file) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-184-    this.showProcessingOverlay(file.name);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-185-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-186-    try {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-187-      let extractedInvoice = await extractInvoiceFromDocument(file, this.apiKey, (msg) => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-188-        const progressEl = document.getElementById("upload-progress-text");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-189-        if (progressEl) progressEl.textContent = msg;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-190-      });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-191-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-192-      // Apply sanitize_and_clean_invoice to all Gemini outputs before updating UI state
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-193-      try {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-194-        const resp = await fetch("/api/process-invoice", {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-195-          method: "POST",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-196-          headers: { "Content-Type": "application/json" },
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-197-          body: JSON.stringify({ extracted_data: extractedInvoice })
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-198-        });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-199-        if (resp.ok) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-200-          const res = await resp.json();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-201-          if (res.extracted_data) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-202-            extractedInvoice = res.extracted_data;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-203-          }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-204-        } else {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-205-          extractedInvoice = sanitizeAndCleanInvoice(extractedInvoice);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-206-        }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-207-      } catch (_) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-208-        extractedInvoice = sanitizeAndCleanInvoice(extractedInvoice);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-209-      }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-210-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-211-      // CRITICAL PARSING RULE ENFORCEMENT: Purge metadata, phone, GSTIN strings and garbage items
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-212-      extractedInvoice = sanitizeAndCleanInvoice(extractedInvoice);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-213-      if (extractedInvoice && Array.isArray(extractedInvoice.items)) {
+--
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:239:      this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-240-      window.scrollTo({ top: 0, behavior: "smooth" });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-241-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-242-      this.showToast("Invoice analyzed by Gemini 2.5 Flash successfully!", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-243-    } catch (err) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-244-      this.hideProcessingOverlay();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-245-      this.showToast("Could not process invoice: " + err.message, "error");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-246-    }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-247-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-248-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-249-  handleUpdateItem(index, action, value) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-250-    if (!this.currentInvoice || !this.currentInvoice.items[index]) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-251-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-252-    const item = this.currentInvoice.items[index];
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-253-    if (action === "edit-desc") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-254-      item.description = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-255-    } else if (action === "edit-qty") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-256-      item.qty = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-257-    } else if (action === "edit-rate") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-258-      item.rate = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-259-      item.is_blurry = false;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-260-    } else if (action === "edit-amount") {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-261-      item.amount = value;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-262-    }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-263-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-264-    this.recomputeEverything();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-265-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-266-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-267-  handleAddItem() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-268-    if (!this.currentInvoice) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-269-    const newItem = {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-270-      id: "item-" + Date.now(),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-271-      description: "New Item " + (this.currentInvoice.items.length + 1),
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-272-      hsn: "9900",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-273-      qty: 1,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-274-      rate: 100.00,
+--
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:394:    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-395-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-396-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-397-  async handleRefreshTaxAi() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-398-    if (!this.taxData) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-399-    this.showToast("Invoking Gemini 2.5 Flash for tax preparation suggestions...", "info");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-400-    
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-401-    const { audit_summary, calculated_tax } = this.taxData;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-402-    const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-403-    this.taxData.ai_suggestions = ai_suggestions;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-404-    
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:405:    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-406-    this.showToast(ai_suggestions.isAiGenerated ? "Updated via Gemini 2.5 Flash!" : "Tax suggestions refreshed", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-407-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-408-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-409-  handleCopyDiscrepancyNote(openWhatsApp = false) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-410-    if (!this.currentInvoice || !this.currentAudit) return "";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-411-    const noteText = generateSupplierDisputeNote(this.currentInvoice, this.currentAudit);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-412-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-413-    if (openWhatsApp) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-414-      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(noteText)}`;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-415-      window.open(waUrl, "_blank");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-416-      this.showToast("Opening WhatsApp with dispute note...", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-417-      return noteText;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-418-    }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-419-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-420-    navigator.clipboard.writeText(noteText).then(() => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-421-      this.showToast("Dispute Note copied! Ready to paste in WhatsApp", "success");
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-422-    }).catch(() => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-423-      prompt("Copy your dispute note below:", noteText);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-424-    });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-425-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-426-    return noteText;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-427-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-428-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-429-  openCaSlipModal() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-430-    if (!this.currentInvoice || !this.currentAudit) return;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-431-    renderCaSlipModal(this.modalMount, this.currentInvoice, this.currentAudit, () => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-432-      this.modalMount.innerHTML = "";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-433-    });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-434-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-435-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-436-  openApiKeyModal() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-437-    renderApiKeyModal(this.modalMount, this.apiKey, (newKey) => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-438-      this.apiKey = newKey;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-439-      if (newKey) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-440-        localStorage.setItem("audit_it_gemini_api_key", newKey);
+--
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:447:      this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-448-    }, () => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-449-      this.modalMount.innerHTML = "";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-450-    });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-451-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-452-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-453-  goToDashboard() {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-454-    this.currentView = "dashboard";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:455:    this.render();
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-456-    window.scrollTo({ top: 0, behavior: "smooth" });
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-457-  }
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-458-
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-459-  showProcessingOverlay(fileName) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-460-    this.modalMount.innerHTML = `
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-461-      <div class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-462-        <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-463-          <div class="w-16 h-16 mx-auto mb-4 relative flex items-center justify-center">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-464-            <div class="absolute inset-0 rounded-full border-4 border-slate-200 border-t-emerald-600 animate-spin"></div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-465-            <span class="text-xl">🔍</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-466-          </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-467-          <h3 class="text-base font-bold text-slate-900">Auditing Invoice</h3>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-468-          <p class="text-xs text-slate-500 mt-1 font-mono truncate">${fileName}</p>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-469-          <div id="upload-progress-text" class="mt-2 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-470-            Scanning document & reading text...
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-471-          </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-472-          
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-473-          <div class="mt-4 space-y-2 text-left bg-slate-50 p-3 rounded-lg border border-slate-200 text-[11px] text-slate-600">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-474-            <div class="flex items-center space-x-2">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-475-              <span class="text-emerald-600 font-bold">✓</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-476-              <span>Masking bank accounts & phone numbers</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-477-            </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-478-            <div class="flex items-center space-x-2">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-479-              <span class="text-emerald-600 font-bold">✓</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-480-              <span>Extracting vendor & GSTIN details</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-481-            </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-482-            <div class="flex items-center space-x-2 text-emerald-800 font-semibold">
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-483-              <span class="animate-pulse">●</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-484-              <span>Code recalculating Qty × Rate and GST</span>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-485-            </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-486-          </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-487-        </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-488-      </div>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-489-    `;
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js-490-  }

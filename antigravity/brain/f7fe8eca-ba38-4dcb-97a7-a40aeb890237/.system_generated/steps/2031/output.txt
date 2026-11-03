@@ -1,0 +1,16 @@
+Command exited with code 0.
+
+Command output:
+total 136
+drwxr-xr-x@ 12 pranit405  staff    384 Nov  3 02:05 .
+drwxr-xr-x@  3 pranit405  staff     96 Nov  2 22:17 ..
+-rw-r--r--@  1 pranit405  staff   8479 Nov  2 22:03 README.md
+-rw-r--r--@  1 pranit405  staff  26666 Nov  3 02:14 app.js
+drwxr-xr-x@ 10 pranit405  staff    320 Nov  3 02:06 components
+drwxr-xr-x@  3 pranit405  staff     96 Nov  2 19:04 data
+-rw-r--r--@  1 pranit405  staff   4358 Nov  2 19:51 index.html
+drwxr-xr-x@  4 pranit405  staff    128 Nov  3 02:05 routes
+-rw-r--r--@  1 pranit405  staff  15507 Nov  3 02:05 server.py
+-rw-r--r--@  1 pranit405  staff   1606 Nov  3 01:56 styles.css
+drwxr-xr-x@ 12 pranit405  staff    384 Nov  2 22:12 utils
+drwxr-xr-x@  6 pranit405  staff    192 Nov  2 22:34 venv

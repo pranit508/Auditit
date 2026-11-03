@@ -1,0 +1,92 @@
+Command exited with code 0.
+
+Command output:
+480-            </tbody>
+481-          </table>
+482-        </div>
+483-      </div>
+484-
+485-      <!-- TAX BREAKDOWN & GST PRESETS -->
+486-      <div class="bg-white rounded-xl border border-slate-200 p-3.5 shadow-sm space-y-3">
+487-        <div class="flex items-center justify-between">
+488-          <div class="flex items-center space-x-2">
+489-            <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">GST Tax Rate & Split</span>
+490-            <span class="text-[10px] px-1.5 py-0.5 rounded font-mono font-semibold ${((invoice.gstin || '06').slice(0, 2) === (invoice.buyer_gstin || '06').slice(0, 2)) ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-blue-50 text-blue-800 border border-blue-200'}">
+491-              ${((invoice.gstin || '06').slice(0, 2) === (invoice.buyer_gstin || '06').slice(0, 2)) ? `Intra-State (${(invoice.gstin || '06').slice(0, 2)}=${(invoice.buyer_gstin || '06').slice(0, 2)})` : `Inter-State (${(invoice.gstin || '06').slice(0, 2)}≠${(invoice.buyer_gstin || '06').slice(0, 2)})`}
+492-            </span>
+493-          </div>
+494-          <span class="text-xs font-mono font-bold text-emerald-700">Total Tax: ${formatRupees(audit.totalTax)}</span>
+495-        </div>
+496-
+497-        <!-- Quick GST Rate Presets -->
+498-        <div class="flex flex-wrap items-center gap-1.5 text-xs">
+499-          <span class="text-[10px] text-slate-500 font-medium">Quick GST Rates:</span>
+500:          <button data-gst-preset="0" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">0% (Exempt)</button>
+501:          <button data-gst-preset="5" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">5% (Grocery/Atta)</button>
+502:          <button data-gst-preset="12" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">12% (Standard)</button>
+503:          <button data-gst-preset="18" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">18% (Electrical)</button>
+504:          <button data-gst-preset="28" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">28% (Luxury)</button>
+505-        </div>
+506-
+507-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs pt-1">
+508-          <div>
+509-            <label class="block text-[10px] font-semibold text-slate-500 mb-1">CGST (Intra-State) ₹</label>
+510-            <input 
+511-              type="number" 
+512-              step="0.01" 
+513-              id="input-cgst" 
+514-              value="${invoice.cgst || 0}"
+515-              class="w-full px-2 py-1.5 rounded-lg border border-slate-300 font-mono text-xs text-right text-slate-800"
+516-            />
+517-          </div>
+518-          <div>
+519-            <label class="block text-[10px] font-semibold text-slate-500 mb-1">SGST (Intra-State) ₹</label>
+520-            <input 
+521-              type="number" 
+522-              step="0.01" 
+523-              id="input-sgst" 
+524-              value="${invoice.sgst || 0}"
+--
+748-  if (inputTotalDeclared && onUpdateHeader) {
+749-    inputTotalDeclared.addEventListener("input", (e) => onUpdateHeader("total_declared", parseFloat(e.target.value) || 0));
+750-  }
+751-
+752-  // Tax inputs (CGST, SGST, IGST)
+753-  const inputCgst = container.querySelector("#input-cgst");
+754-  const inputSgst = container.querySelector("#input-sgst");
+755-  const inputIgst = container.querySelector("#input-igst");
+756-
+757-  if (inputCgst && onUpdateHeader) {
+758-    inputCgst.addEventListener("input", (e) => onUpdateHeader("cgst", parseFloat(e.target.value) || 0));
+759-  }
+760-  if (inputSgst && onUpdateHeader) {
+761-    inputSgst.addEventListener("input", (e) => onUpdateHeader("sgst", parseFloat(e.target.value) || 0));
+762-  }
+763-  if (inputIgst && onUpdateHeader) {
+764-    inputIgst.addEventListener("input", (e) => onUpdateHeader("igst", parseFloat(e.target.value) || 0));
+765-  }
+766-
+767-  // GST Presets: Click Handler Sync with Intra-State vs Inter-State Auto-Determination
+768:  container.querySelectorAll("[data-gst-preset]").forEach(btn => {
+769-    btn.addEventListener("click", () => {
+770:      const presetAttr = btn.getAttribute("data-gst-preset");
+771-      const ratePct = parseFloat(presetAttr) / 100;
+772-      // Recalculate dynamically based on current Subtotal (e.g. 11,000)
+773-      const subtotal = round2(Number(invoice.subtotal) || Number(invoice.calculated_subtotal) || audit.sum_items || 0);
+774-
+775-      // Compare first 2 digits of Supplier GSTIN (06) and Buyer GSTIN (06)
+776-      const supplierGstin = (invoice.gstin || "").trim().toUpperCase();
+777-      const buyerGstin = (invoice.buyer_gstin || "06CORPP2712A1Z1").trim().toUpperCase();
+778-      const supplierState = supplierGstin ? supplierGstin.slice(0, 2) : "06";
+779-      const buyerState = buyerGstin ? buyerGstin.slice(0, 2) : "06";
+780-      const isIntraState = supplierState === buyerState;
+781-
+782-      let newCgst = 0;
+783-      let newSgst = 0;
+784-      let newIgst = 0;
+785-
+786-      if (presetAttr === "18" || ratePct === 0.18) {
+787-        if (isIntraState) {
+788-          // Clicking '[18% (Electrical)]' should immediately set:
+789-          // cgst = subtotal * 0.09;
+790-          // sgst = subtotal * 0.09;

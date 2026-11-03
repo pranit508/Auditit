@@ -1,0 +1,16 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:457:        "vendor_name": "Modern Electrical & Hardware Phone: +91 9876543210",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/clean_items.py:473:    assert sanitized["vendor_name"] == "Modern Electrical & Hardware"
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/README.md:19:  - **Sample 2: Math Error** (*Modern Electrical Supplies*): Red `₹1,000 Overcharge` pill badge (20 LED bulbs @ ₹95 billed as ₹2,900 instead of ₹1,900).
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/README.md:38:  - **Quick GST Rate Presets:** 1-tap presets for 0% (Exempt), 5% (Atta/Rice), 12% (Standard), 18% (Electrical), 28% (Luxury) or custom CGST/SGST/IGST.
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/README.md:61:  Namaste Modern Electrical Supplies Pvt Ltd,
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/DashboardHero.js:163:                    <p class="text-[11px] text-slate-500">Modern Electrical Supplies</p>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/DashboardHero.js:193:              <!-- Sample 4: Hardware & Electrical Bill -->
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/DashboardHero.js:205:                      Sample 4: Hardware & Electrical
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:498:          <button data-gst-preset="18" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">18% (Electrical)</button>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:64:    vendor_name: "Modern Electrical Supplies Pvt Ltd",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:179:    scenarioName: "Sample 4: Retail Hardware & Electrical Bill",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:180:    vendor_name: "Modern Electrical & Hardware",
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/data/sampleInvoices.js:220:    notes: "Electrical and lighting inventory for retail shop counter."

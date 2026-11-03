@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:495:          <button data-gst-preset="0" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">0% (Exempt)</button>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:496:          <button data-gst-preset="5" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">5% (Grocery/Atta)</button>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:497:          <button data-gst-preset="12" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">12% (Standard)</button>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:498:          <button data-gst-preset="18" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">18% (Electrical)</button>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:499:          <button data-gst-preset="28" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px]">28% (Luxury)</button>
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:763:  container.querySelectorAll("[data-gst-preset]").forEach(btn => {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/components/AuditScorecard.js:765:      const ratePct = parseFloat(btn.getAttribute("data-gst-preset")) / 100;

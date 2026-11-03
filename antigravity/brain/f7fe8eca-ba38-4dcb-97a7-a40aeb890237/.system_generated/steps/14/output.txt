@@ -1,0 +1,7 @@
+Command exited with code 1.
+
+Command output:
+node not found
+npm not found
+pnpm not found
+bun not found

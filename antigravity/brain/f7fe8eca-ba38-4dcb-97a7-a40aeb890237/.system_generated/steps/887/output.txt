@@ -1,0 +1,12 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:6:import { cleanExtractedItems } from "./itemCleaner.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:107:          parsed.items = cleanExtractedItems(parsed.items);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:158:          // CRITICAL PARSING RULE: Apply cleanExtractedItems to response.items right after Gemini call
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/aiExtractor.js:160:            parsed.items = cleanExtractedItems(parsed.items);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:5:import { cleanExtractedItems } from "./itemCleaner.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:225:  const itemsToUse = cleanExtractedItems(items);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/itemCleaner.js:31:export function cleanExtractedItems(items) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:4:import { cleanExtractedItems } from "./utils/itemCleaner.js";
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js:213:        extractedInvoice.items = cleanExtractedItems(extractedInvoice.items);

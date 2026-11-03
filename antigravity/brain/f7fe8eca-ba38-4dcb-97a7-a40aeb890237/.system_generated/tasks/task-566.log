@@ -1,0 +1,112 @@
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+
+========================================================
+  🚀 AUDIT IT - FastAPI + Google GenAI Server
+  Serving on: http://localhost:3000
+  Model:      gemini-2.5-flash
+  Root Dir:   /Users/pranit405/.gemini/antigravity/scratch/audit-it
+========================================================
+
+INFO:     Started server process [39792]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59909 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59909 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59911 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59911 - "GET /data/sampleInvoices.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59913 - "GET /utils/itemCleaner.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59916 - "GET /utils/privacyMasker.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59909 - "GET /utils/auditEngine.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59918 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59919 - "GET /utils/aiExtractor.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59913 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59916 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59911 - "GET /utils/taxCalculator.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59918 - "GET /components/DashboardHero.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59919 - "GET /components/CaSlipModal.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59909 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59916 - "GET /components/AuditScorecard.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59913 - "GET /utils/invoiceTextParser.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59919 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59919 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59921 - "POST /api/analyze-bill HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59921 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59923 - "GET /utils/aiExtractor.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59923 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59925 - "POST /api/analyze-bill HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59925 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59927 - "GET /utils/itemCleaner.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59929 - "GET /utils/privacyMasker.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59931 - "GET /utils/aiExtractor.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59931 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59935 - "POST /api/analyze-bill HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59935 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59939 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59939 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59940 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59939 - "GET /utils/auditEngine.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59945 - "GET /utils/privacyMasker.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59940 - "GET /data/sampleInvoices.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59942 - "GET /utils/itemCleaner.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59947 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59948 - "GET /utils/aiExtractor.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59942 - "GET /components/DashboardHero.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59948 - "GET /components/CaSlipModal.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59945 - "GET /utils/taxCalculator.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59940 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59939 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59947 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59942 - "GET /utils/invoiceTextParser.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59947 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59939 - "GET /components/AuditScorecard.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59939 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59950 - "POST /api/analyze-bill HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59950 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59956 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60421 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60421 - "GET /app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60421 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60422 - "GET /utils/privacyMasker.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60421 - "GET /utils/itemCleaner.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60424 - "GET /utils/aiExtractor.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60424 - "GET /utils/invoiceTextParser.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61888 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61889 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61888 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61889 - "GET /utils/auditEngine.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61888 - "GET /data/sampleInvoices.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61891 - "GET /utils/discrepancyNote.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61897 - "GET /utils/privacyMasker.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61896 - "GET /utils/itemCleaner.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61895 - "GET /utils/taxSuggestions.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61888 - "GET /utils/taxCalculator.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61896 - "GET /components/DashboardHero.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61889 - "GET /utils/aiExtractor.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61891 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61897 - "GET /components/CaSlipModal.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61895 - "GET /components/ApiKeyModal.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61891 - "GET /utils/invoiceTextParser.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61896 - "GET /components/AuditScorecard.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61889 - "GET /components/InvoiceViewer.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61896 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+[AUDIT IT] GenAI generate_content error: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:61899 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61899 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] GenAI generate_content error: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:61901 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61901 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] GenAI generate_content error: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:61903 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61903 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] GenAI generate_content error: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:61905 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61905 - "POST /api/process-invoice HTTP/1.1" 200 OK
+[AUDIT IT] GenAI generate_content error: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:61907 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61907 - "POST /api/process-invoice HTTP/1.1" 200 OK

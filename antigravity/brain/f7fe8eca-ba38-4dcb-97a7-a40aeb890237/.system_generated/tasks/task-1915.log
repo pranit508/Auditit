@@ -1,0 +1,89 @@
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+
+========================================================
+  🚀 AUDIT IT - FastAPI + Google GenAI Server
+  Serving on: http://localhost:3000
+  Model:      gemini-2.5-flash / gemini-3.5-flash
+  Root Dir:   /Users/pranit405/.gemini/antigravity/scratch/audit-it
+========================================================
+
+INFO:     Started server process [41214]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62451 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62449 - "GET /styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62451 - "GET /data/sampleInvoices.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62449 - "GET /utils/auditEngine.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62457 - "GET /utils/privacyMasker.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62453 - "GET /components/TaxAndITRTab.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62455 - "GET /utils/itemCleaner.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62459 - "GET /utils/aiExtractor.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62451 - "GET /utils/taxCalculator.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62449 - "GET /utils/taxSuggestions.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62455 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62459 - "GET /components/ApiKeyModal.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62457 - "GET /components/DashboardHero.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62451 - "GET /utils/invoiceTextParser.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62455 - "GET /components/InvoiceViewer.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62451 - "GET /components/AuditScorecard.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62457 - "GET /components/TaxFilingDashboard.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62457 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:62461 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62461 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62464 - "GET /index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62464 - "GET /app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62464 - "GET /components/ReviewWorkspace.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62466 - "GET /components/TaxAndITRTab.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62466 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62468 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:62470 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62470 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62470 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62472 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62474 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62474 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62977 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62977 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62978 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62978 - "GET /data/sampleInvoices.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62977 - "GET /utils/auditEngine.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62980 - "GET /utils/itemCleaner.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62983 - "GET /utils/privacyMasker.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62984 - "GET /utils/discrepancyNote.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62986 - "GET /utils/aiExtractor.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62977 - "GET /utils/taxSuggestions.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62978 - "GET /utils/taxCalculator.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62983 - "GET /components/ReviewWorkspace.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62984 - "GET /components/DashboardHero.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62980 - "GET /components/TaxAndITRTab.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62986 - "GET /components/CaSlipModal.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62977 - "GET /components/ApiKeyModal.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62984 - "GET /utils/invoiceTextParser.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62977 - "GET /components/InvoiceViewer.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62980 - "GET /components/TaxFilingDashboard.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62984 - "GET /components/AuditScorecard.js HTTP/1.1" 304 Not Modified
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:62989 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:62989 - "POST /api/process-invoice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62992 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62994 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62994 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62996 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62998 - "POST /api/tax/calculate-advisory HTTP/1.1" 200 OK
+[AUDIT IT] Gemini REST attempt error: Gemini generation failed: [Errno 8] nodename nor servname provided, or not known
+INFO:     127.0.0.1:63009 - "POST /api/analyze-bill HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:63009 - "POST /api/process-invoice HTTP/1.1" 200 OK

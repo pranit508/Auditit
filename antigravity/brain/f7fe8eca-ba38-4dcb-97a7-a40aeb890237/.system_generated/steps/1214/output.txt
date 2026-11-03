@@ -1,0 +1,11 @@
+Command exited with code 1.
+
+Command output:
+Items count after cleaning: 2
+ - Item: Bosch Metal Hand Tool Kit Qty: 1.0 Rate: 2535.0 Total: 2535.0
+ - Item: Taparia Universal Tool Kit Qty: 1.0 Rate: 1270.0 Total: 1270.0
+Subtotal: 3805.0
+Declared Total: 4490
+Traceback (most recent call last):
+  File "<string>", line 30, in <module>
+AssertionError: Expected declared_total 4489.9, got 4490

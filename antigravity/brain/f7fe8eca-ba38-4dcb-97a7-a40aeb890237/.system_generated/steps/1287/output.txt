@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+res[total_declared]: 0.0
+res[declared_total]: 0.0

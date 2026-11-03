@@ -1,0 +1,1 @@
+Made 3 replacements in /Users/pranit405/.gemini/antigravity/scratch/audit-it/app.js starting at line 252 (+7/-1 lines).

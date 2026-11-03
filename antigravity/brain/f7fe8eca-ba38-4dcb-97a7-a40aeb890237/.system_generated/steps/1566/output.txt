@@ -1,0 +1,4 @@
+Command exited with code 128.
+
+Command output:
+fatal: not a git repository (or any of the parent directories): .git

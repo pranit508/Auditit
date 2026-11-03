@@ -1,0 +1,23 @@
+Task: f7fe8eca-ba38-4dcb-97a7-a40aeb890237/task-566
+Status: RUNNING
+Log: file:///Users/pranit405/.gemini/antigravity/brain/f7fe8eca-ba38-4dcb-97a7-a40aeb890237/.system_generated/tasks/task-566.log
+Log output:
+<truncated 3 lines>
+github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+
+========================================================
+  🚀 AUDIT IT - FastAPI + Google GenAI Server
+  Serving on: http://localhost:3000
+  Model:      gemini-2.5-flash
+  Root Dir:   /Users/pranit405/.gemini/antigravity/scratch/audit-it
+========================================================
+
+INFO:     Started server process [39792]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+
+Last progress: 4s ago

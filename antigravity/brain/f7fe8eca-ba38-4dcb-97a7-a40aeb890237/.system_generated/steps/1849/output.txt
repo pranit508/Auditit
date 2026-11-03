@@ -1,0 +1,60 @@
+Command exited with code 0.
+
+Command output:
+162-      disallowed_itc: !audit.gstinValid ? audit.totalTax : 0,
+163-      invoices_missing_gstin: audit.gstinValid ? 0 : 1,
+164-      digital_ratio: 0.60
+165-    },
+166-    calculated_tax: {
+167:      recommended_form: "ITR-4 (Presumptive Scheme - Sec 44AD)",
+168-      annual_turnover: 3600000,
+169-      digital_percent: 60,
+170-      cash_percent: 40,
+171-      deemed_net_profit: 244800,
+172-      estimated_tax_liability: 0,
+173-      tax_regime: "New Regime (Section 115BAC)"
+174-    },
+175-    ai_suggestions: {
+176-      suggestions: [
+177:        "Recommended ITR Form: File ITR-4 Sugam under Section 44AD presumptive scheme because your retail turnover is within ₹2-3 Crores, allowing you to declare deemed profit without maintaining formal books.",
+178-        audit.gstinValid 
+179-          ? `GST ITC Opportunity / Risk: You have ${formatRupees(audit.totalTax)} in eligible Input Tax Credit from this bill to directly offset your GST liability.`
+180-          : `GST ITC Opportunity / Risk: Missing supplier GSTIN blocks ${formatRupees(audit.totalTax)} in Input Tax Credit. Request a valid GSTIN bill to avoid higher tax outgo.`,
+181-        "Advance Tax & Action Item: Remind yourself to pay 100% of your advance tax by March 15 to avoid penal interest under Section 234B/234C."
+182-      ],
+--
+551-            </div>
+552-            <div>
+553-              <h4 class="text-xs sm:text-sm font-extrabold tracking-tight text-white flex items-center space-x-2">
+554-                <span>Tax & ITR Insights</span>
+555-                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+556:                  Sec 44AD Presumptive
+557-                </span>
+558-              </h4>
+559-              <p class="text-[10px] text-slate-400">Deterministic Tax Calculation & Gemini 2.5 Flash Advisory</p>
+560-            </div>
+561-          </div>
+--
+578-          <div class="bg-slate-800/80 rounded-xl p-3 border border-slate-700/80 flex flex-col justify-between">
+579-            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Pill 1 • Recommended Form</span>
+580-            <div class="mt-1 font-bold text-xs text-emerald-300">
+581-              ${calculated_tax.recommended_form}
+582-            </div>
+583:            <span class="text-[9px] text-slate-400 mt-1 block">Presumptive Scheme under Sec 44AD</span>
+584-          </div>
+585-
+586-          <!-- Pill 2: Deemed Net Profit -->
+587-          <div class="bg-slate-800/80 rounded-xl p-3 border border-slate-700/80 flex flex-col justify-between">
+588-            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Pill 2 • Deemed Net Profit</span>
+--
+604-        </div>
+605-
+606-        <!-- REAL-TIME SHOP TURNOVER & CASH RATIO SLIDER -->
+607-        <div class="bg-slate-800/40 rounded-xl p-3 border border-slate-700/50 space-y-2 text-xs">
+608-          <div class="flex items-center justify-between text-[11px] text-slate-300">
+609:            <span class="font-bold">Adjust Digital Receipts Ratio (Sec 44AD Profit: 6% Digital vs 8% Cash):</span>
+610-            <span class="font-mono font-bold text-emerald-300" id="label-digital-ratio">${calculated_tax.digital_percent}% Digital (${calculated_tax.cash_percent}% Cash)</span>
+611-          </div>
+612-          <input 
+613-            type="range" 
+614-            min="0" 

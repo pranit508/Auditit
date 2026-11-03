@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+Sanitized Supplier Name: 'Sharma Enterprises'
+
+Retained Items:
+ - LED Tube Light 20W | Qty: 10.0 | Rate: 250.0 | Amount: 2500.0
+ - Basmati Rice 25kg | Qty: 4.0 | Rate: 950.0 | Amount: 3800.0
+
+SUCCESS: All mandatory rules verified and working with 100% precision!

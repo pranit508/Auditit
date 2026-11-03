@@ -1,0 +1,140 @@
+Command exited with code 0.
+
+Command output:
+245-        billed = parse_inr(raw_billed) if raw_billed is not None and str(raw_billed).strip() != "" else round(qty * rate, 2)
+246-
+247-        # Post-Processing Column Swap Fallback:
+248-        # If total matches qty exactly and rate is small (e.g. qty=535, rate=2, total=535), 
+249-        # it means qty and rate were misaligned. Swap them:
+250-        if billed > 0 and qty == billed and rate in [1.0, 2.0, 1, 2]:
+251-            qty = 1.0
+252-            rate = billed
+253-
+254-        item["quantity"] = qty
+255-        item["qty"] = qty
+256-        item["unit_rate"] = rate
+257-        item["rate"] = rate
+258-        item["total_amount"] = billed
+259-        item["amount"] = billed
+260-        clean_items.append(item)
+261-
+262-    data["items"] = clean_items
+263-
+264-    # 3. Ensure numeric fields strip commas cleanly via parse_inr
+265:    for key in ["subtotal", "cgst", "sgst", "igst", "declared_total", "total_declared"]:
+266-        val = data.get(key)
+267-        if val is not None and str(val).strip() != "" and str(val).lower() != "null":
+268-            data[key] = parse_inr(val)
+269-
+270-    # 4. SUB-TOTAL CALCULATION:
+271-    # Do not trust random OCR numbers near bank details for Subtotal.
+272-    # Calculate the Subtotal deterministically from the extracted items:
+273-    # subtotal = sum(item.quantity * item.unit_rate for item in items)
+274-    if clean_items:
+275-        calculated_subtotal = round(sum(it["quantity"] * it["unit_rate"] for it in clean_items), 2)
+276-        data["subtotal"] = calculated_subtotal
+277-        data["calculated_subtotal"] = calculated_subtotal
+278-    else:
+279-        calculated_subtotal = float(data.get("subtotal") or 0.0)
+280-
+281-    # 5. INTRA-STATE vs INTER-STATE AUTO-DETERMINATION & GRAND TOTAL SANITY CHECK:
+282-    # Compare first 2 digits of Supplier GSTIN (06) and Buyer GSTIN (06)
+283-    supp_gstin = str(data.get("gstin") or "").strip().upper()
+284-    buyer_gstin = str(data.get("buyer_gstin") or "06CORPP2712A1Z1").strip().upper()
+285-    data["buyer_gstin"] = buyer_gstin
+286-    supp_state = supp_gstin[:2] if len(supp_gstin) >= 2 and supp_gstin[:2].isdigit() else "06"
+287-    buyer_state = buyer_gstin[:2] if len(buyer_gstin) >= 2 and buyer_gstin[:2].isdigit() else "06"
+288-    is_intra_state = (supp_state == buyer_state)
+289-
+290:    cgst = float(data.get("cgst") or 0.0)
+291-    sgst = float(data.get("sgst") or 0.0)
+292-    igst = float(data.get("igst") or 0.0)
+293-
+294-    if is_intra_state:
+295-        # Intra-state: IGST must strictly be 0
+296-        igst = 0.0
+297-        data["igst"] = 0.0
+298:        if cgst == 0 and sgst == 0 and calculated_subtotal > 0:
+299:            cgst = round(calculated_subtotal * 0.09, 2)
+300-            sgst = round(calculated_subtotal * 0.09, 2)
+301:            data["cgst"] = cgst
+302-            data["sgst"] = sgst
+303:        elif cgst > 0 and sgst == 0:
+304:            sgst = cgst
+305-            data["sgst"] = sgst
+306:        elif sgst > 0 and cgst == 0:
+307:            cgst = sgst
+308:            data["cgst"] = cgst
+309-    else:
+310-        # Inter-state: CGST = 0, SGST = 0, IGST applies
+311:        cgst = 0.0
+312-        sgst = 0.0
+313:        data["cgst"] = 0.0
+314-        data["sgst"] = 0.0
+315-        if igst == 0 and calculated_subtotal > 0:
+316-            igst = round(calculated_subtotal * 0.18, 2)
+317-            data["igst"] = igst
+318-
+319:    total_tax = round(cgst + sgst + igst, 2)
+320-    expected_total = round(calculated_subtotal + total_tax, 2)
+321-
+322-    # Check for printed Grand Total in Words line (e.g. 'FOUR THOUSAND FOUR HUNDRED AND NINETY')
+323-    word_total = 0.0
+324-    raw_ocr = str(data.get("raw_ocr_text") or data.get("raw_text") or data.get("notes") or "")
+325-    for candidate_text in [raw_ocr, str(data.get("notes") or ""), str(data.get("amount_in_words") or ""), str(data.get("total_in_words") or "")]:
+326-        if candidate_text:
+327-            for line in candidate_text.splitlines():
+328-                if re.search(r'(?:total|amount|rupees)\s+(?:in\s+words|in\s+word)', line, re.IGNORECASE) or re.search(r'rupees\s+[a-zA-Z\s]+only', line, re.IGNORECASE):
+329-                    wt = parse_words_to_number(line)
+330-                    if wt > 0:
+331-                        word_total = wt
+332-                        break
+333-        if word_total > 0:
+334-            break
+335-
+336-    current_declared = float(data.get("declared_total") if data.get("declared_total") is not None else (data.get("total_declared") or 0.0))
+337-    
+338-    # Reject bank/account/IFSC digits (e.g. 774, 585132) if wildly outside expected total
+339-    is_declared_suspicious = False
+--
+500-        ]
+501-    }
+502-
+503-    sanitized = sanitize_invoice_data(invoice_payload)
+504-    print("Sanitized Vendor Name:", sanitized["vendor_name"])
+505-    assert sanitized["vendor_name"] == "Modern Electrical & Hardware"
+506-    print("Sanitized Items Count:", len(sanitized["items"]))
+507-    for it in sanitized["items"]:
+508-        print("  *", it["description"], "| Qty:", it["quantity"], "| Rate:", it["unit_rate"], "| Total:", it["total_amount"])
+509-    assert len(sanitized["items"]) == 3, f"Expected 3 items, got {len(sanitized['items'])}"
+510-    assert sanitized["items"][0]["description"] == "LED Tube Light 20W"
+511-    assert sanitized["items"][1]["description"] == "Basmati Rice 25kg"
+512-    assert sanitized["items"][2]["description"] == "Power Drill Kit"
+513-    assert sanitized["items"][2]["quantity"] == 1.0
+514-    assert sanitized["items"][2]["unit_rate"] == 780.0
+515-    # Test cases for sanitize_and_clean_invoice
+516-    test_clean_payload = {
+517-        "vendor_name": "Modern Tools & Hardware |[]()",
+518-        "declared_total": "774",  # Misread bank digits
+519-        "subtotal": "585132",     # Corrupted subtotal from bank line
+520:        "cgst": "342.45",
+521-        "sgst": "342.45",
+522-        "raw_ocr_text": "Total in words: FOUR THOUSAND FOUR HUNDRED AND NINETY RUPEES ONLY",
+523-        "items": [
+524-            {
+525-                "description": "[| Bosch All-in-One Metal Hand Tool Kit NOS |]",
+526-                "quantity": 1,
+527-                "unit_rate": "2,535.00",
+528-                "total_amount": "2,535.00"
+529-            },
+530-            {
+531-                "description": "Taparia Universal Tool Kit PCS",
+532-                "quantity": "1",
+533-                "unit_rate": "1,270.00",
+534-                "total_amount": "1,270.00"
+535-            },
+536-            {
+537-                "description": "PAN : 26CORPP1234F",
+538-                "quantity": 1,
+539-                "unit_rate": 500,
+540-                "total_amount": 500

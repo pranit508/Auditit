@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+Python version: 3.9.6 (default, Aug 25 2026, 21:26:21) 
+[Clang 21.0.0 (clang-2100.3.34.2)]
+fastapi: NOT available (No module named 'fastapi')
+uvicorn: NOT available (No module named 'uvicorn')
+pydantic: NOT available (No module named 'pydantic')
+google.genai: NOT available (No module named 'google')
+google: NOT available (No module named 'google')

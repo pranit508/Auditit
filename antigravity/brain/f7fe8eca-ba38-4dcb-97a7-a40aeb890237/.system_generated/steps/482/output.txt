@@ -1,0 +1,9 @@
+Command exited with code 1.
+
+There were sandbox errors that may or may not be related to the failure. If you think the failure is because of running in the sandbox, you can run the command again with `BypassSandbox` set to true to request explicit user permission.
+
+Command output:
+Sanitized Supplier Name: 'Sharma Enterprises , ,'
+Traceback (most recent call last):
+  File "<string>", line 28, in <module>
+AssertionError: Supplier name mismatch

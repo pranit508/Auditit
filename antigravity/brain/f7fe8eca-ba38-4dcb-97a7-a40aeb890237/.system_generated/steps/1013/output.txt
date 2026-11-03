@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:149:    const altNumbers = line.match(/(\d+(?:\.\d{1,2})?)/g);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:150:    if (altNumbers && altNumbers.length >= 2) {
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:151:      const lastNum = parseFloat(altNumbers[altNumbers.length - 1]);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:152:      const prevNum = parseFloat(altNumbers[altNumbers.length - 2]);
+/Users/pranit405/.gemini/antigravity/scratch/audit-it/utils/invoiceTextParser.js:158:          const qty = altNumbers.length >= 3 ? (parseFloat(altNumbers[altNumbers.length - 3]) || 1) : 1;
