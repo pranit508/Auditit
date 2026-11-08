@@ -1,8 +1,6 @@
 // Gemini 2.5 Flash Tax Suggestions Generator for AUDIT IT
 import { formatRupees } from "./auditEngine.js";
 
-const DEFAULT_API_KEY = "AQ.Ab8RN6LhTNa6kIQRpd_OijgrXNfmwLOw7rcxiMN8aWW-_U7mPw";
-
 /**
  * Calls Gemini 2.5 Flash to generate tax and ITR suggestions for small retail shopkeepers.
  * 
@@ -12,7 +10,7 @@ const DEFAULT_API_KEY = "AQ.Ab8RN6LhTNa6kIQRpd_OijgrXNfmwLOw7rcxiMN8aWW-_U7mPw";
  * @returns {Promise<{ suggestions: string[], disclaimer: string, isAiGenerated: boolean }>}
  */
 export async function generate_tax_suggestions(audit_summary, calculated_tax, apiKey = null) {
-  const effectiveKey = (apiKey && apiKey.trim().length > 10) ? apiKey.trim() : DEFAULT_API_KEY;
+  const effectiveKey = (apiKey && apiKey.trim().length > 10) ? apiKey.trim() : "";
 
   if (!audit_summary || !calculated_tax) {
     return {

@@ -3,3 +3,6 @@ venv/
 *.pyc
 __pycache__/
 antigravity/
+.pythonlibs/
+*.egg-info/
+dist/

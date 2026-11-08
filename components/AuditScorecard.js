@@ -1,5 +1,7 @@
 // Component: Audit Scorecard & Interactive Line-Item Verification Panel
 import { formatRupees, round2 } from "../utils/auditEngine.js";
+import { escapeHtml } from "../utils/html.js";
+import { bindInfoTooltipEvents, renderInfoTooltip } from "../utils/infoTooltip.js?v=tax-input-help-20261107";
 
 export function renderAuditScorecard(container, invoice, audit, options = {}) {
   const { 
@@ -62,7 +64,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                   <div class="flex items-center justify-between">
                     <label class="font-bold text-slate-900 text-xs flex items-center space-x-1.5">
                       <span class="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-mono">${idx + 1}</span>
-                      <span>${m.label}</span>
+                      <span>${escapeHtml(m.label)}</span>
                     </label>
                     ${m.isGstin ? `
                       <button type="button" class="btn-mark-unregistered text-[10px] font-bold text-emerald-700 hover:underline">
@@ -71,7 +73,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                     ` : ''}
                   </div>
                   
-                  <p class="text-[11px] text-slate-500">${m.description}</p>
+                  <p class="text-[11px] text-slate-500">${escapeHtml(m.description)}</p>
 
                   <div class="mt-1">
                     <input 
@@ -80,8 +82,8 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                       class="missing-input-field w-full px-3 py-2 rounded-lg border border-slate-300 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-xs font-mono text-slate-900 bg-white"
                       data-field="${m.field}"
                       data-item-index="${m.itemIndex !== undefined ? m.itemIndex : ''}"
-                      value="${m.currentValue || ''}"
-                      placeholder="${m.placeholder || 'Enter value...'}"
+                      value="${escapeHtml(m.currentValue || '')}"
+                      placeholder="${escapeHtml(m.placeholder || 'Enter value...')}"
                     />
                   </div>
                 </div>
@@ -287,20 +289,23 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
       </div>
 
       <!-- REAL-TIME EDITABLE BILL HEADERS (Vendor, GSTIN, Billed Total) -->
-      <div class="bg-white rounded-xl border border-slate-200 p-3.5 shadow-sm space-y-2.5">
-        <div class="flex items-center justify-between">
-          <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Bill Header Inputs (Real-Time Edit)</span>
-          <span class="text-[10px] text-slate-400">Updates bill & audit instantly</span>
-        </div>
+      <details id="bill-header-inputs-panel" data-preserve-open class="bg-white rounded-xl border border-slate-200 p-3.5 shadow-sm">
+        <summary class="audit-dropdown-summary flex items-center justify-between gap-2">
+          <span class="flex items-center gap-2">
+            <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Bill Header Inputs (Real-Time Edit)</span>
+            ${renderInfoTooltip("bill-header-inputs-info", "Edit the supplier name, supplier GSTIN, and billed total. Changes update the invoice audit.")}
+          </span>
+          <span class="audit-dropdown-chevron text-slate-500 text-lg leading-none" aria-hidden="true">⌄</span>
+        </summary>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs pt-3">
           <!-- Supplier Name -->
           <div>
             <label class="block text-[10px] font-semibold text-slate-500 mb-1">Supplier Name</label>
             <input 
               type="text" 
               id="input-vendor-name"
-              value="${invoice.vendor_name || ''}"
+              value="${escapeHtml(invoice.vendor_name || '')}"
               placeholder="e.g. Sharma Wholesale"
               class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
             />
@@ -317,7 +322,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
             <input 
               type="text" 
               id="input-gstin"
-              value="${invoice.gstin || ''}"
+              value="${escapeHtml(invoice.gstin || '')}"
               maxlength="15"
               placeholder="e.g. 07AAAAA0000A1Z5"
               class="w-full px-2.5 py-1.5 rounded-lg border ${audit.gstinValid ? 'border-slate-300' : 'border-amber-400 bg-amber-50/50'} text-xs font-mono uppercase text-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
@@ -334,29 +339,30 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
               type="number" 
               step="0.01"
               id="input-total-declared"
-              value="${invoice.total_declared || 0}"
+              value="${escapeHtml(invoice.total_declared || 0)}"
               class="w-full px-2.5 py-1.5 rounded-lg border ${audit.hasTotalDiscrepancy ? 'border-rose-400 bg-rose-50/40 text-rose-700 font-bold' : 'border-slate-300 text-slate-800'} text-xs font-mono text-right focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
             />
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- EDITABLE LINE-ITEMS AUDIT TABLE -->
-      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <div class="px-4 py-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <details id="item-breakdown-panel" data-preserve-open class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <summary class="audit-dropdown-summary px-4 py-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between gap-2">
           <div class="flex items-center space-x-2">
             <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Item Breakdown & Math Check</span>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-mono font-semibold">${invoice.items.length} items</span>
           </div>
+          <span class="audit-dropdown-chevron text-slate-500 text-lg leading-none" aria-hidden="true">⌄</span>
+        </summary>
 
-          <div class="flex items-center space-x-2">
-            <button 
-              id="btn-add-item" 
-              class="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center space-x-1 transition-all"
-            >
-              <span>➕ Add Line Item</span>
-            </button>
-          </div>
+        <div class="px-4 pt-3 flex justify-end">
+          <button
+            id="btn-add-item"
+            class="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center space-x-1 transition-all"
+          >
+            <span>➕ Add Line Item</span>
+          </button>
         </div>
 
         <div class="overflow-x-auto">
@@ -387,19 +393,19 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                       : isSelected 
                       ? 'bg-indigo-50/60 hover:bg-indigo-100/50' 
                       : 'hover:bg-slate-50'
-                  }" id="scorecard-row-${item.id || idx}">
+                  }" id="scorecard-row-${escapeHtml(item.id || idx)}">
                     
                     <td class="py-2 pl-3">
                       <input 
                         type="text" 
-                        value="${item.description || ''}"
+                        value="${escapeHtml(item.description || '')}"
                         placeholder="Item name"
                         class="w-full px-1.5 py-0.5 rounded border border-transparent hover:border-slate-300 focus:border-emerald-500 text-xs font-semibold text-slate-800 bg-transparent"
                         data-action="edit-desc"
                         data-index="${idx}"
                       />
-                      ${item.hsn ? `<span class="text-[10px] font-mono text-slate-400 block px-1.5">HSN: ${item.hsn}</span>` : ''}
-                      ${isErr ? `<div class="text-[10px] text-rose-700 font-medium px-1.5 mt-0.5">⚠️ Expected: ${item.qty} × ${formatRupees(item.rate)} = ${formatRupees(item.calculatedAmount)}</div>` : ''}
+                      ${item.hsn ? `<span class="text-[10px] font-mono text-slate-400 block px-1.5">HSN: ${escapeHtml(item.hsn)}</span>` : ''}
+                      ${isErr ? `<div class="text-[10px] text-rose-700 font-medium px-1.5 mt-0.5">⚠️ Expected: ${escapeHtml(item.qty)} × ${formatRupees(item.rate)} = ${formatRupees(item.calculatedAmount)}</div>` : ''}
                     </td>
 
                     <!-- Editable Qty -->
@@ -408,7 +414,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                         type="number" 
                         step="1"
                         min="0"
-                        value="${item.qty}"
+                        value="${escapeHtml(item.qty)}"
                         class="w-14 text-right px-1.5 py-1 rounded border border-slate-300 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 font-mono text-xs bg-white text-slate-800"
                         data-action="edit-qty"
                         data-index="${idx}"
@@ -421,7 +427,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                         type="number" 
                         step="0.01"
                         min="0"
-                        value="${item.rate}"
+                        value="${escapeHtml(item.rate)}"
                         class="w-20 text-right px-1.5 py-1 rounded border ${isBlurry ? 'border-amber-400 bg-amber-50' : 'border-slate-300'} focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 font-mono text-xs text-slate-800"
                         data-action="edit-rate"
                         data-index="${idx}"
@@ -434,7 +440,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
                         type="number" 
                         step="0.01"
                         min="0"
-                        value="${item.declaredAmount}"
+                        value="${escapeHtml(item.declaredAmount)}"
                         class="w-20 text-right px-1.5 py-1 rounded border ${isErr ? 'border-rose-300 bg-rose-50/50 text-rose-700 font-bold' : 'border-slate-300 text-slate-800'} font-mono text-xs"
                         data-action="edit-amount"
                         data-index="${idx}"
@@ -481,20 +487,25 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
             </tbody>
           </table>
         </div>
-      </div>
+      </details>
 
       <!-- TAX BREAKDOWN & GST PRESETS -->
-      <div class="bg-white rounded-xl border border-slate-200 p-3.5 shadow-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
+      <details id="gst-tax-settings-panel" data-preserve-open class="bg-white rounded-xl border border-slate-200 p-3.5 shadow-sm">
+        <summary class="audit-dropdown-summary flex items-center justify-between gap-2">
+          <span class="flex items-center gap-2">
             <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">GST Tax Rate & Split</span>
+            ${renderInfoTooltip("gst-tax-settings-info", "Choose a quick GST rate or edit the CGST, SGST, and IGST amounts for this invoice.")}
+          </span>
+          <span class="flex items-center gap-2">
             <span class="text-[10px] px-1.5 py-0.5 rounded font-mono font-semibold ${((invoice.gstin || '06').slice(0, 2) === (invoice.buyer_gstin || '06').slice(0, 2)) ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-blue-50 text-blue-800 border border-blue-200'}">
-              ${((invoice.gstin || '06').slice(0, 2) === (invoice.buyer_gstin || '06').slice(0, 2)) ? `Intra-State (${(invoice.gstin || '06').slice(0, 2)}=${(invoice.buyer_gstin || '06').slice(0, 2)})` : `Inter-State (${(invoice.gstin || '06').slice(0, 2)}≠${(invoice.buyer_gstin || '06').slice(0, 2)})`}
+              ${!invoice.buyer_gstin ? "Buyer location not specified" : ((invoice.gstin || '').slice(0, 2) === invoice.buyer_gstin.slice(0, 2)) ? 'Intra-State' : 'Inter-State'}
             </span>
-          </div>
-          <span class="text-xs font-mono font-bold text-emerald-700">Total Tax: ${formatRupees(audit.totalTax)}</span>
-        </div>
+            <span class="text-xs font-mono font-bold text-emerald-700">Total Tax: ${formatRupees(audit.totalTax)}</span>
+            <span class="audit-dropdown-chevron text-slate-500 text-lg leading-none" aria-hidden="true">⌄</span>
+          </span>
+        </summary>
 
+        <div class="space-y-3 pt-3">
         <!-- Quick GST Rate Presets -->
         <div class="flex flex-wrap items-center gap-1.5 text-xs">
           <span class="text-[10px] text-slate-500 font-medium">Quick GST Rates:</span>
@@ -512,7 +523,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
               type="number" 
               step="0.01" 
               id="input-cgst" 
-              value="${invoice.cgst || 0}"
+              value="${escapeHtml(invoice.cgst || 0)}"
               class="w-full px-2 py-1.5 rounded-lg border border-slate-300 font-mono text-xs text-right text-slate-800"
             />
           </div>
@@ -522,7 +533,7 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
               type="number" 
               step="0.01" 
               id="input-sgst" 
-              value="${invoice.sgst || 0}"
+              value="${escapeHtml(invoice.sgst || 0)}"
               class="w-full px-2 py-1.5 rounded-lg border border-slate-300 font-mono text-xs text-right text-slate-800"
             />
           </div>
@@ -532,12 +543,13 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
               type="number" 
               step="0.01" 
               id="input-igst" 
-              value="${invoice.igst || 0}"
+              value="${escapeHtml(invoice.igst || 0)}"
               class="w-full px-2 py-1.5 rounded-lg border border-slate-300 font-mono text-xs text-right text-slate-800"
             />
           </div>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- ACTION BUTTONS -->
       <div class="flex flex-col sm:flex-row items-center gap-2 pt-2">
@@ -564,6 +576,8 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
 
     </div>
   `;
+
+  bindInfoTooltipEvents(container);
 
   // Attach event handlers
   const btnQuickCopy = container.querySelector("#btn-quick-copy");
@@ -653,7 +667,11 @@ export function renderAuditScorecard(container, invoice, audit, options = {}) {
 
       // Compare first 2 digits of Supplier GSTIN (06) and Buyer GSTIN (06)
       const supplierGstin = (invoice.gstin || "").trim().toUpperCase();
-      const buyerGstin = (invoice.buyer_gstin || "06CORPP2712A1Z1").trim().toUpperCase();
+      const buyerGstin = (invoice.buyer_gstin || "").trim().toUpperCase();
+      if (!buyerGstin) {
+        window.alert("Buyer GSTIN is not specified on the invoice. Enter the printed tax amounts manually.");
+        return;
+      }
       const supplierState = supplierGstin ? supplierGstin.slice(0, 2) : "06";
       const buyerState = buyerGstin ? buyerGstin.slice(0, 2) : "06";
       const isIntraState = supplierState === buyerState;

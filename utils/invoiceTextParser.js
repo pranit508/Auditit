@@ -5,6 +5,7 @@
 // STEP 3: Fallback Parser with Precision Reconciliation
 
 import { round2 } from "./auditEngine.js";
+import { extractBuyerDetails, extractSupplierGstin } from "./buyerDetails.js";
 import { cleanExtractedItems } from "./itemCleaner.js";
 
 /**
@@ -167,21 +168,15 @@ export function extractTaxAmountFromMatch(line, taxType, subtotal = 0) {
  * Checks if raw text contains commercial invoice keywords
  */
 export function isLikelyInvoice(text) {
-  if (!text || text.trim().length < 15) return false;
-
-  const invoiceKeywords = [
-    "invoice", "tax invoice", "bill", "cash memo", "parcha", "challan",
-    "gst", "gstin", "subtotal", "total", "grand total", "qty", "rate", 
-    "amount", "hsn", "cgst", "sgst", "igst", "balance", "payable", "rupees", "mrp"
-  ];
-
-  const lower = text.toLowerCase();
-  let matches = 0;
-  for (const kw of invoiceKeywords) {
-    if (lower.includes(kw)) matches++;
-  }
-
-  return matches >= 2 || GSTIN_REGEX.test(text);
+  if (typeof text !== "string" || text.trim().length < 50) return false;
+  if (/\b(pro[\s-]?forma|quotation|purchase\s+order|bank\s+statement|curriculum\s+vitae|resume|delivery\s+challan)\b/i.test(text)) return false;
+  const identity = /\b(?:tax\s+invoice|invoice\s*(?:no\.?|number|#|:))\b/i.test(text);
+  const tax = /\b(?:tax\s+invoice|gstin|cgst|sgst|igst|vat)\b/i.test(text);
+  const description = /\b(?:description|particulars|item|product|service)\b/i.test(text);
+  const quantity = /\b(?:qty|quantity|hours|units)\b/i.test(text);
+  const price = /\b(?:rate|price|amount)\b/i.test(text);
+  const total = /\b(?:grand\s+total|total|net\s+payable|amount\s+due)\b/i.test(text);
+  return identity && tax && description && quantity && price && total && /\d/.test(text);
 }
 
 /**
@@ -419,8 +414,7 @@ export function parseInvoiceText(rawText, sourceFileName = "Uploaded Bill") {
   // 1. HEADER ZONE EXTRACTION (Top to Table Start)
   // Vendor Name, GSTIN, Invoice Number, and Date ONLY
   // Guardrail: Never extract any line from this zone as an item!
-  const gstinMatch = (headerZone.join(" ") + " " + rawText).match(GSTIN_REGEX);
-  const gstin = gstinMatch ? gstinMatch[0].toUpperCase() : null;
+  const gstin = extractSupplierGstin(rawText);
   if (!gstin) unreadable_fields.push("gstin");
 
   let invoice_no = null;
@@ -544,28 +538,13 @@ export function parseInvoiceText(rawText, sourceFileName = "Uploaded Bill") {
     subtotal = calculatedItemsSum;
   }
 
-  // Extract Buyer GSTIN if present in document, or default to Haryana State 06
-  let buyer_gstin = null;
-  const buyerRegex = /(?:buyer|consignee|customer|billed\s+to|recipient|party)[\s\w:\.\-]*?([0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1})\b/i;
-  const buyerMatch = rawText.match(buyerRegex);
-  if (buyerMatch) {
-    buyer_gstin = buyerMatch[1].toUpperCase();
-  } else {
-    const allGstins = (headerZone.join(" ") + " " + rawText).match(new RegExp(GSTIN_REGEX.source, "gi")) || [];
-    if (allGstins.length >= 2 && gstin) {
-      const secondGstin = allGstins.find(g => g.toUpperCase() !== gstin.toUpperCase());
-      if (secondGstin) buyer_gstin = secondGstin.toUpperCase();
-    }
-  }
-  if (!buyer_gstin) {
-    buyer_gstin = "06CORPP2712A1Z1";
-  }
+  const { buyer_name, buyer_address, buyer_gstin } = extractBuyerDetails(rawText);
 
   // INTRA-STATE vs INTER-STATE AUTO-DETERMINATION:
   // Compare the first 2 digits of the Supplier GSTIN (06) and Buyer GSTIN (06).
   const supplierState = gstin ? gstin.slice(0, 2) : "06";
   const buyerState = buyer_gstin ? buyer_gstin.slice(0, 2) : "06";
-  const isIntraState = supplierState === buyerState;
+  const isIntraState = buyer_gstin && gstin ? supplierState === buyerState : null;
 
   // 1. FIX THE DEFAULT TAX AUTO-CALCULATION & SANITY GUARD:
   // When GST is 18% Intra-State on a subtotal of ₹11,000.00:
@@ -599,7 +578,7 @@ export function parseInvoiceText(rawText, sourceFileName = "Uploaded Bill") {
     } else if (sgst > 0 && cgst === 0) {
       cgst = sgst;
     }
-  } else {
+  } else if (isIntraState === false) {
     // If state codes differ (Inter-State):
     // Set CGST = 0, SGST = 0, and IGST = 18% (₹1,980.00 on ₹11,000)
     cgst = 0;
@@ -653,7 +632,10 @@ export function parseInvoiceText(rawText, sourceFileName = "Uploaded Bill") {
     vendor_name,
     vendor_address: "Address from scanned bill",
     gstin,
+    supplier_gstin_source: gstin ? "supplier" : "unknown",
     buyer_gstin,
+    buyer_name,
+    buyer_address,
     invoice_no,
     date: date || new Date().toISOString().split("T")[0],
     items: itemsToUse,

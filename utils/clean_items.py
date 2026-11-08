@@ -281,11 +281,14 @@ def sanitize_and_clean_invoice(data: dict) -> dict:
     # 5. INTRA-STATE vs INTER-STATE AUTO-DETERMINATION & GRAND TOTAL SANITY CHECK:
     # Compare first 2 digits of Supplier GSTIN (06) and Buyer GSTIN (06)
     supp_gstin = str(data.get("gstin") or "").strip().upper()
-    buyer_gstin = str(data.get("buyer_gstin") or "06CORPP2712A1Z1").strip().upper()
-    data["buyer_gstin"] = buyer_gstin
+    buyer_gstin = str(data.get("buyer_gstin") or "").strip().upper()
+    data["buyer_gstin"] = buyer_gstin if re.fullmatch(r"[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]", buyer_gstin) else None
+    for field in ("buyer_name", "buyer_address"):
+        value = data.get(field)
+        data[field] = value.strip() if isinstance(value, str) and value.strip() and not re.fullmatch(r"n/?a|unknown|not (?:specified|available)|null", value.strip(), re.I) else None
     supp_state = supp_gstin[:2] if len(supp_gstin) >= 2 and supp_gstin[:2].isdigit() else "06"
     buyer_state = buyer_gstin[:2] if len(buyer_gstin) >= 2 and buyer_gstin[:2].isdigit() else "06"
-    is_intra_state = (supp_state == buyer_state)
+    is_intra_state = (supp_state == buyer_state) if data["buyer_gstin"] and supp_gstin else None
 
     cgst = float(data.get("cgst") or 0.0)
     sgst = float(data.get("sgst") or 0.0)
@@ -317,7 +320,7 @@ def sanitize_and_clean_invoice(data: dict) -> dict:
         elif sgst > 0 and cgst == 0:
             cgst = sgst
             data["cgst"] = cgst
-    else:
+    elif is_intra_state is False:
         # Inter-state: CGST = 0, SGST = 0, IGST applies
         cgst = 0.0
         sgst = 0.0

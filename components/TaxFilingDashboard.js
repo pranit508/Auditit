@@ -2,6 +2,8 @@
 // Fully customizable tax planning engine for Indian small retail shopkeepers
 import { calculateComprehensiveTax } from "../utils/taxCalculator.js";
 import { formatRupees, round2 } from "../utils/auditEngine.js";
+import { escapeHtml } from "../utils/html.js";
+import { bindInfoTooltipEvents, renderInfoTooltip } from "../utils/infoTooltip.js?v=tax-input-help-20261107";
 
 /**
  * Renders the dedicated Tax & ITR Filing dashboard
@@ -26,6 +28,7 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
 
   // Format currency without decimals for high-level figures
   const formatWhole = (num) => "₹" + Math.round(Number(num) || 0).toLocaleString("en-IN");
+  const infoButton = renderInfoTooltip;
 
   container.innerHTML = `
     <div class="space-y-6">
@@ -161,69 +164,77 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
 
             <!-- Tax Regime Toggle: New vs Old -->
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-2">Income Tax Regime:</label>
-              <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl">
-                <button 
-                  type="button"
-                  id="toggle-regime-new"
-                  class="py-2.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center space-y-0.5 ${regime === 'NEW' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-600 hover:text-slate-900'}"
-                >
-                  <span class="flex items-center space-x-1.5">
+              <label class="block text-xs font-bold text-slate-700 mb-2">
+                Income Tax Regime: ${infoButton("tax-regime-info", "Choose which income-tax slab system to use for this estimate.")}
+              </label>
+              <div class="space-y-2 p-1 bg-slate-100 rounded-xl">
+                <div class="flex items-center gap-2">
+                  <button
+                    type="button"
+                    id="toggle-regime-new"
+                    aria-pressed="${regime === 'NEW'}"
+                    class="flex-1 py-2.5 px-3 rounded-lg text-xs font-bold transition-all text-left flex items-center justify-between gap-2 ${regime === 'NEW' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-600 hover:text-slate-900'}"
+                  >
                     <span>New Tax Regime</span>
                     <span class="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800">Default</span>
-                  </span>
-                  <span class="text-[10px] font-normal text-slate-500">Sec 115BAC • Lower Slabs • ₹75k Std Ded</span>
-                </button>
-                <button 
-                  type="button"
-                  id="toggle-regime-old"
-                  class="py-2.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex flex-col items-center justify-center space-y-0.5 ${regime === 'OLD' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-600 hover:text-slate-900'}"
-                >
-                  <span>Old Tax Regime</span>
-                  <span class="text-[10px] font-normal text-slate-500">Traditional Slabs • 80C & 80D Deductions</span>
-                </button>
+                  </button>
+                  ${infoButton("new-regime-info", "Section 115BAC. Uses the new-regime slabs and its applicable standard deduction.")}
+                </div>
+                <div class="flex items-center gap-2">
+                  <button
+                    type="button"
+                    id="toggle-regime-old"
+                    aria-pressed="${regime === 'OLD'}"
+                    class="flex-1 py-2.5 px-3 rounded-lg text-xs font-bold transition-all text-left ${regime === 'OLD' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-600 hover:text-slate-900'}"
+                  >
+                    Old Tax Regime
+                  </button>
+                  ${infoButton("old-regime-info", "Uses the old-regime slabs and allows eligible deductions such as Sections 80C and 80D.")}
+                </div>
               </div>
             </div>
 
             <!-- Business Filing Scheme Selector: Mode A vs Mode B -->
             <div class="space-y-2 pt-2">
-              <label class="block text-xs font-bold text-slate-700">Business Filing Scheme:</label>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="block text-xs font-bold text-slate-700">
+                Business Filing Scheme: ${infoButton("filing-scheme-info", "Choose presumptive taxation for eligible businesses or regular profit-and-loss reporting.")}
+              </label>
+              <div class="grid grid-cols-1 gap-3">
                 
                 <!-- Scheme Card: Mode B (Presumptive) -->
-                <div 
-                  id="card-scheme-presumptive"
-                  class="p-3.5 rounded-xl border-2 cursor-pointer transition-all ${scheme === 'PRESUMPTIVE' ? 'border-emerald-600 bg-emerald-50/40 ring-1 ring-emerald-500' : 'border-slate-200 bg-white hover:border-slate-300'}"
-                >
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold ${scheme === 'PRESUMPTIVE' ? 'text-emerald-900' : 'text-slate-900'}">
-                      Mode B: Section 44AD
-                    </span>
-                    <span class="text-[10px] px-1.5 py-0.5 rounded font-bold ${scheme === 'PRESUMPTIVE' ? 'bg-emerald-200/80 text-emerald-900' : 'bg-slate-100 text-slate-600'}">
-                      ITR-4 Sugam
-                    </span>
-                  </div>
-                  <p class="text-[11px] text-slate-600 mt-1">
-                    Presumptive taxation without books or audit. Deemed profit on turnover.
-                  </p>
+                <div class="flex items-center gap-2">
+                  <button
+                    type="button"
+                    id="card-scheme-presumptive"
+                    aria-pressed="${scheme === 'PRESUMPTIVE'}"
+                    class="flex-1 w-full p-3.5 rounded-xl border-2 text-left cursor-pointer transition-all ${scheme === 'PRESUMPTIVE' ? 'border-emerald-600 bg-emerald-50/40 ring-1 ring-emerald-500' : 'border-slate-200 bg-white hover:border-slate-300'}"
+                  >
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-xs font-bold ${scheme === 'PRESUMPTIVE' ? 'text-emerald-900' : 'text-slate-900'}">Mode B: Section 44AD</span>
+                      <span class="text-[10px] px-1.5 py-0.5 rounded font-bold ${scheme === 'PRESUMPTIVE' ? 'bg-emerald-200/80 text-emerald-900' : 'bg-slate-100 text-slate-600'}">
+                        ITR-4 Sugam
+                      </span>
+                    </div>
+                  </button>
+                  ${infoButton("presumptive-scheme-info", "For eligible businesses: taxable profit is estimated from turnover under Section 44AD, subject to statutory conditions.")}
                 </div>
 
                 <!-- Scheme Card: Mode A (Regular P&L) -->
-                <div 
-                  id="card-scheme-regular"
-                  class="p-3.5 rounded-xl border-2 cursor-pointer transition-all ${scheme === 'REGULAR' ? 'border-blue-600 bg-blue-50/40 ring-1 ring-blue-500' : 'border-slate-200 bg-white hover:border-slate-300'}"
-                >
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold ${scheme === 'REGULAR' ? 'text-blue-900' : 'text-slate-900'}">
-                      Mode A: Regular P&L
-                    </span>
-                    <span class="text-[10px] px-1.5 py-0.5 rounded font-bold ${scheme === 'REGULAR' ? 'bg-blue-200/80 text-blue-900' : 'bg-slate-100 text-slate-600'}">
-                      ITR-3
-                    </span>
-                  </div>
-                  <p class="text-[11px] text-slate-600 mt-1">
-                    Normal bookkeeping: Revenue minus actual purchase expenses & overheads.
-                  </p>
+                <div class="flex items-center gap-2">
+                  <button
+                    type="button"
+                    id="card-scheme-regular"
+                    aria-pressed="${scheme === 'REGULAR'}"
+                    class="flex-1 w-full p-3.5 rounded-xl border-2 text-left cursor-pointer transition-all ${scheme === 'REGULAR' ? 'border-blue-600 bg-blue-50/40 ring-1 ring-blue-500' : 'border-slate-200 bg-white hover:border-slate-300'}"
+                  >
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-xs font-bold ${scheme === 'REGULAR' ? 'text-blue-900' : 'text-slate-900'}">Mode A: Regular P&L</span>
+                      <span class="text-[10px] px-1.5 py-0.5 rounded font-bold ${scheme === 'REGULAR' ? 'bg-blue-200/80 text-blue-900' : 'bg-slate-100 text-slate-600'}">
+                        ITR-3
+                      </span>
+                    </div>
+                  </button>
+                  ${infoButton("regular-scheme-info", "Report actual business profit by subtracting documented purchases and operating expenses from revenue.")}
                 </div>
 
               </div>
@@ -235,7 +246,9 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
               <!-- Common Input: Annual Gross Turnover -->
               <div class="mb-4">
                 <div class="flex items-center justify-between mb-1">
-                  <label class="text-xs font-bold text-slate-700">Annual Gross Revenue / Sales (₹):</label>
+                  <label class="text-xs font-bold text-slate-700">
+                    Annual Gross Revenue / Sales (₹): ${infoButton("annual-revenue-info", "Enter the shop's expected total sales and receipts for the full financial year.")}
+                  </label>
                   <span class="text-xs font-mono font-bold text-slate-900">${formatWhole(comp.annualRevenue)}</span>
                 </div>
                 <input 
@@ -246,14 +259,15 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
                   class="w-full px-3 py-2 rounded-lg border border-slate-300 font-mono text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   placeholder="e.g. 3600000"
                 />
-                <span class="text-[10px] text-slate-400 mt-1 block">Expected annual receipts/counter sales of the shop</span>
               </div>
 
               <!-- MODE B: PRESUMPTIVE SECTION 44AD CONFIGURATION -->
               ${scheme === 'PRESUMPTIVE' ? `
                 <div class="bg-slate-50/80 rounded-xl p-4 border border-slate-200 space-y-4">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800">Digital vs Cash Turnover Split</span>
+                    <span class="text-xs font-bold text-slate-800">
+                      Digital vs Cash Turnover Split ${infoButton("turnover-split-info", "Adjust the share of turnover received digitally versus cash. This affects the presumptive profit estimate.")}
+                    </span>
                     <span class="text-xs font-mono font-bold text-emerald-700">
                       ${profit.digitalPercent}% Digital • ${profit.cashPercent}% Cash
                     </span>
@@ -337,8 +351,9 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
                 <!-- MODE A: REGULAR BUSINESS (ITR-3 P&L) INPUTS -->
                 <div class="bg-slate-50/80 rounded-xl p-4 border border-slate-200 space-y-4">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800">Normal P&L Expense Tracking</span>
-                    <span class="text-[11px] text-slate-500 font-mono">Net = Revenue - All Expenses</span>
+                    <span class="text-xs font-bold text-slate-800">
+                      Normal P&L Expense Tracking ${infoButton("regular-profit-info", "Net business profit is estimated as annual revenue minus purchases and operating expenses.")}
+                    </span>
                   </div>
 
                   <!-- COGS / Purchase Expense -->
@@ -418,8 +433,10 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
               <div class="space-y-3">
                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                   <div>
-                    <span class="text-xs font-bold text-slate-900 block">Standard Deduction (Budget 2024 / FY 2025-26)</span>
-                    <span class="text-[11px] text-slate-500">Auto-applied without requiring investment receipts</span>
+                    <span class="text-xs font-bold text-slate-900">
+                      Standard Deduction (Budget 2024 / FY 2025-26)
+                      ${infoButton("standard-deduction-info", "This standard deduction is automatically included in the estimate; no investment receipt is needed for this amount.")}
+                    </span>
                   </div>
                   <span class="text-sm font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
                     ₹75,000.00
@@ -446,15 +463,16 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
             ` : `
               <!-- OLD REGIME DEDUCTIONS (80C, 80D, Other) -->
               <div class="space-y-3">
-                <p class="text-[11px] text-slate-500">
-                  Enter your eligible investments and health insurance premiums to reduce taxable income:
-                </p>
+                <div class="text-[11px] font-semibold text-slate-700">
+                  Eligible Old-Regime Deductions
+                  ${infoButton("old-deductions-info", "Enter eligible, documented investments and health-insurance premiums. Actual limits depend on your circumstances and current tax rules.")}
+                </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <!-- Sec 80C -->
                   <div>
                     <label class="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Sec 80C (PPF/LIC/Tuition) ₹:
+                      Sec 80C (PPF/LIC/Tuition) ₹: ${infoButton("section-80c-info", "Eligible Section 80C claims are capped at ₹1,50,000 in this estimate.")}
                     </label>
                     <input 
                       type="number"
@@ -464,13 +482,12 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
                       value="${ded.sec80c}"
                       class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-mono text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                     />
-                    <span class="text-[9px] text-slate-400 mt-0.5 block">Max ₹1,50,000</span>
                   </div>
 
                   <!-- Sec 80D -->
                   <div>
                     <label class="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Sec 80D (Health Insurance) ₹:
+                      Sec 80D (Health Insurance) ₹: ${infoButton("section-80d-info", "The estimate allows eligible health-insurance premiums up to ₹25,000 or ₹50,000, depending on the applicable category.")}
                     </label>
                     <input 
                       type="number"
@@ -480,13 +497,12 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
                       value="${ded.sec80d}"
                       class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-mono text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                     />
-                    <span class="text-[9px] text-slate-400 mt-0.5 block">Up to ₹25k/₹50k</span>
                   </div>
 
                   <!-- Standard / Other Deductions -->
                   <div>
                     <label class="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Standard / Other Deductions ₹:
+                      Standard / Other Deductions ₹: ${infoButton("other-deductions-info", "Includes the standard deduction and any other eligible deductions entered for this estimate.")}
                     </label>
                     <input 
                       type="number"
@@ -495,7 +511,6 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
                       value="${ded.otherDeductions}"
                       class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-mono text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                     />
-                    <span class="text-[9px] text-slate-400 mt-0.5 block">Standard ₹50k</span>
                   </div>
                 </div>
 
@@ -608,7 +623,7 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-slate-500">Current Purchase Invoice:</span>
-                <span class="font-mono font-bold text-slate-900">${invoice.vendor_name || 'Supplier Bill'}</span>
+                <span class="font-mono font-bold text-slate-900">${escapeHtml(invoice.vendor_name || 'Supplier Bill')}</span>
               </div>
               <div class="grid grid-cols-3 gap-2 text-center pt-1 font-mono text-[11px]">
                 <div class="p-1.5 rounded bg-white border border-slate-200">
@@ -634,13 +649,16 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
             <div class="p-3.5 rounded-xl border border-slate-200 bg-white space-y-2">
               <div class="flex items-center justify-between">
                 <div>
-                  <span class="text-xs font-bold text-slate-900 block">Purchase for Business Resale / Capital Use?</span>
-                  <span class="text-[10px] text-slate-500">Section 16 vs Blocked Credit under Section 17(5)</span>
+                  <span class="text-xs font-bold text-slate-900">
+                    Purchase for Business Resale / Capital Use?
+                    ${infoButton("itc-use-info", "Input tax credit may be restricted for personal-use or blocked-credit purchases under Section 17(5).")}
+                  </span>
                 </div>
-                <div class="flex items-center space-x-1.5 bg-slate-100 p-0.5 rounded-lg">
+                <div class="flex flex-col items-stretch gap-1.5 min-w-20 bg-slate-100 p-1 rounded-lg">
                   <button 
                     type="button"
                     id="toggle-itc-resale-yes"
+                    aria-pressed="${itc.isBusinessResale}"
                     class="px-2.5 py-1 text-xs font-bold rounded transition-all ${itc.isBusinessResale ? 'bg-white text-emerald-800 shadow-sm' : 'text-slate-600 hover:text-slate-900'}"
                   >
                     Yes
@@ -648,6 +666,7 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
                   <button 
                     type="button"
                     id="toggle-itc-resale-no"
+                    aria-pressed="${!itc.isBusinessResale}"
                     class="px-2.5 py-1 text-xs font-bold rounded transition-all ${!itc.isBusinessResale ? 'bg-white text-rose-800 shadow-sm' : 'text-slate-600 hover:text-slate-900'}"
                   >
                     No
@@ -712,6 +731,7 @@ export function renderTaxFilingDashboard(container, invoice = {}, audit = {}, ta
  * Binds DOM event listeners and dispatches onUpdateTaxSettings
  */
 function setupEventListeners(container, comp, userTaxSettings, onUpdateTaxSettings, invoice, audit) {
+  bindInfoTooltipEvents(container);
   if (!onUpdateTaxSettings) return;
 
   // 1. Regime Toggles
@@ -861,7 +881,7 @@ function exportTaxComputationCsv(comp, invoice, audit) {
     ["--- INVOICE CONTEXT ---"],
     ["Supplier Vendor Name", invoice.vendor_name || "Supplier"],
     ["Supplier GSTIN", invoice.gstin || "MISSING"],
-    ["Buyer GSTIN", invoice.buyer_gstin || "06CORPP2712A1Z1"],
+    ["Buyer GSTIN", invoice.buyer_gstin || ""],
     ["Invoice Number", invoice.invoice_no || "N/A"],
     ["Invoice Date", invoice.date || "N/A"],
     ["Invoice Subtotal (₹)", itc.billSubtotal],

@@ -1,8 +1,9 @@
 // Component: Review Workspace (Tab 1: Invoice Math Audit | Tab 2: Tax & ITR Filing)
-import { renderInvoiceViewer } from "./InvoiceViewer.js";
-import { renderAuditScorecard } from "./AuditScorecard.js";
-import { renderTaxFilingDashboard } from "./TaxFilingDashboard.js";
+import { renderInvoiceViewer } from "./InvoiceViewer.js?v=buyer-details-20261107";
+import { renderAuditScorecard } from "./AuditScorecard.js?v=invoice-math-dropdowns-20261107";
+import { renderTaxFilingDashboard } from "./TaxFilingDashboard.js?v=tax-input-help-20261107";
 import { formatRupees } from "../utils/auditEngine.js";
+import { escapeHtml } from "../utils/html.js";
 
 export function renderReviewWorkspace(container, invoice, audit, options = {}) {
   const { 
@@ -38,8 +39,8 @@ export function renderReviewWorkspace(container, invoice, audit, options = {}) {
           </button>
           <div>
             <h2 class="text-sm sm:text-base font-bold text-slate-900 flex items-center space-x-2">
-              <span>${invoice.vendor_name || "Supplier Invoice"}</span>
-              <span class="text-xs font-normal text-slate-400 font-mono">(${invoice.invoice_no || "No ID"})</span>
+              <span>${escapeHtml(invoice.vendor_name || "Supplier Invoice")}</span>
+              <span class="text-xs font-normal text-slate-400 font-mono">(${escapeHtml(invoice.invoice_no || "No ID")})</span>
             </h2>
           </div>
         </div>

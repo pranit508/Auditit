@@ -1,5 +1,7 @@
 // Component: TaxAndITRTab (Tab 2: Stored Bills Tax Ledger & Accumulative Tax Engine)
 import { formatRupees, round2 } from "../utils/auditEngine.js";
+import { escapeHtml } from "../utils/html.js";
+import { bindInfoTooltipEvents, renderInfoTooltip } from "../utils/infoTooltip.js?v=tax-ledger-toggle-fix-20261108";
 
 /**
  * Renders the full business tax ledger and accumulative tax engine
@@ -24,6 +26,7 @@ export function renderTaxAndITRTab(container, props = {}) {
 
   const bills = Array.isArray(savedBills) ? savedBills : [];
   const totalBillsCount = bills.length;
+  const isTaxSectionOpen = (sectionId) => state.taxSectionsOpen?.[sectionId] !== false;
 
   // A. Aggregated Stored Bills Metrics
   const totalPurchases = round2(bills.reduce((sum, b) => sum + (Number(b.subtotal) || 0), 0));
@@ -125,15 +128,13 @@ export function renderTaxAndITRTab(container, props = {}) {
           <div class="flex items-center space-x-2.5">
             <span class="text-2xl">📊</span>
             <div>
-              <div class="flex items-center space-x-2">
+              <div class="flex items-center space-x-2 flex-wrap">
                 <h3 class="text-base sm:text-lg font-black tracking-tight text-white">Stored Bills Tax Ledger & ITR Engine</h3>
+                ${renderInfoTooltip("tax-ledger-overview-info", "Accumulative verified bills ledger, accumulated GST ITC pool, and real-time business ITR tax planning.")}
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-500/30 text-indigo-300 border border-indigo-400/30">
                   GSTR-3B & Sec 44AD
                 </span>
               </div>
-              <p class="text-xs text-slate-300 mt-0.5">
-                Accumulative verified bills ledger, accumulated GST ITC pool, and real-time business ITR tax planning.
-              </p>
             </div>
           </div>
         </div>
@@ -226,19 +227,22 @@ export function renderTaxAndITRTab(container, props = {}) {
       </div>
 
       <!-- SECTION B: AGGREGATED GST ITC LEDGER (GSTR-3B PREPARATION) -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+      <details id="tax-ledger-itc-section" data-preserve-open data-tax-section ${isTaxSectionOpen("tax-ledger-itc-section") ? "open " : ""}class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+        <summary class="audit-dropdown-summary flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div class="flex items-center space-x-2">
             <span class="text-lg">🏛️</span>
-            <div>
+            <div class="flex items-center gap-2 flex-wrap">
               <h4 class="text-sm font-extrabold text-slate-900">B. Aggregated GST ITC Ledger (GSTR-3B Preparation)</h4>
-              <p class="text-[11px] text-slate-500">Accumulated input tax credit available for offsetting against output tax liability</p>
+              ${renderInfoTooltip("tax-ledger-itc-info", "Accumulated input tax credit available for offsetting against output tax liability.")}
             </div>
           </div>
-          <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-            Total Claimable Pool: ${formatRupees(totalClaimableITC)}
-          </span>
-        </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+              Total Claimable Pool: ${formatRupees(totalClaimableITC)}
+            </span>
+            <span class="audit-dropdown-chevron text-slate-400" aria-hidden="true">⌄</span>
+          </div>
+        </summary>
 
         <!-- 3 POOL CARDS: CGST, SGST, IGST -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
@@ -288,19 +292,20 @@ export function renderTaxAndITRTab(container, props = {}) {
             </div>
           </div>
         </div>
-      </div>
+      </details>
 
       <!-- SECTION A: STORED INVOICE BILLS TABLE -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+      <details id="tax-ledger-bills-section" data-preserve-open data-tax-section ${isTaxSectionOpen("tax-ledger-bills-section") ? "open " : ""}class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+        <summary class="audit-dropdown-summary flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div class="flex items-center space-x-2">
             <span class="text-lg">📁</span>
-            <div>
+            <div class="flex items-center gap-2 flex-wrap">
               <h4 class="text-sm font-extrabold text-slate-900">A. Stored Verified Invoice Bills (${totalBillsCount})</h4>
-              <p class="text-[11px] text-slate-500">Persistent business bills ledger saved from math verification</p>
+              ${renderInfoTooltip("tax-ledger-bills-info", "Persistent business bills ledger saved from math verification.")}
             </div>
           </div>
-        </div>
+          <span class="audit-dropdown-chevron text-slate-400" aria-hidden="true">⌄</span>
+        </summary>
 
         ${bills.length === 0 ? `
           <div class="p-8 text-center bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 space-y-3">
@@ -314,7 +319,7 @@ export function renderTaxAndITRTab(container, props = {}) {
                 id="btn-save-current-empty" 
                 class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow transition-all"
               >
-                💾 Save Current Bill ("${currentInvoice.vendor_name || 'Bill'}") Now
+                💾 Save Current Bill ("${escapeHtml(currentInvoice.vendor_name || 'Bill')}") Now
               </button>
             ` : ''}
           </div>
@@ -343,10 +348,10 @@ export function renderTaxAndITRTab(container, props = {}) {
 
                   return `
                     <tr class="hover:bg-slate-50/80 transition-colors">
-                      <td class="px-3 py-2 font-medium text-slate-700 whitespace-nowrap">${b.date || '—'}</td>
-                      <td class="px-3 py-2 font-bold text-indigo-700 whitespace-nowrap">${b.invoice_no || '—'}</td>
-                      <td class="px-3 py-2 text-slate-800 font-sans max-w-[150px] truncate" title="${b.vendor_name || ''}">
-                        ${b.vendor_name || 'Supplier'}
+                      <td class="px-3 py-2 font-medium text-slate-700 whitespace-nowrap">${escapeHtml(b.date || '—')}</td>
+                      <td class="px-3 py-2 font-bold text-indigo-700 whitespace-nowrap">${escapeHtml(b.invoice_no || '—')}</td>
+                      <td class="px-3 py-2 text-slate-800 font-sans max-w-[150px] truncate" title="${escapeHtml(b.vendor_name || '')}">
+                        ${escapeHtml(b.vendor_name || 'Supplier')}
                       </td>
                       <td class="px-3 py-2 whitespace-nowrap">
                         <span class="text-[10px] px-1.5 py-0.5 rounded font-mono ${
@@ -354,7 +359,7 @@ export function renderTaxAndITRTab(container, props = {}) {
                             ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
                             : 'bg-rose-50 text-rose-800 border border-rose-200'
                         }">
-                          ${b.gstin || 'MISSING'}
+                          ${escapeHtml(b.gstin || 'MISSING')}
                         </span>
                       </td>
                       <td class="px-3 py-2 text-right font-medium text-slate-700">${formatRupees(b.subtotal)}</td>
@@ -398,22 +403,25 @@ export function renderTaxAndITRTab(container, props = {}) {
             </table>
           </div>
         `}
-      </div>
+      </details>
 
       <!-- SECTION C: CUSTOMIZABLE ANNUAL BUSINESS & ITR CALCULATOR (ITR-4 / ITR-3) -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-5">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+      <details id="tax-ledger-planning-section" data-preserve-open data-tax-section ${isTaxSectionOpen("tax-ledger-planning-section") ? "open " : ""}class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-5">
+        <summary class="audit-dropdown-summary flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div class="flex items-center space-x-2">
             <span class="text-lg">⚖️</span>
-            <div>
+            <div class="flex items-center gap-2 flex-wrap">
               <h4 class="text-sm font-extrabold text-slate-900">C. Annual Business & ITR Tax Planning (ITR-4 / ITR-3)</h4>
-              <p class="text-[11px] text-slate-500">Live computation under New Tax Regime (FY 2025-26 / 2026-27)</p>
+              ${renderInfoTooltip("tax-ledger-planning-info", "Live computation under New Tax Regime (FY 2025-26 / 2026-27).")}
             </div>
           </div>
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">
-            ${calcMode === '44AD' ? 'Sec 44AD Presumptive' : 'Normal Business P&L'}
-          </span>
-        </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">
+              ${calcMode === '44AD' ? 'Sec 44AD Presumptive' : 'Normal Business P&L'}
+            </span>
+            <span class="audit-dropdown-chevron text-slate-400" aria-hidden="true">⌄</span>
+          </div>
+        </summary>
 
         <!-- Mode Toggle & Annual Turnover -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -636,8 +644,7 @@ export function renderTaxAndITRTab(container, props = {}) {
           </div>
         </div>
 
-      </div>
-
+      </details>
     </div>
   `;
 
@@ -664,6 +671,7 @@ export function renderTaxAndITRTab(container, props = {}) {
     totalTaxPayable,
     isRebateEligible
   });
+  bindInfoTooltipEvents(container);
 }
 
 /**
@@ -690,6 +698,22 @@ function setupLedgerHandlers(container, props) {
     totalTaxPayable,
     isRebateEligible
   } = props;
+
+  container.querySelectorAll("details[data-tax-section]").forEach((section) => {
+    section.querySelector("summary")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      section.open = !section.open;
+    });
+    section.addEventListener("toggle", () => {
+      if (!onUpdateState) return;
+      onUpdateState({
+        taxSectionsOpen: {
+          ...(state.taxSectionsOpen || {}),
+          [section.id]: section.open,
+        },
+      });
+    });
+  });
 
   // 1. Save Current Bill to Ledger
   const btnSaveFromTab2 = container.querySelector("#btn-save-current-from-tab2");

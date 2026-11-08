@@ -129,6 +129,11 @@ export function parseInr(val) {
 export function sanitizeAndCleanInvoice(data) {
   if (!data || typeof data !== "object") return data;
   const res = JSON.parse(JSON.stringify(data));
+  for (const key of ["buyer_name", "buyer_address"]) {
+    const value = res[key];
+    res[key] = typeof value === "string" && value.trim() &&
+      !/^(?:n\/?a|unknown|not (?:specified|available)|null)$/i.test(value.trim()) ? value.trim() : null;
+  }
 
   // 1. Clean supplier name of trailing symbols
   const vendor = res.vendor_name || res.supplier_name || "";
@@ -237,11 +242,11 @@ export function sanitizeAndCleanInvoice(data) {
 
   // 5. INTRA-STATE vs INTER-STATE AUTO-DETERMINATION & GRAND TOTAL SANITY CHECK:
   const suppGstin = String(res.gstin || "").trim().toUpperCase();
-  const buyerGstin = String(res.buyer_gstin || "06CORPP2712A1Z1").trim().toUpperCase();
-  res.buyer_gstin = buyerGstin;
+  const buyerGstin = String(res.buyer_gstin || "").trim().toUpperCase();
+  res.buyer_gstin = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(buyerGstin) ? buyerGstin : null;
   const suppState = suppGstin.length >= 2 && !isNaN(suppGstin.slice(0, 2)) ? suppGstin.slice(0, 2) : "06";
   const buyerState = buyerGstin.length >= 2 && !isNaN(buyerGstin.slice(0, 2)) ? buyerGstin.slice(0, 2) : "06";
-  const isIntraState = suppState === buyerState;
+  const isIntraState = res.buyer_gstin && suppGstin ? suppState === buyerState : null;
 
   let cgst = Number(res.cgst) || 0;
   let sgst = Number(res.sgst) || 0;
@@ -276,7 +281,7 @@ export function sanitizeAndCleanInvoice(data) {
       cgst = sgst;
       res.cgst = cgst;
     }
-  } else {
+  } else if (isIntraState === false) {
     cgst = 0;
     sgst = 0;
     res.cgst = 0;

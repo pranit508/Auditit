@@ -1,5 +1,7 @@
 // Component: High-fidelity Realistic Indian Tax Invoice Viewer with Real-Time Document Toggle & OCR Inspector
 import { formatRupees } from "../utils/auditEngine.js";
+import { renderBuyerDetails } from "../utils/buyerDetails.js";
+import { escapeHtml } from "../utils/html.js";
 
 export function renderInvoiceViewer(container, invoice, audit, options = {}) {
   const { onSelectItem, selectedItemId } = options;
@@ -17,7 +19,7 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
           <span class="text-xs font-bold text-slate-800 tracking-wide uppercase">
             ${currentMode === 'photo' ? 'Original Document File' : currentMode === 'ocr' ? 'Extracted OCR Text' : 'Live Tax Invoice Preview'}
           </span>
-          <span class="text-[11px] text-slate-400 font-mono">(${invoice.invoice_no || "Draft"})</span>
+          <span class="text-[11px] text-slate-400 font-mono">(${escapeHtml(invoice.invoice_no || "Draft")})</span>
         </div>
 
         <div class="flex items-center space-x-1.5 text-xs">
@@ -51,14 +53,14 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
           <div class="relative max-w-lg w-full rounded-lg shadow-md overflow-hidden border border-slate-300 bg-black/5">
             <div class="absolute top-3 left-3 z-10 bg-slate-900/80 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-semibold flex items-center space-x-1.5">
               <span>📷 Original Uploaded File</span>
-              <span class="text-slate-300 font-mono">(${invoice.file_name || 'Bill'})</span>
+              <span class="text-slate-300 font-mono">(${escapeHtml(invoice.file_name || 'Bill')})</span>
             </div>
             
             ${invoice.file_type?.includes('pdf') ? `
-              <embed src="${invoice.uploaded_file_url}" type="application/pdf" class="w-full h-[520px] rounded-lg" />
+              <embed src="${escapeHtml(invoice.uploaded_file_url)}" type="application/pdf" class="w-full h-[520px] rounded-lg" />
             ` : `
               <div class="relative group">
-                <img src="${invoice.uploaded_file_url}" alt="Uploaded Invoice" class="w-full h-auto object-contain max-h-[580px] rounded-lg" />
+                <img src="${escapeHtml(invoice.uploaded_file_url)}" alt="Uploaded Invoice" class="w-full h-auto object-contain max-h-[580px] rounded-lg" />
                 
                 ${audit.hasTotalDiscrepancy ? `
                   <div class="absolute bottom-6 right-4 bg-rose-600/95 text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-lg border border-white animate-pulse">
@@ -75,7 +77,7 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
               <span class="text-emerald-400 font-bold uppercase text-[10px]">Actual Extracted Document Text</span>
               <span class="text-[10px] text-slate-400">Zero Fake Items</span>
             </div>
-            <pre class="whitespace-pre-wrap leading-relaxed text-[11px] max-h-[460px] overflow-y-auto text-slate-300 select-text bg-slate-950/60 p-3 rounded-lg border border-slate-800/80">${invoice.raw_ocr_text}</pre>
+            <pre class="whitespace-pre-wrap leading-relaxed text-[11px] max-h-[460px] overflow-y-auto text-slate-300 select-text bg-slate-950/60 p-3 rounded-lg border border-slate-800/80">${escapeHtml(invoice.raw_ocr_text)}</pre>
           </div>
         ` : `
           <!-- HIGH FIDELITY REAL-TIME DIGITIZED INVOICE PAPER -->
@@ -85,15 +87,15 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
             <div class="border-b-2 border-slate-800 pb-3 mb-4">
               <div class="flex justify-between items-start">
                 <div>
-                  <h2 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">${invoice.vendor_name || "Supplier Name"}</h2>
-                  <p class="text-[11px] text-slate-500 max-w-xs mt-0.5">${invoice.vendor_address || "Commercial Wholesale Market, India"}</p>
+                  <h2 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">${escapeHtml(invoice.vendor_name || "Supplier Name")}</h2>
+                  <p class="text-[11px] text-slate-500 max-w-xs mt-0.5">${escapeHtml(invoice.vendor_address || "Commercial Wholesale Market, India")}</p>
                   
                   <div class="mt-2 flex items-center space-x-2">
                     <span class="font-semibold text-slate-700">GSTIN:</span>
                     ${audit.gstinValid 
-                      ? `<span class="font-mono bg-emerald-50 text-emerald-900 border border-emerald-300 px-1.5 py-0.5 rounded font-semibold text-[11px]">${invoice.gstin}</span>`
+                      ? `<span class="font-mono bg-emerald-50 text-emerald-900 border border-emerald-300 px-1.5 py-0.5 rounded font-semibold text-[11px]">${escapeHtml(invoice.gstin)}</span>`
                       : `<span class="relative group cursor-pointer inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-300 animate-pulse" data-box-id="gstin">
-                          ⚠️ ${invoice.gstin ? 'Invalid Format: ' + invoice.gstin : 'Missing / Not Stated'}
+                          ⚠️ ${escapeHtml(invoice.gstin ? 'Invalid Format: ' + invoice.gstin : 'Missing / Not Stated')}
                          </span>`
                     }
                   </div>
@@ -102,8 +104,8 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
                 <div class="text-right">
                   <span class="inline-block px-2 py-1 bg-slate-900 text-white font-bold text-[10px] tracking-widest rounded uppercase">TAX INVOICE</span>
                   <div class="mt-2 text-slate-600 space-y-0.5 text-[11px]">
-                    <div><span class="text-slate-400">Bill No:</span> <strong class="font-mono text-slate-900">${invoice.invoice_no || "N/A"}</strong></div>
-                    <div><span class="text-slate-400">Date:</span> <strong class="text-slate-900">${invoice.date || "N/A"}</strong></div>
+                    <div><span class="text-slate-400">Bill No:</span> <strong class="font-mono text-slate-900">${escapeHtml(invoice.invoice_no || "N/A")}</strong></div>
+                    <div><span class="text-slate-400">Date:</span> <strong class="text-slate-900">${escapeHtml(invoice.date || "N/A")}</strong></div>
                     <div><span class="text-slate-400">Status:</span> <strong class="${audit.hasTotalDiscrepancy ? 'text-rose-600' : 'text-emerald-700'}">${audit.status}</strong></div>
                   </div>
                 </div>
@@ -114,16 +116,14 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
             <div class="bg-slate-50 p-2.5 rounded border border-slate-200 mb-4 flex justify-between items-center text-[11px]">
               <div>
                 <span class="text-slate-400 uppercase tracking-wider text-[9px] font-bold block">Billed To (Retailer / ग्राहक):</span>
-                <strong class="text-slate-900 text-xs">Apna Kirana & Retail Mart</strong>
-                <span class="text-slate-500 block">Main Market Road, Counter #1</span>
-                <span class="text-[10px] font-mono text-slate-600 block mt-0.5">Buyer GSTIN: <strong class="text-slate-800">${invoice.buyer_gstin || "06CORPP2712A1Z1"}</strong> (State: ${(invoice.buyer_gstin || "06CORPP2712A1Z1").slice(0, 2)})</span>
+                ${renderBuyerDetails(invoice)}
               </div>
               <div class="text-right">
                 <span class="inline-flex items-center text-[10px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   Direct Trade Purchase
                 </span>
                 <span class="block text-[10px] font-semibold text-slate-600 mt-1 font-mono">
-                  ${((invoice.gstin || "06").slice(0, 2) === (invoice.buyer_gstin || "06CORPP2712A1Z1").slice(0, 2)) ? 'Intra-State Supply' : 'Inter-State Supply'}
+                  ${!invoice.buyer_gstin ? 'Buyer location not specified' : ((invoice.gstin || "").slice(0, 2) === invoice.buyer_gstin.slice(0, 2)) ? 'Intra-State Supply' : 'Inter-State Supply'}
                 </span>
               </div>
             </div>
@@ -160,14 +160,14 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
                     }
 
                     return `
-                      <tr class="${boxClass} hover:bg-slate-50 transition-colors" data-box-id="${item.id || idx}">
+                      <tr class="${boxClass} hover:bg-slate-50 transition-colors" data-box-id="${escapeHtml(item.id || idx)}">
                         <td class="py-2 pl-1 font-mono text-slate-400 text-[10px]">${idx + 1}</td>
                         <td class="py-2 font-medium text-slate-900">
-                          ${item.description}
+                          ${escapeHtml(item.description)}
                           ${badgeMarkup}
-                          ${item.hsn ? `<div class="text-[10px] text-slate-400 font-mono">HSN: ${item.hsn}</div>` : ''}
+                          ${item.hsn ? `<div class="text-[10px] text-slate-400 font-mono">HSN: ${escapeHtml(item.hsn)}</div>` : ''}
                         </td>
-                        <td class="py-2 text-right font-mono font-medium">${item.qty}</td>
+                        <td class="py-2 text-right font-mono font-medium">${escapeHtml(item.qty)}</td>
                         <td class="py-2 text-right font-mono ${isBlurry ? 'blur-[1.5px] bg-amber-100/80 px-1 rounded' : ''}">${formatRupees(item.rate)}</td>
                         <td class="py-2 pr-1 text-right font-mono font-bold ${isErr ? 'text-rose-600' : 'text-slate-900'}">${formatRupees(item.amount)}</td>
                       </tr>
@@ -187,9 +187,9 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
               <div class="text-[10px] text-slate-500 space-y-1 max-w-[220px]">
                 <div class="font-bold text-slate-700 uppercase tracking-wider text-[9px]">Supplier Bank (Masked):</div>
                 <div class="bg-slate-50 p-2 rounded border border-slate-200 font-mono text-[10px]">
-                  <div>Bank: <span class="font-medium text-slate-700">${invoice.bank_details?.bank_name || "State Bank of India"}</span></div>
-                  <div>A/C: <span class="tracking-wider bg-slate-200 px-1 py-0.5 rounded text-slate-800 font-semibold">${invoice.bank_details?.account_number || "•••• •••• •••• 4821"}</span></div>
-                  <div>IFSC: <span class="tracking-wider bg-slate-200 px-1 py-0.5 rounded text-slate-800 font-semibold">${invoice.bank_details?.ifsc || "SBIN••••••"}</span></div>
+                  <div>Bank: <span class="font-medium text-slate-700">${escapeHtml(invoice.bank_details?.bank_name || "State Bank of India")}</span></div>
+                  <div>A/C: <span class="tracking-wider bg-slate-200 px-1 py-0.5 rounded text-slate-800 font-semibold">${escapeHtml(invoice.bank_details?.account_number || "•••• •••• •••• 4821")}</span></div>
+                  <div>IFSC: <span class="tracking-wider bg-slate-200 px-1 py-0.5 rounded text-slate-800 font-semibold">${escapeHtml(invoice.bank_details?.ifsc || "SBIN••••••")}</span></div>
                 </div>
               </div>
 
@@ -246,8 +246,8 @@ export function renderInvoiceViewer(container, invoice, audit, options = {}) {
             <!-- FOOTER SIGNATORY -->
             <div class="mt-5 pt-3 border-t border-dashed border-slate-300 flex justify-between items-end text-[9px] text-slate-400">
               <div>
-                <p>Terms: ${invoice.payment_terms || "Subject to local jurisdiction"}</p>
-                <p class="mt-0.5">Note: ${invoice.notes || "Computerized audit verification."}</p>
+                <p>Terms: ${escapeHtml(invoice.payment_terms || "Subject to local jurisdiction")}</p>
+                <p class="mt-0.5">Note: ${escapeHtml(invoice.notes || "Computerized audit verification.")}</p>
               </div>
               <div class="text-right">
                 <span class="border-t border-slate-400 pt-1 font-semibold text-slate-600 block">Authorised Signatory</span>

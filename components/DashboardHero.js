@@ -1,33 +1,15 @@
 // Component: Dashboard Hero Section (Upload Box & 3 Demo Scenarios)
 import { SAMPLE_INVOICES } from "../data/sampleInvoices.js";
+import { bindInfoTooltipEvents, renderInfoTooltip } from "../utils/infoTooltip.js?v=tax-input-help-20261107";
 
 export function renderDashboardHero(container, options = {}) {
-  const { onSelectSample, onFileUpload, onOpenApiKeyModal, onCreateManualBill, onOpenTaxLedger, savedBillsCount, hasApiKey } = options;
+  const { onSelectSample, onFileUpload, onCreateManualBill, onOpenTaxLedger, savedBillsCount } = options;
 
   container.innerHTML = `
     <div class="max-w-6xl mx-auto px-4 py-6 sm:py-10">
-      
-      <!-- Top Title & Value Proposition -->
-      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold mb-3">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Built for Retail Shop Owners & Kirana Stores in India</span>
-        </div>
-        
-        <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Never Pay a Wrong Bill Again.
-        </h1>
-        
-        <p class="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
-          Drop or snap any supplier invoice (पर्चा). Our strict mathematical audit checks every line item (Qty × Rate) and verifies GST totals in seconds.
-        </p>
-
-        <!-- Rule Highlight Pill -->
-        <div class="mt-3 inline-flex items-center space-x-2 text-[11px] text-slate-500 bg-slate-100/90 px-3 py-1 rounded-lg">
-          <span class="font-bold text-slate-700">Core Guarantee:</span>
-          <span>"AI reads the bill, code does the math" — 100% calculation accuracy</span>
-        </div>
-      </div>
+      <h1 class="mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+        Every bill, <span class="text-emerald-700">in focus.</span>
+      </h1>
 
       <!-- 2-COLUMN HERO GRID (Stacks on mobile) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -60,52 +42,44 @@ export function renderDashboardHero(container, options = {}) {
               </svg>
             </div>
 
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
-              Upload supplier invoice or photo
-            </h3>
-            
-            <p class="text-xs text-slate-500 mt-1 max-w-sm">
-              Drag & drop your PDF or image here, or choose an option below
-            </p>
+            <div class="flex items-center justify-center gap-2">
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
+                Upload supplier invoice or photo
+              </h3>
+              ${renderInfoTooltip("upload-guidance-info", "Drag and drop a tax invoice here or choose an upload method below. Supported formats: JPG, PNG, WEBP, and PDF up to 15 MB.")}
+            </div>
 
             <!-- Buttons: Browse & Snap Camera -->
-            <div class="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+            <div class="mt-5 w-full max-w-xs flex flex-col items-stretch gap-2.5">
               <button 
                 type="button" 
                 id="btn-browse-file" 
-                class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow transition-all active:scale-95 flex items-center space-x-1.5"
+                class="w-full px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold shadow transition-all active:scale-95 flex items-center justify-center"
               >
-                <span>📁 Select File / PDF</span>
+                <span>Select File / PDF</span>
               </button>
 
               <button 
                 type="button" 
                 id="btn-snap-photo" 
-                class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow transition-all active:scale-95 flex items-center space-x-1.5"
+                class="w-full px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow transition-all active:scale-95 flex items-center justify-center"
               >
-                <span>📷 Snap Photo</span>
+                <span>Snap Photo</span>
               </button>
 
               <button 
                 type="button" 
                 id="btn-manual-bill" 
-                class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-semibold shadow-xs transition-all active:scale-95 flex items-center space-x-1.5"
+                class="w-full px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-sm font-semibold shadow-xs transition-all active:scale-95 flex items-center justify-center"
               >
-                <span>✍️ Enter Bill Manually</span>
+                <span>Enter Bill Manually</span>
               </button>
             </div>
 
-            <!-- Formats Allowed -->
-            <div class="mt-4 text-[11px] text-slate-400 font-mono">
-              Supports: JPG, PNG, WEBP, PDF (Max 15MB)
-            </div>
-
-            <!-- Privacy Guarantee Caption -->
-            <div class="mt-6 pt-4 border-t border-slate-100 w-full flex items-center justify-center space-x-1.5 text-xs text-slate-500">
+            <div class="hidden">
               <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              <span class="font-medium text-[11px] text-slate-600">Privacy secured: bank details masked, files deleted after audit</span>
             </div>
 
           </div>
@@ -214,17 +188,6 @@ export function renderDashboardHero(container, options = {}) {
 
             </div>
 
-            <!-- Optional Gemini Multimodal API Key config -->
-            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-              <span class="text-slate-500">Live Gemini AI Pipeline:</span>
-              <button 
-                id="btn-toggle-apikey" 
-                class="text-xs font-semibold ${hasApiKey ? 'text-emerald-700 hover:underline' : 'text-slate-700 hover:text-slate-900'} flex items-center space-x-1"
-              >
-                <span>${hasApiKey ? '🔑 API Key Active' : '⚙️ Configure Gemini Key'}</span>
-              </button>
-            </div>
-
             <!-- Tax Ledger Quick Link -->
             <div class="mt-3 pt-3 border-t border-slate-100">
               <button 
@@ -247,28 +210,10 @@ export function renderDashboardHero(container, options = {}) {
 
       </div>
 
-      <!-- Trust Badges Bar -->
-      <div class="mt-10 pt-6 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-        <div class="p-3">
-          <div class="text-emerald-600 font-bold text-lg">100%</div>
-          <div class="text-[11px] text-slate-600 font-medium">Deterministic Math Check</div>
-        </div>
-        <div class="p-3">
-          <div class="text-slate-800 font-bold text-lg">GST Section 16</div>
-          <div class="text-[11px] text-slate-600 font-medium">ITC Compliance Verification</div>
-        </div>
-        <div class="p-3">
-          <div class="text-emerald-600 font-bold text-lg">0 Server Leaks</div>
-          <div class="text-[11px] text-slate-600 font-medium">Client Redaction & Masking</div>
-        </div>
-        <div class="p-3">
-          <div class="text-slate-800 font-bold text-lg">WhatsApp Ready</div>
-          <div class="text-[11px] text-slate-600 font-medium">1-Tap Dispute Note Generator</div>
-        </div>
-      </div>
-
     </div>
   `;
+
+  bindInfoTooltipEvents(container);
 
   // Attach sample button listeners
   const btn1 = container.querySelector("#btn-sample-1");
@@ -355,12 +300,6 @@ export function renderDashboardHero(container, options = {}) {
         if (onFileUpload) onFileUpload(e.target.files[0]);
       }
     });
-  }
-
-  // API Key Modal Trigger
-  const btnApiKey = container.querySelector("#btn-toggle-apikey");
-  if (btnApiKey && onOpenApiKeyModal) {
-    btnApiKey.addEventListener("click", onOpenApiKeyModal);
   }
 
   // Open Stored Bills Tax Ledger

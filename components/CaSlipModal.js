@@ -1,5 +1,7 @@
 // Component: Professional A4 CA Audit Slip Modal
 import { formatRupees } from "../utils/auditEngine.js";
+import { renderBuyerDetails } from "../utils/buyerDetails.js";
+import { escapeHtml } from "../utils/html.js";
 
 export function renderCaSlipModal(container, invoice, audit, onClose) {
   const isErr = audit.hasTotalDiscrepancy;
@@ -61,15 +63,15 @@ export function renderCaSlipModal(container, invoice, audit, onClose) {
           <div class="grid grid-cols-2 gap-4 bg-slate-50 p-3.5 rounded-lg border border-slate-200 mb-4 text-[11px]">
             <div>
               <span class="text-slate-400 font-bold uppercase text-[9px] block">Supplier Information:</span>
-              <div class="font-bold text-slate-900 text-xs mt-0.5">${invoice.vendor_name || "N/A"}</div>
-              <div class="text-slate-600 mt-0.5">GSTIN: <span class="font-mono font-bold ${audit.gstinValid ? 'text-slate-800' : 'text-rose-600'}">${invoice.gstin || "MISSING / NOT PROVIDED"}</span></div>
-              <div class="text-slate-500 text-[10px]">${invoice.vendor_address || ""}</div>
+              <div class="font-bold text-slate-900 text-xs mt-0.5">${escapeHtml(invoice.vendor_name || "N/A")}</div>
+              <div class="text-slate-600 mt-0.5">GSTIN: <span class="font-mono font-bold ${audit.gstinValid ? 'text-slate-800' : 'text-rose-600'}">${escapeHtml(invoice.gstin || "MISSING / NOT PROVIDED")}</span></div>
+              <div class="text-slate-500 text-[10px]">${escapeHtml(invoice.vendor_address || "")}</div>
             </div>
             <div>
               <span class="text-slate-400 font-bold uppercase text-[9px] block">Invoice Record:</span>
-              <div class="text-slate-700 mt-0.5">Invoice / Memo No: <span class="font-mono font-bold text-slate-900">${invoice.invoice_no || "N/A"}</span></div>
-              <div class="text-slate-700 mt-0.5">Invoice Date: <span class="font-bold text-slate-900">${invoice.date || "N/A"}</span></div>
-              <div class="text-slate-700 mt-0.5">Recipient: <span class="font-bold text-slate-900">Apna Kirana & Retail Mart</span></div>
+              <div class="text-slate-700 mt-0.5">Invoice / Memo No: <span class="font-mono font-bold text-slate-900">${escapeHtml(invoice.invoice_no || "N/A")}</span></div>
+              <div class="text-slate-700 mt-0.5">Invoice Date: <span class="font-bold text-slate-900">${escapeHtml(invoice.date || "N/A")}</span></div>
+              <div class="text-slate-700 mt-0.5">Recipient: ${renderBuyerDetails(invoice)}</div>
             </div>
           </div>
 
@@ -131,8 +133,8 @@ export function renderCaSlipModal(container, invoice, audit, onClose) {
                 ${audit.lineItemAudit.map((item, idx) => `
                   <tr class="${item.isMathError ? 'bg-rose-50 text-rose-900 font-medium' : ''}">
                     <td class="p-1.5 border border-slate-200 font-mono text-[10px]">${idx + 1}</td>
-                    <td class="p-1.5 border border-slate-200">${item.description}</td>
-                    <td class="p-1.5 border border-slate-200 text-right font-mono">${item.qty}</td>
+                    <td class="p-1.5 border border-slate-200">${escapeHtml(item.description)}</td>
+                    <td class="p-1.5 border border-slate-200 text-right font-mono">${escapeHtml(item.qty)}</td>
                     <td class="p-1.5 border border-slate-200 text-right font-mono">${formatRupees(item.rate)}</td>
                     <td class="p-1.5 border border-slate-200 text-right font-mono">${formatRupees(item.declaredAmount)}</td>
                     <td class="p-1.5 border border-slate-200 text-right font-mono font-bold">${formatRupees(item.calculatedAmount)}</td>

@@ -222,10 +222,10 @@ export function auditInvoice(invoice) {
   // INTRA-STATE vs INTER-STATE AUTO-DETERMINATION:
   // Compare the first 2 digits of the Supplier GSTIN (06) and Buyer GSTIN (06)
   const supplierGstin = (invoice.gstin || "").trim().toUpperCase();
-  const buyerGstin = (invoice.buyer_gstin || "06CORPP2712A1Z1").trim().toUpperCase();
+  const buyerGstin = (invoice.buyer_gstin || "").trim().toUpperCase();
   const supplierState = supplierGstin ? supplierGstin.slice(0, 2) : "06";
   const buyerState = buyerGstin ? buyerGstin.slice(0, 2) : "06";
-  const isIntraState = supplierState === buyerState;
+  const isIntraState = buyerGstin && supplierGstin ? supplierState === buyerState : null;
 
   if (isIntraState) {
     // Intra-State: IGST must strictly be 0
@@ -248,7 +248,7 @@ export function auditInvoice(invoice) {
         });
       }
     }
-  } else {
+  } else if (isIntraState === false) {
     // Inter-State: CGST and SGST must be 0, IGST applies
     if (cgst > 0 || sgst > 0) {
       issues.push({

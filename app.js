@@ -1,19 +1,20 @@
 // AUDIT IT - Main Application Controller with Real-Time Reactive Auditing
 import { SAMPLE_INVOICES } from "./data/sampleInvoices.js";
 import { auditInvoice, round2 } from "./utils/auditEngine.js";
+import { escapeHtml } from "./utils/html.js";
 import { cleanExtractedItems, sanitizeAndCleanInvoice } from "./utils/itemCleaner.js";
 import { sanitizeInvoiceData } from "./utils/privacyMasker.js";
 import { generateSupplierDisputeNote } from "./utils/discrepancyNote.js";
-import { extractInvoiceFromDocument } from "./utils/aiExtractor.js";
+import { extractInvoiceFromDocument } from "./utils/aiExtractor.js?v=required-fields-20261107";
+import { requireTaxInvoice, invalidInvoice } from "./utils/documentValidation.js?v=required-fields-20261107";
 import { calculateTaxMetrics } from "./utils/taxCalculator.js";
 import { generate_tax_suggestions } from "./utils/taxSuggestions.js";
-import { renderDashboardHero } from "./components/DashboardHero.js";
-import { renderReviewWorkspace } from "./components/ReviewWorkspace.js";
-import { renderCaSlipModal } from "./components/CaSlipModal.js";
-import { renderApiKeyModal } from "./components/ApiKeyModal.js";
-import TaxAndITRTab, { renderTaxAndITRTab } from "./components/TaxAndITRTab.js";
+import { renderDashboardHero } from "./components/DashboardHero.js?v=minimal-home-20261108";
+import { renderReviewWorkspace } from "./components/ReviewWorkspace.js?v=invoice-math-dropdowns-20261107";
+import { renderCaSlipModal } from "./components/CaSlipModal.js?v=buyer-details-20261107";
+import TaxAndITRTab, { renderTaxAndITRTab } from "./components/TaxAndITRTab.js?v=tax-ledger-toggle-fix-20261108";
 
-class AuditItApp {
+export class AuditItApp {
   constructor() {
     this.currentView = "dashboard"; // "dashboard" | "review"
     this.activeTab = "audit"; // 'audit' | 'tax'
@@ -50,11 +51,9 @@ class AuditItApp {
       grossOutputGst: 50000
     };
     this.isProcessing = false;
-    const defaultKey = "AQ.Ab8RN6LhTNa6kIQRpd_OijgrXNfmwLOw7rcxiMN8aWW-_U7mPw";
-    this.apiKey = localStorage.getItem("audit_it_gemini_api_key") || defaultKey;
-    if (!localStorage.getItem("audit_it_gemini_api_key")) {
-      try { localStorage.setItem("audit_it_gemini_api_key", defaultKey); } catch (_) {}
-    }
+    // Never reuse the formerly bundled browser credential.
+    this.apiKey = "";
+    localStorage.removeItem("audit_it_gemini_api_key");
 
     // Load persistent Tax Ledger bills
     try {
@@ -74,7 +73,7 @@ class AuditItApp {
             date: cleanSample.date || "2026-03-24",
             vendor_name: cleanSample.vendor_name || "Modern Electrical & Hardware Supplies",
             gstin: cleanSample.gstin || "06AAAAA0000A1Z5",
-            buyer_gstin: cleanSample.buyer_gstin || "06CORPP2712A1Z1",
+            buyer_gstin: cleanSample.buyer_gstin || null,
             subtotal: cleanSample.subtotal || 11000.00,
             cgst: cleanSample.cgst || 990.00,
             sgst: cleanSample.sgst || 990.00,
@@ -104,7 +103,52 @@ class AuditItApp {
     this.render();
   }
 
+  blockUnverifiedUpload() {
+    const invoice = this.currentInvoice;
+    if (!invoice) return false;
+    const isUpload = invoice.file_name || invoice.file_type || invoice.uploaded_file_url ||
+      String(invoice.id || "").startsWith("uploaded-");
+    const isEmptyNonManual = invoice.scenarioName !== "Manual Bill Entry" &&
+      (!Array.isArray(invoice.items) || invoice.items.length === 0);
+    if (!isUpload && !isEmptyNonManual) return false;
+    try {
+      requireTaxInvoice(invoice);
+      return false;
+    } catch {
+      if (invoice.uploaded_file_url) URL.revokeObjectURL(invoice.uploaded_file_url);
+      this.currentInvoice = null;
+      this.currentAudit = null;
+      this.taxData = null;
+      this.currentView = "dashboard";
+      this.activeTab = "audit";
+      this.activeReviewTab = "audit";
+      this.uploadStatus = "invalid";
+      this.uploadErrorCode = "INVALID_INVOICE";
+      this.modalMount.innerHTML = "";
+      return true;
+    }
+  }
+
   render() {
+    this.blockUnverifiedUpload();
+    // Never render the previous bill, tabs, or ledger while an upload is unverified.
+    if (["pending", "invalid"].includes(this.uploadStatus)) {
+      this.mainMount.innerHTML = `
+        <section class="max-w-lg mx-auto my-16 p-8 bg-white border border-slate-200 rounded-2xl text-center" role="alert">
+          <h1 class="text-xl font-bold text-slate-900">${this.uploadStatus === "pending" ? "Checking your document" : this.uploadErrorCode === "VERIFICATION_UNAVAILABLE" ? "Document verification unavailable" : "Please upload a valid tax invoice."}</h1>
+          <p class="mt-3 text-sm text-slate-600">${this.uploadStatus === "pending" ? "Invoice and tax options will appear only after validation." : this.uploadErrorCode === "VERIFICATION_UNAVAILABLE" ? "We couldn't verify your document right now. Please try again. Invoice and tax options remain locked." : "This document could not be verified as a tax invoice. No calculations were performed."}</p>
+          ${this.uploadStatus === "invalid" ? `
+            <label for="retry-invoice-upload" class="inline-block mt-6 px-5 py-3 bg-emerald-700 text-white font-semibold rounded-xl cursor-pointer">Upload a tax invoice</label>
+            <input id="retry-invoice-upload" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" class="sr-only" />
+            <p class="mt-3 text-xs text-slate-500">Choose a clear JPG, PNG, WEBP or PDF of the complete invoice.</p>
+          ` : ""}
+        </section>`;
+      document.getElementById("retry-invoice-upload")?.addEventListener("change", event => {
+        const file = event.target.files?.[0];
+        if (file) this.handleFileUpload(file);
+      });
+      return;
+    }
     // Save active element focus and selection
     const activeEl = document.activeElement;
     let focusInfo = null;
@@ -117,16 +161,18 @@ class AuditItApp {
         selectionEnd: activeEl.selectionEnd
       };
     }
+    const openDetailIds = this.mainMount?.querySelectorAll
+      ? Array.from(this.mainMount.querySelectorAll("details[data-preserve-open][open]"))
+          .map((detail) => detail.id).filter(Boolean)
+      : [];
 
     if (this.currentView === "dashboard") {
       renderDashboardHero(this.mainMount, {
-        hasApiKey: !!this.apiKey,
         savedBillsCount: this.savedBills ? this.savedBills.length : 0,
         onOpenTaxLedger: () => this.openTaxLedger(),
         onSelectSample: (sampleKey) => this.loadSample(sampleKey),
         onFileUpload: (file) => this.handleFileUpload(file),
-        onCreateManualBill: () => this.createManualBill(),
-        onOpenApiKeyModal: () => this.openApiKeyModal()
+        onCreateManualBill: () => this.createManualBill()
       });
     } else if (this.currentView === "review") {
       this.mainMount.innerHTML = `
@@ -178,7 +224,7 @@ class AuditItApp {
                       ← Dashboard
                     </button>
                     ${this.currentInvoice ? `
-                      <span class="text-xs text-slate-400 font-mono">(${this.currentInvoice.vendor_name || 'Current Bill'})</span>
+                      <span class="text-xs text-slate-400 font-mono">(${escapeHtml(this.currentInvoice.vendor_name || 'Current Bill')})</span>
                     ` : ''}
                   </div>
                   <div class="flex items-center space-x-2">
@@ -259,6 +305,10 @@ class AuditItApp {
             },
             onViewBill: (bill) => {
               this.currentInvoice = JSON.parse(JSON.stringify(bill));
+              if (this.blockUnverifiedUpload()) {
+                this.render();
+                return;
+              }
               this.currentAudit = auditInvoice(this.currentInvoice);
               const { audit_summary, calculated_tax } = calculateTaxMetrics(this.currentInvoice, this.currentAudit, this.userTaxSettings);
               this.taxData = { audit_summary, calculated_tax, ai_suggestions: null };
@@ -286,6 +336,12 @@ class AuditItApp {
         }
       }
     }
+
+    // Restore disclosure state and focus after the scorecard is rebuilt.
+    openDetailIds.forEach((id) => {
+      const detail = document.getElementById(id);
+      if (detail) detail.open = true;
+    });
 
     // Restore focus seamlessly if user was actively typing
     if (focusInfo) {
@@ -336,7 +392,9 @@ class AuditItApp {
       vendor_name: "Gupta General Traders",
       vendor_address: "Wholesale Mandi, Shop 4B, Delhi",
       gstin: "07AAAAA0000A1Z5",
-      buyer_gstin: "07CORPP2712A1Z1",
+      buyer_gstin: null,
+      buyer_name: null,
+      buyer_address: null,
       invoice_no: `INV-${new Date().getFullYear()}-${Math.floor(100 + Math.random() * 900)}`,
       date: new Date().toISOString().split("T")[0],
       badge: { text: "Manual Draft", color: "slate" },
@@ -399,6 +457,17 @@ class AuditItApp {
   }
 
   async handleFileUpload(file) {
+    if (this.uploadStatus === "pending") return;
+    if (this.currentInvoice?.uploaded_file_url) URL.revokeObjectURL(this.currentInvoice.uploaded_file_url);
+    this.currentInvoice = null;
+    this.currentAudit = null;
+    this.taxData = null;
+    this.activeTab = "audit";
+    this.activeReviewTab = "audit";
+    this.currentView = "dashboard";
+    this.uploadStatus = "pending";
+    this.uploadErrorCode = null;
+    this.render();
     this.showProcessingOverlay(file.name);
 
     try {
@@ -408,6 +477,7 @@ class AuditItApp {
       });
 
       // Apply sanitize_and_clean_invoice to all Gemini outputs before updating UI state
+      requireTaxInvoice(extractedInvoice);
       try {
         const resp = await fetch("/api/process-invoice", {
           method: "POST",
@@ -420,9 +490,11 @@ class AuditItApp {
             extractedInvoice = res.extracted_data;
           }
         } else {
+          if (resp.status === 422) throw invalidInvoice();
           extractedInvoice = sanitizeAndCleanInvoice(extractedInvoice);
         }
-      } catch (_) {
+      } catch (error) {
+        if (error.code === "INVALID_INVOICE") throw error;
         extractedInvoice = sanitizeAndCleanInvoice(extractedInvoice);
       }
 
@@ -432,6 +504,7 @@ class AuditItApp {
         extractedInvoice.items = cleanExtractedItems(extractedInvoice.items);
       }
       extractedInvoice = sanitizeInvoiceData(extractedInvoice);
+      requireTaxInvoice(extractedInvoice);
 
       // Grand Total Sanity: Reject 774 and OCR hallucinations
       const subtot = Number(extractedInvoice.subtotal) || 0;
@@ -452,6 +525,7 @@ class AuditItApp {
       const ai_suggestions = await generate_tax_suggestions(audit_summary, calculated_tax, this.apiKey);
       this.taxData = { audit_summary, calculated_tax, ai_suggestions };
 
+      this.uploadStatus = "valid";
       this.activeTab = "audit";
     this.activeReviewTab = "audit";
     this.currentView = "review";
@@ -461,8 +535,16 @@ class AuditItApp {
 
       this.showToast("Invoice analyzed by Gemini 2.5 Flash successfully!", "success");
     } catch (err) {
+      this.currentInvoice = null;
+      this.currentAudit = null;
+      this.taxData = null;
+      this.currentView = "dashboard";
+      this.activeTab = "audit";
+      this.activeReviewTab = "audit";
+      this.uploadStatus = "invalid";
+      this.uploadErrorCode = err.code || "VERIFICATION_UNAVAILABLE";
       this.hideProcessingOverlay();
-      this.showToast("Could not process invoice: " + err.message, "error");
+      this.render();
     }
   }
 
@@ -647,6 +729,10 @@ class AuditItApp {
   }
 
   handleSaveBillToLedger(invoice, audit) {
+    if (this.blockUnverifiedUpload()) {
+      this.render();
+      return;
+    }
     const inv = invoice || this.currentInvoice;
     if (!inv) {
       this.showToast("No active bill to save to Tax Ledger", "error");
@@ -701,6 +787,11 @@ class AuditItApp {
   }
 
   openTaxLedger() {
+    if (this.blockUnverifiedUpload()) {
+      this.render();
+      return;
+    }
+    if (["pending", "invalid"].includes(this.uploadStatus)) return;
     this.currentView = "review";
     this.activeTab = "tax";
     this.activeReviewTab = "tax";
@@ -709,9 +800,18 @@ class AuditItApp {
   }
 
   openCaSlipModal() {
+    if (this.blockUnverifiedUpload()) {
+      this.render();
+      return;
+    }
+    if (["pending", "invalid"].includes(this.uploadStatus)) return;
     if (!this.currentInvoice) {
       if (this.savedBills && this.savedBills.length > 0) {
         this.currentInvoice = JSON.parse(JSON.stringify(this.savedBills[0]));
+        if (this.blockUnverifiedUpload()) {
+          this.render();
+          return;
+        }
         this.currentAudit = auditInvoice(this.currentInvoice);
       } else {
         this.showToast("No bill available to generate CA Slip", "info");
@@ -719,26 +819,13 @@ class AuditItApp {
       }
     }
     if (!this.currentAudit) {
+      if (this.blockUnverifiedUpload()) {
+        this.render();
+        return;
+      }
       this.currentAudit = auditInvoice(this.currentInvoice);
     }
     renderCaSlipModal(this.modalMount, this.currentInvoice, this.currentAudit, () => {
-      this.modalMount.innerHTML = "";
-    });
-  }
-
-  openApiKeyModal() {
-    renderApiKeyModal(this.modalMount, this.apiKey, (newKey) => {
-      this.apiKey = newKey;
-      if (newKey) {
-        localStorage.setItem("audit_it_gemini_api_key", newKey);
-        this.showToast("Gemini API key saved locally", "success");
-      } else {
-        localStorage.removeItem("audit_it_gemini_api_key");
-        this.showToast("Gemini key cleared; local mode active", "info");
-      }
-      this.modalMount.innerHTML = "";
-      this.render();
-    }, () => {
       this.modalMount.innerHTML = "";
     });
   }
@@ -752,6 +839,11 @@ class AuditItApp {
   }
 
   setActiveTab(tab) {
+    if (this.blockUnverifiedUpload()) {
+      this.render();
+      return;
+    }
+    if (["pending", "invalid"].includes(this.uploadStatus)) return;
     this.activeTab = tab;
     this.activeReviewTab = tab;
     this.render();
@@ -765,8 +857,7 @@ class AuditItApp {
             <div class="absolute inset-0 rounded-full border-4 border-slate-200 border-t-emerald-600 animate-spin"></div>
             <span class="text-xl">🔍</span>
           </div>
-          <h3 class="text-base font-bold text-slate-900">Auditing Invoice</h3>
-          <p class="text-xs text-slate-500 mt-1 font-mono truncate">${fileName}</p>
+          <h3 class="text-base font-bold text-slate-900">Checking document</h3>
           <div id="upload-progress-text" class="mt-2 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
             Scanning document & reading text...
           </div>
@@ -782,7 +873,7 @@ class AuditItApp {
             </div>
             <div class="flex items-center space-x-2 text-emerald-800 font-semibold">
               <span class="animate-pulse">●</span>
-              <span>Code recalculating Qty × Rate and GST</span>
+              <span>Calculations stay locked until the invoice is verified</span>
             </div>
           </div>
         </div>
@@ -805,8 +896,9 @@ class AuditItApp {
     toast.className = `transform transition-all duration-300 ease-out translate-y-2 opacity-0 pointer-events-auto px-4 py-2.5 rounded-xl shadow-lg text-xs font-semibold flex items-center space-x-2 ${bgClass}`;
     toast.innerHTML = `
       <span>${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}</span>
-      <span>${message}</span>
+      <span class="toast-message"></span>
     `;
+    toast.querySelector(".toast-message").textContent = message;
 
     this.toastMount.appendChild(toast);
 
